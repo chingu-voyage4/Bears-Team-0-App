@@ -1,26 +1,25 @@
 const mongodb = require("mongodb");
 const mongoClient = require("mongodb").MongoClient;
 
+const log = require('debug')('api:mongo')
+const error = require('debug')('api:error')
+
 let db;
 
 const MONGO = process.env.MONGO_URL;
 const DATABASE_NAME = process.env.DB_NAME;
 
-if (db) {
-    db.on("connection", () => {
-        console.log("mongo connected");
-    });
-    db.on("disconnected", () => {
-        console.log("mongo disconnected");
-    })
-};
-
+/*
+DB Connection Handler
+If connected returns connection else grabs connection from mLab
+*/
 function dbConnection () {
     return new Promise((resolve, reject) => {
         if (db) return resolve(db)
         mongoClient.connect(MONGO, (err, _db) => {
             if (err) return reject(err)
             db = _db.db(DATABASE_NAME)
+            log('Mongo connected ' + db.databaseName)
             resolve(db)
         })
     })
@@ -34,11 +33,11 @@ exports.read = function read() {
                 collection.findOne({ username: "test-user"})
                 .then(doc => {
                     if (doc) {
-                        console.log('DOC', doc)
+                        log('DOC', doc)
                         resolve(doc)
                     }
                     else {
-                        console.log('NO DOC')
+                        log('NO DOC')
                         reject(null)
                     }
                 });
