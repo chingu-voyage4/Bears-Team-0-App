@@ -1,7 +1,7 @@
 const express = require("express");
 const compression = require("compression");
 const bodyParser = require("body-parser");
-const db = require("mongodb");
+const morgan = require("morgan");
 
 const log = require('debug')('api:server')
 const error = require('debug')('api:error')
@@ -13,6 +13,7 @@ const apiServer = express();
 Global Middleware
 */
 apiServer.use(compression());
+apiServer.use(morgan('dev'));
 apiServer.use(bodyParser.urlencoded({extended : true}));
 apiServer.use(bodyParser.json());
 /*
