@@ -1,4 +1,4 @@
-module.exports = class Questions {
+module.exports = class Question {
     constructor(question, format) {
         this.question = question;
         this.format = format;
