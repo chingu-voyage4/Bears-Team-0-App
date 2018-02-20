@@ -1,13 +1,15 @@
+require("./Question");
+
 module.exports = class Quiz {
   constructor(title) {
     this.title = title;
     this.questions = [];
 
     //metadata
-    let date = new Date;
-    const dateWhenConstructorCalled = date.toUTCString();
-    this.createdDate = dateWhenConstructorCalled;
-    this.updatedDate = dateWhenConstructorCalled;
+    if (!this.createdDate) {
+      this.createdDate = getCurrentDate();
+    }
+    this.updatedDate = getCurrentDate();
 
     //data
     this.quizData = {
@@ -19,6 +21,11 @@ module.exports = class Quiz {
       datesUpdated: [],
     };
   }
+}
 
-
+function getCurrentDate() {
+    let date = new Date;
+    Object.freeze(date);
+    const currentDate = date.toUTCString();
+    return currentDate;
 }
