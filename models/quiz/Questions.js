@@ -6,7 +6,8 @@ module.exports = class Questions {
         this.answer = "";
         
         this.questionData = {
-            
+            correctAttempts: 0,
+            incorrectAttempts: 0,
         }
     }
 }
