@@ -15,8 +15,8 @@ module.exports = class Quiz {
       questionsAttempted: 0,
       correctlyAnswered: 0,
       incorrectlyAnswered: 0,
-      
-
+      datesUsed: [],
+      datesUpdated: [],
     };
   }
 
