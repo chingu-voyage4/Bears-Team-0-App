@@ -12,9 +12,9 @@ module.exports = class Quiz {
     //data
     this.quizData = {
       favorites: 0,
-      questionsAttempted: 0,
-      correctlyAnswered: 0,
-      incorrectlyAnswered: 0,
+      totalAttempts: 0,
+      correctAttempts: 0,
+      incorrectAttempts: 0,
       datesUsed: [],
       datesUpdated: [],
     };
