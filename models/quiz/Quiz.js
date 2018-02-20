@@ -21,6 +21,13 @@ module.exports = class Quiz {
       datesUpdated: [],
     };
   }
+  
+  addQuestion(question) {
+    if (question instanceof Question) {
+      this.questions.push(quesetion);
+    }
+  }
+
 }
 
 function getCurrentDate() {
