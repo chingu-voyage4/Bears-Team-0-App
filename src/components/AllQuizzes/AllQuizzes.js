@@ -21,7 +21,6 @@ class AllQuizzes extends Component {
 
 export default connect(
   state => {
-    console.log("state is: ", state);
     return {
       popularQuizzes: state.allQuizzes.popularQuizzes,
       yourQuizzes: state.allQuizzes.yourQuizzes
