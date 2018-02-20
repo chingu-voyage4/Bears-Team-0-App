@@ -11,7 +11,12 @@ module.exports = class Quiz {
 
     //data
     this.quizData = {
-      favorites: 0
+      favorites: 0,
+      questionsAttempted: 0,
+      correctlyAnswered: 0,
+      incorrectlyAnswered: 0,
+      
+
     };
   }
 
