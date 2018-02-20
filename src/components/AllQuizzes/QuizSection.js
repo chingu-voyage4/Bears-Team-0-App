@@ -8,7 +8,7 @@ class QuizSection extends Component {
       <div>
         <h1>{this.props.headingText}</h1>
         {this.props.quizzes.map(e => (
-          <Quiz title={e.title} likes={e.likes} body={e.body} />
+          <Quiz key={e.id} title={e.title} likes={e.likes} body={e.body} />
         ))}
       </div>
     );
