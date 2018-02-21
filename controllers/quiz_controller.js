@@ -16,6 +16,14 @@ module.exports.findQuiz = function(req, res, next){
     .catch(e => next(e))
 };
 
+module.exports.readAllQuizzes = function(req, res, next) {
+    const user = quizModel.readAll();
+    user.then(x => {
+            res.json({data: x});
+        })
+        .catch(e => next(e));
+}
+
 module.exports.addQuiz = function(req, res, next) {
     const addQuizPromise = quizModel.addAnotherQuiz()
     addQuizPromise.then(
