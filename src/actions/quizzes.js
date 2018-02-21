@@ -12,7 +12,7 @@ export const receiveAllQuizzes = quizzes => ({
 });
 
 const REQUEST_YOUR_QUIZZES = "REQUEST_YOUR_QUIZZES";
-export const getYourQuizzes = userId => ({
+export const requestYourQuizzes = userId => ({
   type: REQUEST_YOUR_QUIZZES,
   userId
 });
@@ -29,7 +29,6 @@ export const fetchAllQuizzes = () => {
     return mockFetch("/api/allquizzes")
       .then(
         res => {
-          console.log("data is: ", res.json());
           return res.json();
         },
         error => console.log("an error occurred...", error)
@@ -40,7 +39,7 @@ export const fetchAllQuizzes = () => {
 
 export const fetchYourQuizzes = () => {
   return function(dispatch) {
-    dispatch(requestAllQuizzes());
+    dispatch(requestYourQuizzes());
     return mockFetch("/api/yourquizzes")
       .then(
         res => {
@@ -49,5 +48,29 @@ export const fetchYourQuizzes = () => {
         error => console.log("an error occurred...", error)
       )
       .then(json => dispatch(receiveYourQuizzes(json)));
+  };
+};
+
+const CHANGE_TITLE = "CHANGE_TITLE";
+export const changeTitle = e => {
+  return {
+    type: CHANGE_TITLE,
+    payload: e.target.value
+  };
+};
+
+const CHANGE_DESCRIPTION = "CHANGE_DESCRIPTION";
+export const changeDescription = e => {
+  return {
+    type: CHANGE_DESCRIPTION,
+    payload: e.target.value
+  };
+};
+
+const SUBMIT_QUIZ_START = "SUBMIT_QUIZ_START";
+export const submitQuizStart = () => {
+  console.log("in submit quiz start action creator");
+  return {
+    type: SUBMIT_QUIZ_START
   };
 };
