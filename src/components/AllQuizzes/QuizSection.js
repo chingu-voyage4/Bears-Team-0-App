@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Quiz from "./Quiz";
-import { connect } from "react-redux";
 
 class QuizSection extends Component {
+  componentWillMount() {
+    this.props.getData();
+  }
   render() {
     return (
       <div>
@@ -15,4 +17,4 @@ class QuizSection extends Component {
   }
 }
 
-export default connect(state => ({}), dispatch => ({}))(QuizSection);
+export default QuizSection;

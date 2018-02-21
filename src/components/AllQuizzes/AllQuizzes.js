@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import QuizSection from "./QuizSection";
+import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
 import { connect } from "react-redux";
 
 class AllQuizzes extends Component {
@@ -9,10 +10,12 @@ class AllQuizzes extends Component {
         <QuizSection
           headingText="Your Quizzes"
           quizzes={this.props.yourQuizzes}
+          getData={this.props.fetchYourQuizzes}
         />
         <QuizSection
           headingText="Popular Quizzes"
           quizzes={this.props.popularQuizzes}
+          getData={this.props.fetchAllQuizzes}
         />
       </div>
     );
@@ -26,5 +29,8 @@ export default connect(
       yourQuizzes: state.allQuizzes.yourQuizzes
     };
   },
-  dispatch => ({})
+  {
+    fetchAllQuizzes: fetchAllQuizzes,
+    fetchYourQuizzes: fetchYourQuizzes
+  }
 )(AllQuizzes);
