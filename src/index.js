@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
+import "./stylesheets/main.css";
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
