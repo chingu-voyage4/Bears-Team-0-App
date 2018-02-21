@@ -7,9 +7,9 @@ module.exports = class Quiz {
 
     //metadata
     if (!this.createdDate) {
-      this.createdDate = getCurrentDate();
+      this.createdDate = generateCurrentDate();
     }
-    this.updatedDate = getCurrentDate();
+    this.updatedDate = generateCurrentDate();
 
     //data
     this.quizData = {
@@ -30,7 +30,7 @@ module.exports = class Quiz {
 
 }
 
-function getCurrentDate() {
+function generateCurrentDate() {
     let date = new Date;
     Object.freeze(date);
     const currentDate = date.toUTCString();
