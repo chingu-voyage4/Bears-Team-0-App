@@ -43,3 +43,10 @@ exports.read = function read(key) {
             })
     })
 }
+
+exports.addAnotherQuiz = function addAnotherQuiz() {
+    return exports.connectDb().then(_db_ => {
+        let collection = _db_.collection(COLLECTION_NAME);
+        return collection.insertOne(new Quiz("another quiz"));
+    })
+}

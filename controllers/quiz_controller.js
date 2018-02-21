@@ -15,3 +15,11 @@ module.exports.findQuiz = function(req, res, next){
     })
     .catch(e => next(e))
 };
+
+module.exports.addQuiz = function(req, res, next) {
+    const addQuizPromise = quizModel.addAnotherQuiz()
+    addQuizPromise.then(
+        res.json({status: "success"})
+    ).catch(e => next(e));
+    
+}
