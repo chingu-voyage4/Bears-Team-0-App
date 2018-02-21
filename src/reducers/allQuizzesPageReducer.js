@@ -2,20 +2,30 @@ const initialState = {
   hello: "hello world",
   yourQuizzes: [],
   popularQuizzes: [],
-  newQuizTitle: "",
-  newQuizDescription: ""
+  newQuiz: {
+    title: "",
+    description: ""
+  }
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_TITLE":
-      return Object.assign({}, state, {
-        newQuizTitle: action.payload
-      });
+      return {
+        ...state,
+        newQuiz: {
+          ...state.newQuiz,
+          title: action.payload
+        }
+      };
     case "CHANGE_DESCRIPTION":
-      return Object.assign({}, state, {
-        newQuizDescription: action.payload
-      });
+      return {
+        ...state,
+        newQuiz: {
+          ...state.newQuiz,
+          description: action.payload
+        }
+      };
     case "SUBMIT_QUIZ_START":
       console.log("submitting quiz start!");
       return state;
