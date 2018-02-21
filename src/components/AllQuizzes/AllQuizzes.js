@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import QuizSection from "./QuizSection";
+import QuizStart from "./QuizStart";
 import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
 import { connect } from "react-redux";
 
@@ -7,6 +8,7 @@ class AllQuizzes extends Component {
   render() {
     return (
       <div className="AllQuizzes">
+        <QuizStart />
         <QuizSection
           headingText="Your Quizzes"
           quizzes={this.props.yourQuizzes}
