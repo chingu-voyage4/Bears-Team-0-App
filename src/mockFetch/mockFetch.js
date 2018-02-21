@@ -1,32 +1,18 @@
-import { dummyQuizzes } from "./dummyDataMaker";
+import sendQuizzes from "./sendQuizzes";
 
 export default endpoint => {
   switch (endpoint) {
     case "/api/yourquizzes":
-      return new Promise((resolve, reject) => {
-        const rollDie = Math.random(),
-          // 5% chance of rejecting with an error
-          errorRate = 0.05;
-
-        if (rollDie > errorRate) {
-          resolve({ json: () => dummyQuizzes(3) });
-        } else {
-          const message = "there was an error fetching all quizzes";
-          reject(new Error(message));
-        }
+      return sendQuizzes({
+        errorRate: 0.05,
+        waitTime: Math.random() * 2000,
+        numberOfQuizzes: 3
       });
     case "/api/allquizzes":
-      return new Promise((resolve, reject) => {
-        const rollDie = Math.random(),
-          // 5% chance of rejecting with an error
-          errorRate = 0.05;
-
-        if (rollDie > errorRate) {
-          resolve({ json: () => dummyQuizzes(6) });
-        } else {
-          const message = "there was an error fetching all quizzes";
-          reject(new Error(message));
-        }
+      return sendQuizzes({
+        errorRate: 0.05,
+        waitTime: Math.random() * 2000,
+        numberOfQuizzes: 6
       });
     default:
       return new Promise();
