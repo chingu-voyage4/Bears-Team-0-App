@@ -26,8 +26,11 @@ module.exports.readAllQuizzes = function(req, res, next) {
 
 module.exports.addQuiz = function(req, res, next) {
     const addQuizPromise = quizModel.addAnotherQuiz()
-    addQuizPromise.then(
-        res.json({status: "success"})
+    addQuizPromise.then(() => {
+        //readAll logs all quizzes to see if successful
+        quizModel.readAll();
+        res.json({status: "success"});
+    }
     ).catch(e => next(e));
     
 }

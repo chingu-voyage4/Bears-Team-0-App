@@ -49,6 +49,7 @@ exports.readAll = function readAll() {
         let collection = _db.collection(COLLECTION_NAME);
         return collection.find().toArray((err, result) => {
             log(result);
+            log(result.length);
             return result;
         })
     })
