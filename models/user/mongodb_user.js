@@ -43,3 +43,27 @@ exports.read = function read(key) {
             })
     })
 }
+
+exports.create = function create(user) {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        let newUser = new User(user.username, user.roles, user.password)
+        return newUser.encryptPw().then(() => {
+            log('Mongo new user: ' + util.inspect(newUser))
+            return collection.insertOne(newUser).then(result => {
+                log('Mongo new user inserted: ' + util.inspect(result.ops[0]))
+                return {result: result.ops[0], result_id: result.insertedId}
+            })
+        })
+
+    })
+}
+
+exports.readAll = function readAll() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        return collection.find().toArray().then(data => {
+            return data
+        })
+    })
+}

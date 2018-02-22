@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/chingu-voyage4/Bears-Team-0#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "debug": "^3.1.0",
