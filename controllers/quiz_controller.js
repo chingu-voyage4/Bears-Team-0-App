@@ -38,11 +38,12 @@ module.exports.deleteQuiz = function(req, res, next) {
     /*
     This is hardcoded for initial testing. Use request param later
     */
-    const user = quizModel.deleteQuiz("5a8ee815147e031a8e65a6ed");
+    const user = quizModel.deleteQuiz("5a8eef4f4796351bcccb4d1d");
 
-    user.then(x => {
-        log('Deleting quiz ' + x)
-        res.json({ data: x })
+    user.then(() => {
+        log('Deleting quiz ');
+        quizModel.readAll();
+        res.json({status: "quiz deleted"});
     })
     .catch(e => next(e))
 }

@@ -66,8 +66,9 @@ exports.addAnotherQuiz = function addAnotherQuiz() {
 exports.deleteQuiz = function deleteQuiz(key) {
     return exports.connectDb().then( _db => {
         let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
         try {
-            return collection.deleteOne( {_id: ObjectId(key)} );
+            return collection.deleteOne( {_id: objectID} );
         } catch (err) {
             log(err)
         }
