@@ -1,23 +1,29 @@
 import mockFetch from "../mockFetch/mockFetch";
+import { quizTypes } from "./types";
+const {
+  REQUEST_ALL_QUIZZES,
+  RECEIVE_ALL_QUIZZES,
+  REQUEST_YOUR_QUIZZES,
+  RECEIVE_YOUR_QUIZZES,
+  CHANGE_TITLE,
+  CHANGE_DESCRIPTION,
+  SUBMIT_QUIZ_START
+} = quizTypes;
 
-const REQUEST_ALL_QUIZZES = "REQUEST_ALL_QUIZZES";
 export const requestAllQuizzes = () => ({
   type: REQUEST_ALL_QUIZZES
 });
 
-const RECEIVE_ALL_QUIZZES = "RECEIVE_ALL_QUIZZES";
 export const receiveAllQuizzes = quizzes => ({
   type: RECEIVE_ALL_QUIZZES,
   payload: quizzes
 });
 
-const REQUEST_YOUR_QUIZZES = "REQUEST_YOUR_QUIZZES";
 export const requestYourQuizzes = userId => ({
   type: REQUEST_YOUR_QUIZZES,
   userId
 });
 
-const RECEIVE_YOUR_QUIZZES = "RECEIVE_YOUR_QUIZZES";
 export const receiveYourQuizzes = quizzes => ({
   type: RECEIVE_YOUR_QUIZZES,
   payload: quizzes
@@ -51,7 +57,6 @@ export const fetchYourQuizzes = () => {
   };
 };
 
-const CHANGE_TITLE = "CHANGE_TITLE";
 export const changeTitle = e => {
   return {
     type: CHANGE_TITLE,
@@ -59,7 +64,6 @@ export const changeTitle = e => {
   };
 };
 
-const CHANGE_DESCRIPTION = "CHANGE_DESCRIPTION";
 export const changeDescription = e => {
   return {
     type: CHANGE_DESCRIPTION,
@@ -67,9 +71,7 @@ export const changeDescription = e => {
   };
 };
 
-const SUBMIT_QUIZ_START = "SUBMIT_QUIZ_START";
 export const submitQuizStart = () => {
-  console.log("in submit quiz start action creator");
   return {
     type: SUBMIT_QUIZ_START
   };
