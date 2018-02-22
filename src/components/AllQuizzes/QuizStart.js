@@ -35,8 +35,8 @@ class QuizStart extends Component {
 
 export default connect(
   state => ({
-    title: state.allQuizzes.newQuizTitle,
-    description: state.allQuizzes.newQuizDescription
+    title: state.allQuizzes.newQuiz.title,
+    description: state.allQuizzes.newQuiz.description
   }),
   dispatch => ({
     changeTitle: e => dispatch(changeTitle(e)),
