@@ -35,11 +35,11 @@ exports.read = function read(key) {
         let objectID = new mongodb.ObjectId(key)
         return collection.findOne({_id: objectID})
             .then(doc => {
-                const quiz = new Quiz(
-                    doc.title
-                )
-                log(`Quiz found ${util.inspect(quiz)}`)
-                return quiz
+                // const quiz = new Quiz(
+                //     doc.title
+                // )
+                log(`Quiz found ${util.inspect(doc)}`)
+                return doc
             })
     })
 }

@@ -7,7 +7,7 @@ module.exports.findQuiz = function(req, res, next){
     /*
     This is hardcoded for initial testing
     */
-    const user = quizModel.read("5a8a625a734d1d041bb74229")
+    const user = quizModel.read("5a8db085ede1ae12a48d660e")
 
     user.then(x => {
         log('Sending quiz ' + x)
