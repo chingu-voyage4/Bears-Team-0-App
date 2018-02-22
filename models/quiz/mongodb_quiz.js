@@ -63,4 +63,13 @@ exports.addAnotherQuiz = function addAnotherQuiz() {
     })
 }
 
-
+exports.deleteQuiz = function deleteQuiz(key) {
+    return exports.connectDb().then( _db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        try {
+            return collection.deleteOne( {_id: ObjectId(key)} );
+        } catch (err) {
+            log(err)
+        }
+    })
+} 
