@@ -9,4 +9,7 @@ quizRouter.post("/new", quizController.addQuiz);
 quizRouter.get("/all", quizController.readAllQuizzes);
 quizRouter.get("/", quizController.findQuiz);
 
+//Delete
+quizRouter.post("/deleteHardCodedQuiz", quizController.deleteQuiz);
+
 module.exports = quizRouter
