@@ -32,5 +32,4 @@ module.exports.addQuiz = function(req, res, next) {
         res.json({status: "success"});
     }
     ).catch(e => next(e));
-    
 }
