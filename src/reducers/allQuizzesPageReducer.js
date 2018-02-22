@@ -1,5 +1,4 @@
 const initialState = {
-  hello: "hello world",
   yourQuizzes: [],
   popularQuizzes: [],
   newQuiz: {
@@ -11,7 +10,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_TITLE":
-      console.log("in reducer, changing title...");
       return {
         ...state,
         newQuiz: {
@@ -31,9 +29,15 @@ export default (state = initialState, action) => {
       console.log("submitting quiz start!");
       return state;
     case "RECEIVE_ALL_QUIZZES":
-      return Object.assign({}, state, { popularQuizzes: action.payload });
+      return {
+        ...state,
+        popularQuizzes: action.payload
+      };
     case "RECEIVE_YOUR_QUIZZES":
-      return Object.assign({}, state, { yourQuizzes: action.payload });
+      return {
+        ...state,
+        yourQuizzes: action.payload
+      };
     default:
       return state;
   }
