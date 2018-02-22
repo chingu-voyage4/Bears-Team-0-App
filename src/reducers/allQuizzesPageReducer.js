@@ -11,6 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_TITLE":
+      console.log("in reducer, changing title...");
       return {
         ...state,
         newQuiz: {
