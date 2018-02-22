@@ -24,15 +24,14 @@ module.exports = class Quiz {
   
   addQuestion(question) {
     if (question instanceof Question) {
-      this.questions.push(quesetion);
+      this.questions.push(question);
     }
   }
 
 }
 
 function generateCurrentDate() {
-    let date = new Date;
-    Object.freeze(date);
-    const currentDate = date.toUTCString();
+    //let date = Date;
+    const currentDate = Date.now();
     return currentDate;
 }

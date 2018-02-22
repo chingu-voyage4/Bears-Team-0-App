@@ -47,11 +47,12 @@ exports.read = function read(key) {
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        return collection.find().toArray((err, result) => {
-            log(result);
-            log(result.length);
-            return result;
-        })
+        return collection.find().toArray()
+            .then( (result) => {
+                log(result);
+                log(result.length);
+                return result;
+            })
     })
 }
 
