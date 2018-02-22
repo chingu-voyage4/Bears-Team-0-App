@@ -33,3 +33,16 @@ module.exports.addQuiz = function(req, res, next) {
     }
     ).catch(e => next(e));
 }
+
+module.exports.deleteQuiz = function(req, res, next) {
+    /*
+    This is hardcoded for initial testing. Use request param later
+    */
+    const user = quizModel.deleteQuiz("5a8ee815147e031a8e65a6ed");
+
+    user.then(x => {
+        log('Deleting quiz ' + x)
+        res.json({ data: x })
+    })
+    .catch(e => next(e))
+}
