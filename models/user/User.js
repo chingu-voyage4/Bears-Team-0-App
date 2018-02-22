@@ -3,19 +3,19 @@ const log   = require('debug')('api:User')
 const error = require('debug')('api:error')
 
 module.exports = class User {
-  constructor(username, roles, password) {
+  constructor(username, roles, _id = undefined) {
+    this._id = _id
     this.username = username
     this.roles = roles
-    this.password = password
     this.encryptPw = this.encryptPw.bind(this)
     this.checkPw = this.checkPw.bind(this)
   }
   /*
   An idea of how to save an encrypted pw before saving to the DB
   */
-  encryptPw () {
+  encryptPw (password) {
     return new Promise((resolve, reject) => {
-      bcrypt.hash(this.password, 5, (err, result) => {
+      bcrypt.hash(password, 5, (err, result) => {
         if (err) return reject(err)
         log('Encrypted ' + result)
         this.password = result

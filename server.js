@@ -32,6 +32,7 @@ Global error handling
 apiServer.use((err, req, res, next) => {
     error((err.status || 500) + " " + error.message)
     // Handle error?
+    res.status(err.status || 500).json(err)
 })
 
 apiServer.listen(port, () => {

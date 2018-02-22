@@ -3,34 +3,48 @@ const userModel = require('../models/user/mongodb_user')
 
 const log   = require('debug')('api:controller-user')
 const error = require('debug')('api:error')
-
+/*
+Creating a user
+*/
+module.exports.createUser = function(req, res, next) {
+    /*
+    This is hardcoded for initial testing
+    */
+    userModel.create({ username: 'Bob', password: 'blah', roles: ['admin'] })
+    .then(user => {
+        log('Sending new user: ' + util.inspect(user))
+        res.json({ data: user })
+    }).catch(err => next(err))
+}
+/*
+Reading a user
+*/
 module.exports.findUser = function(req, res, next){
     /*
     This is hardcoded for initial testing
     */
-    const user = userModel.read("5a8a6277734d1d041bb7422e")
-
-    user.then(x => {
-        log('Sending user ' + x)
-        res.json({ data: x })
+    userModel.read(req.params.id)
+    .then(found => {
+        log('Sending user ' + found)
+        res.json({ data: found })
     })
-    .catch(e => next(e))
+    .catch(err => next(err))
 };
-
-module.exports.createUser = function(req, res, next) {
-    const newUser = userModel.create({ username: 'Bob', password: 'blah', roles: ['admin'] })
-
-    newUser.then(user => {
-        log('Sending new user: ' + util.inspect(user))
-        res.json(user)
+/*
+Reading all users (Testing route)
+*/
+module.exports.findAllUsers = function(req, res, next) {
+    userModel.readAll()
+    .then(docs => {
+        log('Sending all users')
+        res.json({ data: docs })
     }).catch(err => next(err))
 }
-
-module.exports.findAllUsers = function(req, res, next) {
-    const users = userModel.readAll()
-
-    users.then(docs => {
-        log('Sending all users')
-        res.json(docs)
+/*
+Deleting a user
+*/
+module.exports.deleteUser = function(req, res, next) {
+    userModel.destroy(req.params.id).then(deleted => {
+        res.json({ data: deleted })
     }).catch(err => next(err))
 }
