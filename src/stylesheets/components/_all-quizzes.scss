@@ -31,13 +31,20 @@
 }
 
 .quiz {
-  width: 150px;
+  width: 250px;
+  height: 150px;
+  font-family: "Roboto Slab" serif;
   font-size: 12px;
   margin: 0 auto 0 0;
+  p:last-of-type {
+    height: 50px;
+    color: #fff;
+  }
 }
 
 .quiz-section {
   display: flex;
+  flex-wrap: wrap;
   > h1 {
     margin: 0;
     position: absolute;
@@ -49,12 +56,24 @@
     > h1 {
       bottom: 410px;
     }
+    .quiz {
+      p:last-of-type {
+        background: #215fe9;
+      }
+    }
     grid-column: 4/9;
     grid-row: 2/4;
   }
   &:last-of-type {
+    width: 850px;
+    height: 350px;
     > h1 {
       bottom: 190px;
+    }
+    .quiz {
+      p:last-of-type {
+        background: #55c0ed;
+      }
     }
     grid-column: 4/9;
     grid-row: 4/6;
