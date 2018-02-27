@@ -70,7 +70,20 @@ exports.deleteQuiz = function deleteQuiz(key) {
         try {
             return collection.deleteOne( {_id: objectID} );
         } catch (err) {
-            log(err)
+            log(err);
         }
     })
 } 
+
+exports.addQuestion = function addQuestion(key, question) {
+    return exports.connectDb().then( _db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
+        let newQuestion = { $push: { questions: question } };
+        try {
+            return collection.updateOne({_id: objectID}, newQuestion);
+        } catch (err) {
+            log(err);
+        }
+    });
+}

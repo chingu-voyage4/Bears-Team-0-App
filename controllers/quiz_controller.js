@@ -52,5 +52,5 @@ module.exports.addQuestion = function(req, res, next) {
     /*
     This is hardcoded for initial testing. Use request param later
     */
-//    const user = quizModel.
+   const user = quizModel.addQuestion("");
 }
