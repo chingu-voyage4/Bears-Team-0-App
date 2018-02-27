@@ -19,8 +19,9 @@ ul {
   li {
     margin: auto 30px;
     text-transform: uppercase;
-    color: #fff;
     a {
+      color: #fff;
+      text-decoration: none;
       &:hover {
         cursor: pointer;
       }
