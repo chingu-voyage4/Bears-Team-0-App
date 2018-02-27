@@ -6,7 +6,10 @@ class Quiz extends Component {
         <h1>{this.props.title}</h1>
         <p>{this.props.body}</p>
         <p>
-          Likes: {this.props.likes} <a href="#">Share</a>{" "}
+          <span>
+            <i className="fa fa-heart" /> {this.props.likes}
+          </span>{" "}
+          <a href="#">Share</a>{" "}
         </p>
       </div>
     );
