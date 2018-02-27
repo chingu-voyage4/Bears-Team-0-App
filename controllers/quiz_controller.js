@@ -47,3 +47,10 @@ module.exports.deleteQuiz = function(req, res, next) {
     })
     .catch(e => next(e))
 }
+
+module.exports.addQuestion = function(req, res, next) {
+    /*
+    This is hardcoded for initial testing. Use request param later
+    */
+//    const user = quizModel.
+}
