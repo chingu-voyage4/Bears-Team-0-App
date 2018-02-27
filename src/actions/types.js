@@ -7,3 +7,8 @@ export const quizTypes = {
   CHANGE_DESCRIPTION: "CHANGE_DESCRIPTION",
   SUBMIT_QUIZ_START: "SUBMIT_QUIZ_START"
 };
+
+export const loginTypes = {
+  LOGIN: "LOGIN",
+  LOGOUT: "LOGOUT"
+};
