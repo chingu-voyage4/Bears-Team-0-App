@@ -52,5 +52,14 @@ module.exports.addQuestion = function(req, res, next) {
     /*
     This is hardcoded for initial testing. Use request param later
     */
-   const user = quizModel.addQuestion("");
+   const user = quizModel.addQuestion("5a8db085ede1ae12a48d660e", "test question");
+
+   user.then(() => {
+       log('adding quiz');
+       quizModel.read("5a8db085ede1ae12a48d660e")
+            .then(x => {
+                res.json({data: x});
+            })
+            .catch(e => next(e));
+   }).catch(e => next(e))
 }
