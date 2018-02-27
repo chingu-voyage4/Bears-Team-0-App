@@ -59,7 +59,7 @@ body {
   height: 150px;
   padding: 7px 10px 0 10px;
   box-sizing: border-box;
-  font-family: "Roboto Slab" serif;
+  font-family: "Roboto Slab", serif;
   margin: 5% 0 0 0;
   color: black;
   background: #fff;
@@ -72,12 +72,22 @@ body {
     margin: 0;
   }
   p:last-of-type {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
     left: 0;
     right: 0;
     height: 40px;
     width: 240px;
     color: #fff;
+    font-size: 14px;
+    padding: 0 10px;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 }
 
