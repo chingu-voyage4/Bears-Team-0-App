@@ -7,12 +7,12 @@ import AllQuizzes from "./AllQuizzes/AllQuizzes";
 class App extends Component {
   render() {
     return (
-      <Layout>
-        <div className="App">
+      <div className="App">
+        <Layout>
           <Route exact path="/" component={Landing} />
           <Route exact path="/all" component={AllQuizzes} />
-        </div>
-      </Layout>
+        </Layout>
+      </div>
     );
   }
 }
