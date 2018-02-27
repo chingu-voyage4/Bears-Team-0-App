@@ -4,7 +4,7 @@ import QuizStart from "./QuizStart";
 import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
 import { connect } from "react-redux";
 
-class AllQuizzes extends Component {
+export class AllQuizzes extends Component {
   render() {
     return (
       <div className="AllQuizzes">
