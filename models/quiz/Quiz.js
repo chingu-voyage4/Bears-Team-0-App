@@ -1,4 +1,4 @@
-require("./Question");
+require("../question/Question");
 
 module.exports = class Quiz {
   constructor(title) {
