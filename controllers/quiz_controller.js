@@ -1,4 +1,5 @@
 const quizModel = require('../models/quiz/mongodb_quiz')
+const Question = require('../models/quiz/Question')
 
 const log   = require('debug')('api:controller-quiz')
 const error = require('debug')('api:error')
@@ -50,9 +51,13 @@ module.exports.deleteQuiz = function(req, res, next) {
 
 module.exports.addQuestion = function(req, res, next) {
     /*
-    This is hardcoded for initial testing. Use request param later
+    Quiz is hardcoded for initial testing. Use request param later
     */
-   const user = quizModel.addQuestion("5a8db085ede1ae12a48d660e", "test question");
+   const question = req.body.question;
+   const format = req.body.format;
+
+   const questionToPush = new Question(question, format);
+   const user = quizModel.addQuestion("5a8db085ede1ae12a48d660e", questionToPush);
 
    user.then(() => {
        log('adding quiz');
