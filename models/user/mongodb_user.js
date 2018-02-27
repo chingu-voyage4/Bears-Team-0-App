@@ -29,7 +29,7 @@ exports.connectDb = function connectDb () {
     })
 }
 /**
- * 
+ * Find a user
  * @param key (mongo ObjectId): user._id
  * @returns User 
  */
@@ -65,7 +65,6 @@ exports.create = function create(user) {
                 const createdUser = new User(
                     created.ops[0].username,
                     created.ops[0].roles,
-                    created.ops[0].password,
                     created.ops[0]._id
                 )
                 log('Returning inserted: ' + util.inspect(createdUser))
@@ -76,7 +75,7 @@ exports.create = function create(user) {
     })
 }
 /**
- * 
+ * Get all users
  * @param {}
  * @returns User[]
  */
@@ -95,8 +94,8 @@ exports.readAll = function readAll() {
     })
 }
 /**
- * 
- * @param {*} key (user._id)
+ * Delete a user
+ * @param key (mongo ObjectId): user._id
  * @returns deleted User 
  */
 exports.destroy = function destroy(key) {
@@ -106,6 +105,20 @@ exports.destroy = function destroy(key) {
         return collection.findOneAndDelete({ _id: objectID }).then(deletedDoc => {
             log('Mongo deleted user: ' + util.inspect(deletedDoc.value))
             return deletedDoc.value
+        })
+    })
+}
+/**
+ * Get count of # users
+ */
+exports.count = function count() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        return new Promise((resolve, reject) => {
+            collection.count({}, (err, count) => {
+                if (err) return reject(err)
+                return resolve(count)
+            })
         })
     })
 }
