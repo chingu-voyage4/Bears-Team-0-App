@@ -6,8 +6,8 @@ export default class Footer extends Component {
       <div className="footer">
         <ul>
           {links.map(e => (
-            <li>
-              <a routerLink={"/" + e}>{e}</a>
+            <li key={e}>
+              <a href={"/" + e}>{e}</a>
             </li>
           ))}
         </ul>
