@@ -1,3 +1,28 @@
 .header {
-  background: blue;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  > a {
+    font-size: 30px;
+    margin: 20px 0 0 30px;
+    font-weight: lighter;
+    letter-spacing: 0.16rem;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  div {
+    display: flex;
+    padding-top: 20px;
+    a {
+      align-self: center;
+    }
+    img {
+      height: 40px;
+
+      margin: 0 35px;
+    }
+  }
 }
