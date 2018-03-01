@@ -20,11 +20,6 @@ apiServer.use(bodyParser.json());
 API router
 */
 apiServer.use('/api', routes);
-/*
-Set Port
-*/
-const port = process.env.PORT;
-apiServer.set("port", port);
 
 /*
 Global error handling
@@ -34,6 +29,4 @@ apiServer.use((err, req, res, next) => {
     // Handle error?
 })
 
-apiServer.listen(port, () => {
-    log(`Server listening on ${port}`)
-});
+module.exports = apiServer
