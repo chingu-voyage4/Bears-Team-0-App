@@ -1,0 +1,29 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: color-list("primary");
+  color: color-list("text-light");
+  text-align: right;
+  height: 100%;
+
+  .landing-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 2em;
+
+    img {
+      height: 500px;
+      width: auto;
+    }
+
+    .landing-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
