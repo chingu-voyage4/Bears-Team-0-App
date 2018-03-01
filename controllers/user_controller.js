@@ -1,4 +1,4 @@
-const util = require('util')
+const util      = require('util')
 const userModel = require('../models/user/mongodb_user')
 
 const log   = require('debug')('api:controller-user')
@@ -38,9 +38,6 @@ module.exports.createUser = function(req, res, next) {
 Reading a user
 */
 module.exports.findUser = function(req, res, next){
-    /*
-    This is hardcoded for initial testing
-    */
     userModel.read(req.params.id)
     .then(found => {
         log('Sending user ' + found)
@@ -48,6 +45,15 @@ module.exports.findUser = function(req, res, next){
     })
     .catch(err => next(err))
 };
+/*
+Updating a user
+*/
+module.exports.updateUser = function(req, res, next) {
+    userModel.update(req.params.id, req.body.update).then(updated => {
+        res.json({ user: updated })
+    }).catch(err => next(err))
+}
+
 /*
 Deleting a user
 */

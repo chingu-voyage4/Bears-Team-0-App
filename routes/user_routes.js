@@ -25,6 +25,10 @@ GET user by id
 */
 userRouter.get("/:id", userController.findUser);
 /*
+PUT user
+*/
+userRouter.put("/:id", userController.updateUser);
+/*
 DELETE user by id
 */
 userRouter.delete('/:id', userController.deleteUser);

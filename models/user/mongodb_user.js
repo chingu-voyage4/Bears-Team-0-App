@@ -30,8 +30,8 @@ exports.connectDb = function connectDb () {
 }
 /**
  * Find a user
- * @param key (mongo ObjectId): user._id
- * @returns User 
+ * @param {String} key: user._id
+ * @returns {User} - The found user.
  */
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
@@ -51,8 +51,8 @@ exports.read = function read(key) {
 }
 /**
  * Save a user to the db
- * @param User 
- * @returns User
+ * @param {Object} 
+ * @returns {User} - The saved user.
  */
 exports.create = function create(user) {
     return exports.connectDb().then(_db => {
@@ -77,7 +77,7 @@ exports.create = function create(user) {
 /**
  * Get all users
  * @param {}
- * @returns User[]
+ * @returns {User[]} - An array of users.
  */
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
@@ -94,9 +94,30 @@ exports.readAll = function readAll() {
     })
 }
 /**
+ * Update a user
+ * @param {String} key - user._id
+ * @param {Object} updateObj
+ * @returns {User} - The updated user.
+ */
+exports.update = function update(key, updateObj) {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        let objectID = new mongodb.ObjectId(key)
+        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj }).then(result => { 
+            log('User updated: ' + util.inspect(result))
+            return new User(
+                result.value.username,
+                result.value.roles,
+                result.value._id,
+            )
+         })
+    })
+}
+
+/**
  * Delete a user
- * @param key (mongo ObjectId): user._id
- * @returns deleted User 
+ * @param {String} key - user._id
+ * @returns {User} - The deleted User .
  */
 exports.destroy = function destroy(key) {
     return exports.connectDb().then(_db => {
