@@ -35,11 +35,55 @@ exports.read = function read(key) {
         let objectID = new mongodb.ObjectId(key)
         return collection.findOne({_id: objectID})
             .then(doc => {
-                const quiz = new Quiz(
-                    doc.title
-                )
-                log(`Quiz found ${util.inspect(quiz)}`)
-                return quiz
+                // const quiz = new Quiz(
+                //     doc.title
+                // )
+                log(`Quiz found ${util.inspect(doc)}`)
+                return doc
             })
     })
+}
+
+exports.readAll = function readAll() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        return collection.find().toArray()
+            .then( (result) => {
+                log(result);
+                log(result.length);
+                return result;
+            })
+    })
+}
+
+exports.addAnotherQuiz = function addAnotherQuiz() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        return collection.insertOne(new Quiz("another quiz"));
+    })
+}
+
+exports.deleteQuiz = function deleteQuiz(key) {
+    return exports.connectDb().then( _db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
+        try {
+            return collection.deleteOne( {_id: objectID} );
+        } catch (err) {
+            log(err);
+        }
+    })
+} 
+
+exports.addQuestion = function addQuestion(key, question) {
+    return exports.connectDb().then( _db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
+        let newQuestion = { $push: { questions: question } };
+        try {
+            return collection.updateOne({_id: objectID}, newQuestion);
+        } catch (err) {
+            log(err);
+        }
+    });
 }
