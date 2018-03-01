@@ -1,0 +1,30 @@
+.footer {
+  background: #215fe9;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 64px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+  margin: 0;
+  li {
+    margin: auto 30px;
+    text-transform: uppercase;
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

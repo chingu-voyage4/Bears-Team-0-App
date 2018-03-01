@@ -6,6 +6,7 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
 html {
   line-height: 1.15;
   /* 1 */
@@ -439,6 +440,177 @@ nav {
     text-decoration: none; }
     nav a:hover, nav a:focus {
       background-color: lightgrey; }
+
+.App {
+  position: relative;
+  height: 100%; }
+
+html {
+  background: #031439; }
+
+html,
+body {
+  min-height: 100%; }
+
+#root {
+  height: 100%; }
+
+.AllQuizzes {
+  width: 100%;
+  max-height: 200px;
+  margin-top: 2.3%;
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; }
+
+.quiz-maker {
+  color: #fff;
+  padding: 20px;
+  min-width: 25%;
+  min-height: 0;
+  height: 240px;
+  margin-right: 5%;
+  position: relative; }
+  .quiz-maker:before {
+    position: absolute;
+    right: 1px;
+    top: 18px;
+    z-index: -1;
+    content: "";
+    min-width: 100%;
+    height: 406px;
+    background: #650de8; }
+  .quiz-maker input,
+  .quiz-maker textarea {
+    display: block;
+    margin: 8px 0;
+    border-radius: 5px; }
+  .quiz-maker button {
+    width: 100%;
+    color: #650de8;
+    font-weight: bold;
+    background-color: #fff;
+    margin: 10px 0;
+    border-radius: 5px;
+    height: 35px; }
+
+.quiz {
+  width: 240px;
+  height: 150px;
+  padding: 7px 10px 0 10px;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+  margin: 5% 0 0 0;
+  color: black;
+  background: #fff;
+  font-size: 12px;
+  position: relative; }
+  .quiz p:first-of-type {
+    margin-top: 0; }
+  .quiz h1 {
+    margin: 0; }
+  .quiz p:last-of-type {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    width: 240px;
+    color: #fff;
+    font-size: 14px;
+    padding: 0 10px; }
+    .quiz p:last-of-type a {
+      text-decoration: none;
+      color: #fff; }
+
+.quiz-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #fff;
+  width: 65%;
+  margin-top: -2%;
+  margin-right: 2%;
+  position: relative; }
+  .quiz-section:nth-child(3n) {
+    flex-basis: 100%;
+    justify-content: space-between; }
+  .quiz-section:first-of-type > h1 {
+    border-bottom: 3px solid #215fe9; }
+  .quiz-section:last-of-type > h1 {
+    border-bottom: 3px solid #55c0ed; }
+  .quiz-section > h1 {
+    margin-top: 2px;
+    width: 100%;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0; }
+  .quiz-section:first-of-type .quiz p:last-of-type {
+    background: #215fe9; }
+  .quiz-section:last-of-type {
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 65%; }
+    .quiz-section:last-of-type .quiz:nth-child(n + 5) {
+      flex-basis: 33%;
+      max-width: 240px; }
+    .quiz-section:last-of-type .quiz p:last-of-type {
+      background: #55c0ed; }
+
+.header {
+  height: 64px;
+  display: flex;
+  justify-content: space-between; }
+  .header > a {
+    font-size: 30px;
+    margin: 20px 0 0 30px;
+    font-weight: lighter;
+    letter-spacing: 0.16rem; }
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase; }
+  .header div {
+    display: flex;
+    padding-top: 20px; }
+    .header div a {
+      align-self: center; }
+    .header div img {
+      height: 40px;
+      margin: 0 35px; }
+
+.footer {
+  background: #215fe9;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 64px;
+  width: 100%;
+  margin: 0 auto; }
+
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+  margin: 0; }
+  ul li {
+    margin: auto 30px;
+    text-transform: uppercase; }
+    ul li a {
+      color: #fff;
+      text-decoration: none; }
+      ul li a:hover {
+        cursor: pointer; }
 
 .about-page {
   background-color: #0f143a;
