@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizSection renders with appropriate props 1`] = `
+<div
+  className="quiz-section"
+>
+  <h1 />
+  <div
+    className="quiz"
+  >
+    <h1>
+      a title
+    </h1>
+    <p>
+      a body
+    </p>
+    <p>
+      <span>
+        <i
+          className="fa fa-heart"
+        />
+         
+      </span>
+       
+      <a
+        href="#"
+      >
+        Share
+      </a>
+       
+    </p>
+  </div>
+  <div
+    className="quiz"
+  >
+    <h1>
+      another title
+    </h1>
+    <p>
+      another body
+    </p>
+    <p>
+      <span>
+        <i
+          className="fa fa-heart"
+        />
+         
+      </span>
+       
+      <a
+        href="#"
+      >
+        Share
+      </a>
+       
+    </p>
+  </div>
+</div>
+`;
