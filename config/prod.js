@@ -1,0 +1,6 @@
+module.exports = {
+  MONGO_QUIZES_URL: process.env.MONGO_QUIZES_URL,
+  MONGO_QUIZES_DBNAME: process.env.MONGO_QUIZES_DBNAME,
+  MONGO_USERS_URL: process.env.MONGO_USERS_URL,
+  MONGO_USERS_DBNAME: process.env.MONGO_USERS_DBNAME
+}

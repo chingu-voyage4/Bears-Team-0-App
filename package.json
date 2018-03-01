@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "DEBUG=api:* PORT=3001 nodemon npm start"
+    "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start"
   },
   "repository": {
     "type": "git",

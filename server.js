@@ -1,9 +1,9 @@
-const express = require("express");
-const compression = require("compression");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
+const express       = require("express");
+const compression   = require("compression");
+const bodyParser    = require("body-parser");
+const morgan        = require("morgan");
 
-const log = require('debug')('api:server')
+const log   = require('debug')('api:server')
 const error = require('debug')('api:error')
 
 const routes = require('./routes')
