@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Voyage-4",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www",
-    "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start"
+    "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start",
+    "test": "jest",
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,16 @@
     "url": "https://github.com/chingu-voyage4/Bears-Team-0/issues"
   },
   "homepage": "https://github.com/chingu-voyage4/Bears-Team-0#readme",
+  "jest": {
+    "verbose": true,
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js?)$",
+    "moduleFileExtensions": [
+      "js",
+      "node"
+    ]
+  },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "debug": "^3.1.0",
@@ -26,6 +35,8 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
-    "nodemon": "^1.15.0"
+    "jest": "^22.4.2",
+    "nodemon": "^1.15.0",
+    "supertest": "^3.0.0"
   }
 }
