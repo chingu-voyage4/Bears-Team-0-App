@@ -2,11 +2,10 @@
   "name": "quiz_api",
   "version": "1.0.0",
   "description": "Voyage-4",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start",
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
