@@ -416,7 +416,18 @@ button:hover {
   cursor: pointer; }
 
 .app {
+  height: 100vh;
   text-align: center; }
+
+/* TODO: Move to button component style when set up */
+.blue-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #0062f1;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700; }
 
 nav {
   display: flex;
@@ -428,3 +439,104 @@ nav {
     text-decoration: none; }
     nav a:hover, nav a:focus {
       background-color: lightgrey; }
+
+.about-page {
+  background-color: #0f143a;
+  color: #ffffff; }
+
+.contact-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .contact-page h1 {
+    margin: 0 auto;
+    padding-bottom: 1em; }
+  .contact-page form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid #d3d3d3; }
+    .contact-page form .contact-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 10px; }
+      .contact-page form .contact-row .contact-label {
+        width: 75px;
+        margin-right: 25px;
+        text-align: right;
+        font-size: 1.2em; }
+      .contact-page form .contact-row input {
+        width: 400px; }
+      .contact-page form .contact-row textarea {
+        height: 100px;
+        width: 400px;
+        resize: none; }
+      .contact-page form .contact-row button {
+        font-size: 1em; }
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f143a;
+  color: #ffffff;
+  text-align: right;
+  height: 100%; }
+  .landing .landing-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 2em; }
+    .landing .landing-center img {
+      height: 500px;
+      width: auto; }
+    .landing .landing-center .landing-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+
+.team-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .team-page h1 {
+    margin-bottom: 1.5em; }
+  .team-page section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%; }
+    .team-page section .team-member {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1em 0;
+      width: 350px;
+      height: 100%; }
+      .team-page section .team-member > img {
+        border-radius: 100%;
+        height: 200px;
+        width: 200px;
+        background-color: gray; }
+      .team-page section .team-member h3 {
+        font-size: 1.4em; }
+      .team-page section .team-member a {
+        padding: 0.5em 1em;
+        background-color: #6026fe;
+        color: #ffffff;
+        font-size: 1.2em;
+        text-decoration: none; }
