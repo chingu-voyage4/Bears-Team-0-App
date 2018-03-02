@@ -1,15 +1,15 @@
 const express       = require("express");
 const compression   = require("compression");
-const passport      = require("passport");
 const bodyParser    = require("body-parser");
 const morgan        = require("morgan");
 const config        = require("./config");
+const passport      = require("./passport")
 
-const log   = require('debug')('api:server');
-const error = require('debug')('api:error');
+const log           = require('debug')('api:server');
+const error         = require('debug')('api:error');
 
-const routes = require('./routes');
-const authRouter = require("./routes/oauth");
+const router        = require('./routes');
+const auth          = require("./passport");
 
 const apiServer = express();
 /*
@@ -19,22 +19,22 @@ apiServer.use(compression());
 apiServer.use(morgan('dev'));
 apiServer.use(bodyParser.urlencoded({extended : true}));
 apiServer.use(bodyParser.json());
-
-apiServer.use(passport.initialize());
-// apiServer.use(passport.session());
+/*
+Passport initialization
+*/
+auth.initPassport(apiServer)
 /*
 API router
 */
-apiServer.use('/api', routes);
-// apiServer.use('/auth', authRouter);
-require("./routes/oauth")(apiServer);
+apiServer.use('/auth', auth.router);
+apiServer.use('/', router);
 /*
 Global error handling
 */
 apiServer.use((err, req, res, next) => {
     error((err.status || 500) + " " + error.message)
     // Handle error?
-    res.status(err.status || 500).json(err)
+    res.status(err.status || 500).json({ error: err.message, trace: err.stack })
 })
 
 module.exports = apiServer
