@@ -22,14 +22,14 @@
 
 //4. Layout
 @import 
-	"layout/header";
+	'layout/footer',
+	"layout/header",
+	"layout/layout";
 
 //5. Components
 @import 
 	'components/app',
-	'components/all-quizzes',
-	'components/header',
-	'components/footer';
+	'components/all_quizzes';
 
 //6. Page
 @import

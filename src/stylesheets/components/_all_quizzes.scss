@@ -1,19 +1,8 @@
-html {
-  background: #031439;
-}
-html,
-body {
-  min-height: 100%;
-}
-
-#root {
-  height: 100%;
-}
 .AllQuizzes {
   width: 100%;
   max-height: 200px;
   margin-top: 2.3%;
-  overflow: visible;
+  overflow: visible; 
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;

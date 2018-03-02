@@ -1,29 +1,34 @@
 .landing {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: color-list("primary");
+  background-color: color-list("background");
   color: color-list("text-light");
   text-align: right;
-  height: 100%;
 
   .landing-center {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     padding: 2em;
 
-    img {
-      height: 500px;
-      width: auto;
-    }
-
-    .landing-title {
+    section {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
+
+      img {
+        height: 500px;
+        width: auto;
+      }
+  
+      .landing-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
 }

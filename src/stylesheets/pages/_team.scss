@@ -1,7 +1,10 @@
 .team-page {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: color-list("primary");
+  justify-content: center;
+  align-items: center;
+  background-color: color-list("background");
   color: color-list("text-light");
 
   h1 {
@@ -9,28 +12,25 @@
   }
 
   section {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   max-width: 800px;
-   margin: 0 auto;
-   height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   
    .team-member {
+      width: 250px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 1em 0;
-      width: 350px;
-      height: 100%;
       
       > img {
-        border-radius: 100%;
         height: 200px;
         width: 200px;
+        border-radius: 100%;
         background-color: gray;
       }
 
