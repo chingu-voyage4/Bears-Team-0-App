@@ -75,6 +75,7 @@ exports.create = function create(user) {
         })
         log("Create new user: " + util.inspect(newUser))
         return collection.insertOne(newUser).then(created => {
+            log("Created user: " + util.inspect(user))
             const createdUser = new User({
                 id: created.id,
                 displayName: created.displayName,

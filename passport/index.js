@@ -13,17 +13,23 @@ authRouter.get('/google',
   passport.authenticate('google', { scope: ['email', 'profile'] }));
 
 authRouter.get('/google/redirect', 
-  passport.authenticate('google'),
+  passport.authenticate('google',
+  { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
   });
 
+// authRouter.get("/logout", (req, res) => {
+//   req.logout();
+//   res.redirect("/");
+// });
+
 module.exports.router = authRouter
 
 module.exports.initPassport = (api) => {
   api.use(passport.initialize());
-  api.use(passport.session());
+  // api.use(passport.session());
 }
 
 passport.use(new GoogleStrategy({
@@ -44,22 +50,28 @@ function(accessToken, refreshToken, profile, cb) {
     }
     log("Google profile " + util.inspect(user))
 
-    User.findOrCreate(user).then((err, user) => {
+    User.findOrCreate(user).then((user) => {
+      log("Google Strategy " + util.inspect(user));
       return cb(null, user);
     }).catch(err => {
-      return cb(err, null)
+      error("Error in Google Strategy");
+      return cb(err, null);
     });
   })
-)
+);
 
-passport.serializeUser((user, done) => {
-  log("Serializing " + user.id);
-  done(null, user.id);
-});
+// passport.serializeUser((user, done) => {
+//   log("Serializing " + user.id);
+//   done(null, user.id);
+// });
 
-passport.deserializeUser((id, done) => {
-  userModel.read(id).then(user => {
-    log("Deserializing " + user);
-    done(null, user);
-  });
-});
+// passport.deserializeUser((id, done) => {
+//   ("Deserializing " + util.inspect(id));
+//   userModel.read(id).then(user => {
+//     log("Deserializing user: " + util.inspect(user));
+//     done(null, user);
+//   }).catch(err => {
+//     log("Error deserializing");
+//     done(err, null);
+//   });
+// });
