@@ -2,6 +2,7 @@ const util            = require("util");
 const passport        = require("passport");
 const express         = require("express");
 const GoogleStrategy  = require('passport-google-oauth20').Strategy;
+const jwt             = require("jsonwebtoken");
 const config          = require("../config/index");
 const User            = require("../models/user/mongodb_user");
 const authRouter      = express.Router();
@@ -14,10 +15,13 @@ authRouter.get('/google',
 
 authRouter.get('/google/redirect', 
   passport.authenticate('google',
-  { failureRedirect: '/login' }),
+  { failureRedirect: '/login', session: false }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    const token = jwt.sign({ user: req.user }, Buffer.from("secret", "base64"), { expiresIn: 1440 });
+    log("BEFORE REDIRECT " + util.inspect(req.user))
+    // res.redirect('/');
+    res.json({ user: req.user, token: token});
   });
 
 // authRouter.get("/logout", (req, res) => {

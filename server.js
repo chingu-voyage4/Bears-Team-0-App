@@ -3,13 +3,12 @@ const compression   = require("compression");
 const bodyParser    = require("body-parser");
 const morgan        = require("morgan");
 const config        = require("./config");
-const passport      = require("./passport")
 
 const log           = require('debug')('api:server');
 const error         = require('debug')('api:error');
 
 const router        = require('./routes');
-const auth          = require("./passport");
+const auth          = require("./auth");
 
 const apiServer = express();
 /*
