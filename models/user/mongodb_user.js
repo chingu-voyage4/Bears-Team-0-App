@@ -82,7 +82,7 @@ exports.create = function create(user) {
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        return new Promise((resolve, rejcet) => {
+        return new Promise((resolve, reject) => {
             return collection.find().toArray((err, docs) => {
                 if (err) return reject(err)
                 const returnUsers = docs.map(user => {

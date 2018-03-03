@@ -29,12 +29,11 @@ module.exports.readAllQuizzes = function(req, res, next) {
 Creating a user
 */
 module.exports.createQuiz = function(req, res, next) {
-    const addQuizPromise = quizModel.create(req.body.quiz)
-    addQuizPromise.then((quiz) => {
-        log('Sending new quiz: ' + util.inspect(quiz));
+    quizModel.create(req.body.quiz)
+    .then((quiz) => {
+        // log('Sending new quiz: + util.inspect(quiz)');
         res.json({ quiz: quiz });
-    }
-    ).catch(e => next(e));
+    }).catch(err => next(err));
 }
 
 module.exports.deleteQuiz = function(req, res, next) {

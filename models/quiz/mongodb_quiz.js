@@ -59,14 +59,15 @@ exports.readAll = function readAll() {
 exports.create = function create(quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let newQuiz = new Quiz(newQuiz.title, newQuiz.questions);
-        return collection.insertOne(newQuiz).then(created => {
-            // log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
-            // const createdQuiz = new Quiz(
-            //     created.title,
-            //     created.questions
-            // );
-            // log('Returning inserted: ' + util.inspect(createdQuiz));
+        let newQuiz = new Quiz(quiz.title, quiz.questions);
+        return collection.insertOne(newQuiz)
+            .then(created => {
+            log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
+            const createdQuiz = new Quiz(
+                created.ops[0].title,
+                created.ops[0].questions
+            );
+            log('Returning inserted: ' + util.inspect(createdQuiz));
             return createdQuiz;
         });
     })
@@ -83,16 +84,3 @@ exports.deleteQuiz = function deleteQuiz(key) {
         }
     })
 } 
-
-exports.addQuestion = function addQuestion(key, question) {
-    return exports.connectDb().then( _db => {
-        let collection = _db.collection(COLLECTION_NAME);
-        let objectID = new mongodb.ObjectId(key);
-        let newQuestion = { $push: { questions: question } };
-        try {
-            return collection.updateOne({_id: objectID}, newQuestion);
-        } catch (err) {
-            log(err);
-        }
-    });
-}
