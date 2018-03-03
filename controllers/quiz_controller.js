@@ -25,12 +25,14 @@ module.exports.readAllQuizzes = function(req, res, next) {
         .catch(e => next(e));
 }
 
-module.exports.addQuiz = function(req, res, next) {
-    const addQuizPromise = quizModel.addAnotherQuiz()
-    addQuizPromise.then(() => {
-        //readAll logs all quizzes to see if successful
-        quizModel.readAll();
-        res.json({status: "success"});
+/*
+Creating a user
+*/
+module.exports.createQuiz = function(req, res, next) {
+    const addQuizPromise = quizModel.create(req.body.quiz)
+    addQuizPromise.then((quiz) => {
+        log('Sending new quiz: ' + util.inspect(quiz));
+        res.json({ quiz: quiz });
     }
     ).catch(e => next(e));
 }

@@ -2,11 +2,23 @@ const express         = require("express");
 const quizRouter      = express.Router();
 const quizController  = require("../controllers/quiz_controller");
 
-//Create
-quizRouter.post("/new", quizController.addQuiz);
-
-//Retrieve
+/*
+GET all quizzes
+*/
 quizRouter.get("/all", quizController.readAllQuizzes);
+
+/*
+QUIZ CRUD Routes
+*/
+
+/*
+POST create quiz
+*/
+
+//Create
+quizRouter.post("/", quizController.createQuiz);
+
+
 quizRouter.get("/", quizController.findQuiz);
 
 //Update

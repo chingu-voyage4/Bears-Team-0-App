@@ -1,9 +1,9 @@
 require("./Question");
 
 module.exports = class Quiz {
-  constructor(title) {
+  constructor(title, questions) {
     this.title = title;
-    this.questions = [];
+    this.questions = questions;
     this.favorites = 0;
 
     //metadata

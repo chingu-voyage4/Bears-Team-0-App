@@ -108,10 +108,10 @@ exports.update = function update(key, updateObj) {
             return new User(
                 result.value.username,
                 result.value.roles,
-                result.value._id,
+                result.value._id
             )
          })
-    })
+    });
 }
 
 /**

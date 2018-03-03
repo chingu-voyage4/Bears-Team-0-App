@@ -56,10 +56,19 @@ exports.readAll = function readAll() {
     })
 }
 
-exports.addAnotherQuiz = function addAnotherQuiz() {
+exports.create = function create(quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        return collection.insertOne(new Quiz("another quiz"));
+        let newQuiz = new Quiz(newQuiz.title, newQuiz.questions);
+        return collection.insertOne(newQuiz).then(created => {
+            // log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
+            // const createdQuiz = new Quiz(
+            //     created.title,
+            //     created.questions
+            // );
+            // log('Returning inserted: ' + util.inspect(createdQuiz));
+            return createdQuiz;
+        });
     })
 }
 
