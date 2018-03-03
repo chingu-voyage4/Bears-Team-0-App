@@ -129,3 +129,18 @@ exports.udate = function update(key, updateObj) {
             });
     });
 }
+
+/**
+ * Get count of # quizzes
+ */
+exports.count = function count() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        return new Promise((resolve, reject) => {
+            collection.count({}, (err, count) => {
+                if (err) return reject(err)
+                return resolve(count)
+            })
+        })
+    })
+}

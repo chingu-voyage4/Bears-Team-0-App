@@ -29,6 +29,16 @@ module.exports.findAllQuizzes = function(req, res, next) {
 }
 
 /*
+Get # quizzes
+*/
+module.exports.getQuizCount = function(req, res, next) {
+    quizModel.count().then(count => {
+        log("Found # quizzes: " + count);
+        res.json({ count: count });
+    }).catch(err => next(err));
+}
+
+/*
 Creating a quiz
 */
 module.exports.createQuiz = function(req, res, next) {
