@@ -17,14 +17,18 @@ POST create quiz
 quizRouter.post("/", quizController.createQuiz);
 
 /*
-GET user by id
+GET quiz by id
 */
 quizRouter.get("/:id", quizController.findQuiz);
 
-//Update
-quizRouter.post("/addquestion", quizController.addQuestion);
+/*
+PUT quiz
+*/
+quizRouter.put("/:id", quizController.updateQuiz);
 
-//Delete
-quizRouter.post("/deleteHardCodedQuiz", quizController.deleteQuiz);
+/*
+DELETE user by id
+*/
+quizRouter.delete("/:id", quizController.deleteQuiz);
 
 module.exports = quizRouter

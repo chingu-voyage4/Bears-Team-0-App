@@ -41,8 +41,8 @@ exports.read = function read(key) {
         return collection.findOne({_id: objectID})
             .then(doc => {
                 const quiz = new Quiz(
-                     doc.title,
-                     doc.questions
+                    doc.title,
+                    doc.questions
                 )
                 log(`Quiz found ${util.inspect(quiz)}`);
                 return quiz;
@@ -70,6 +70,11 @@ exports.readAll = function readAll() {
     })
 }
 
+/**
+ * Save a quiz to the db
+ * @param {Object} 
+ * @returns {Quiz} - The saved quiz.
+ */
 exports.create = function create(quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
@@ -98,3 +103,24 @@ exports.deleteQuiz = function deleteQuiz(key) {
         }
     })
 } 
+
+/**
+ * Update a user
+ * @param {String} key - quiz._id
+ * @param {Object} updateObj
+ * @returns {User} - The updated quiz.
+ */
+exports.udate = function update(key, updateObj) {
+    return exports.connectDb.then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
+        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj })
+            .then(result => {
+                log("Quiz update: " + util.inspect(result));
+                return new Quiz(
+                    quiz.value.title,
+                    quiz.value.questions
+                )
+            });
+    });
+}
