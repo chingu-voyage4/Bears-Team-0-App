@@ -29,7 +29,7 @@ module.exports.findAllQuizzes = function(req, res, next) {
 }
 
 /*
-Creating a user
+Creating a quiz
 */
 module.exports.createQuiz = function(req, res, next) {
     quizModel.create(req.body.quiz)
@@ -39,23 +39,23 @@ module.exports.createQuiz = function(req, res, next) {
     }).catch(err => next(err));
 }
 
+/*
+Deleting a quiz
+*/
 module.exports.deleteQuiz = function(req, res, next) {
-    const user = quizModel.deleteQuiz("5a8eef4f4796351bcccb4d1d");
+    quizModel.destroy(req.params.id)
+        .then((deleted) => {
+            res.json({quiz: deleted});
+        }).catch(err => next(err));
 
-    user.then(() => {
-        log('Deleting quiz ');
-        quizModel.readAll();
-        res.json({status: "quiz deleted"});
-    })
-    .catch(e => next(e))
 }
 
 /*
-Updating a user
+Updating a quiz
 */
 module.exports.updateQuiz = function(req, res, next) {
     quizModel.update(req.params.id, req.body.update)
     .then(updated => {
-        res.json({ user: updated })
+        res.json({ quiz: updated })
     }).catch(err => next(err));
 }

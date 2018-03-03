@@ -3,6 +3,10 @@ const quizRouter      = express.Router();
 const quizController  = require("../controllers/quiz_controller");
 
 /*
+GET user count
+*/
+quizRouter.get('/count', quizController.getQuizCount);
+/*
 GET all quizzes
 */
 quizRouter.get("/", quizController.findAllQuizzes);
@@ -27,7 +31,7 @@ PUT quiz
 quizRouter.put("/:id", quizController.updateQuiz);
 
 /*
-DELETE user by id
+DELETE quiz by id
 */
 quizRouter.delete("/:id", quizController.deleteQuiz);
 

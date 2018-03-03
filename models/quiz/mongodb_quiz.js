@@ -30,9 +30,9 @@ exports.connectDb = function connectDb () {
 }
 
 /**
- * Find a user
+ * Find a quiz
  * @param {String} key: quiz._id
- * @returns {Quiz} - The found user.
+ * @returns {Quiz} - The found quiz.
  */
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
@@ -51,9 +51,9 @@ exports.read = function read(key) {
 }
 
 /**
- * Get all users
+ * Get all quizzes
  * @param {}
- * @returns {Quiz[]} - An array of users.
+ * @returns {Quiz[]} - An array of quizzes.
  */
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
@@ -92,23 +92,28 @@ exports.create = function create(quiz) {
     })
 }
 
-exports.deleteQuiz = function deleteQuiz(key) {
+/**
+ * Delete a quiz
+ * @param {String} key - quiz._id
+ * @returns {Quiz} - The deleted quiz .
+ */
+exports.deleteQuiz = function destroy(key) {
     return exports.connectDb().then( _db => {
         let collection = _db.collection(COLLECTION_NAME);
         let objectID = new mongodb.ObjectId(key);
-        try {
-            return collection.deleteOne( {_id: objectID} );
-        } catch (err) {
-            log(err);
-        }
-    })
+        return collection.findOneAndDelete({ _id: objectID })
+            .then(deletedDoc => {
+                log("Mongo deleted quiz: " + util.inspect(deletedDoc.value));
+                return deletedDoc.value;
+            });
+    });
 } 
 
 /**
- * Update a user
+ * Update a quiz
  * @param {String} key - quiz._id
  * @param {Object} updateObj
- * @returns {User} - The updated quiz.
+ * @returns {Quiz} - The updated quiz.
  */
 exports.udate = function update(key, updateObj) {
     return exports.connectDb.then(_db => {
