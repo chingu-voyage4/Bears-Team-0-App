@@ -17,12 +17,15 @@ module.exports.findQuiz = function(req, res, next){
     .catch(err => next(err));
 };
 
-module.exports.readAllQuizzes = function(req, res, next) {
-    const user = quizModel.readAll();
-    user.then(x => {
-            res.json({data: x});
-        })
-        .catch(e => next(e));
+/*
+Reading all quizzes (Testing route)
+*/
+module.exports.findAllQuizzes = function(req, res, next) {
+    quizModel.readAll()
+    .then(docs => {
+        log('Sending all quizzes');
+        res.json({quizzes: docs});
+    }).catch(err => next(err));
 }
 
 /*

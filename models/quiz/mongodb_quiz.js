@@ -50,15 +50,23 @@ exports.read = function read(key) {
     });
 }
 
+/**
+ * Get all users
+ * @param {}
+ * @returns {Quiz[]} - An array of users.
+ */
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        return collection.find().toArray()
-            .then( (result) => {
-                log(result);
-                log(result.length);
-                return result;
-            })
+        return new Promise((resolve, reject) => {
+            return collection.find().toArray((err, docs) => {
+                if (err) return reject(err);
+                const returnQuizzes = docs.map(quiz => {
+                    return new Quiz(quiz.title, quiz.questions, quiz._id);
+                });
+                return resolve(returnQuizzes);
+            });
+        });
     })
 }
 

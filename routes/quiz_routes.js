@@ -5,7 +5,7 @@ const quizController  = require("../controllers/quiz_controller");
 /*
 GET all quizzes
 */
-quizRouter.get("/all", quizController.readAllQuizzes);
+quizRouter.get("/", quizController.findAllQuizzes);
 
 /*
 QUIZ CRUD Routes
