@@ -26,7 +26,7 @@ auth.initPassport(apiServer)
 API router
 */
 apiServer.use('/auth', auth.router);
-apiServer.use('/', router);
+apiServer.use('/api', router);
 /*
 Global error handling
 */

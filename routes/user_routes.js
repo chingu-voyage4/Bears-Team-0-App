@@ -2,7 +2,7 @@ const express         = require("express");
 const userRouter      = express.Router();
 const userController  = require("../controllers/user_controller");
 
-
+const auth = require("../auth")
 /*
 GET user count
 */
@@ -10,7 +10,7 @@ userRouter.get('/count', userController.getUserCount);
 /*
 GET all users
 */
-userRouter.get('/', userController.findAllUsers);
+userRouter.get('/', auth.jwtCheck, userController.findAllUsers);
 
 /*
 USER CRUD Routes

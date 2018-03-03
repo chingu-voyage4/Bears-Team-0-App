@@ -17,7 +17,7 @@ authRouter.get('/google/redirect',
   passport.authenticate('google',
   { failureRedirect: '/login', session: false }),
   function(req, res) {
-    // Successful authentication, redirect home.
+    // Successful authentication.
     const token = jwt.sign({ user: req.user }, Buffer.from("secret", "base64"), { expiresIn: 1440 });
     log("BEFORE REDIRECT " + util.inspect(req.user))
     // res.redirect('/');
@@ -30,6 +30,20 @@ authRouter.get('/google/redirect',
 // });
 
 module.exports.router = authRouter
+
+module.exports.jwtCheck = function jwtCheck(req, res, next) {
+  if (req.headers && req.headers.authorization && req.headers.authorization.split(" ")[0] === "Bearer") {
+    log("JWT " + util.inspect(req.headers))
+    jwt.verify(req.headers.authorization.split(" ")[1], Buffer("secret", "base64"), (err, decoded) => {
+      if (err) next(err);
+      log("Decoded: " + util.inspect(decoded));
+      next();
+    });
+  } else {
+    const err = new Error("User not authenticated")
+    next(err)
+  }
+}
 
 module.exports.initPassport = (api) => {
   api.use(passport.initialize());
