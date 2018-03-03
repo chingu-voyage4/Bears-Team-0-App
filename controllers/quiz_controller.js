@@ -1,20 +1,20 @@
-const quizModel = require('../models/quiz/mongodb_quiz')
-const Question = require('../models/quiz/Question')
+const quizModel = require('../models/quiz/mongodb_quiz');
+const Question = require('../models/quiz/Question');
 
-const log   = require('debug')('api:controller-quiz')
-const error = require('debug')('api:error')
+const log   = require('debug')('api:controller-quiz');
+const error = require('debug')('api:error');
 
+
+/*
+Reading a quiz
+*/
 module.exports.findQuiz = function(req, res, next){
-    /*
-    This is hardcoded for initial testing
-    */
-    const user = quizModel.read("5a8db085ede1ae12a48d660e")
-
-    user.then(x => {
-        log('Sending quiz ' + x)
-        res.json({ data: x })
+    quizModel.read(req.params.id)
+    .then(found => {
+        log('Sending quiz ' + found);
+        res.json({ data: found });
     })
-    .catch(e => next(e))
+    .catch(err => next(err));
 };
 
 module.exports.readAllQuizzes = function(req, res, next) {

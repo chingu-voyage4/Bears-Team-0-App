@@ -29,19 +29,25 @@ exports.connectDb = function connectDb () {
     })
 }
 
+/**
+ * Find a user
+ * @param {String} key: quiz._id
+ * @returns {Quiz} - The found user.
+ */
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
-        let collection = _db.collection(COLLECTION_NAME)
-        let objectID = new mongodb.ObjectId(key)
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
         return collection.findOne({_id: objectID})
             .then(doc => {
-                // const quiz = new Quiz(
-                //     doc.title
-                // )
-                log(`Quiz found ${util.inspect(doc)}`)
-                return doc
-            })
-    })
+                const quiz = new Quiz(
+                     doc.title,
+                     doc.questions
+                )
+                log(`Quiz found ${util.inspect(quiz)}`);
+                return quiz;
+            });
+    });
 }
 
 exports.readAll = function readAll() {

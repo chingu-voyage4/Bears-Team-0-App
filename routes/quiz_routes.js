@@ -14,12 +14,12 @@ QUIZ CRUD Routes
 /*
 POST create quiz
 */
-
-//Create
 quizRouter.post("/", quizController.createQuiz);
 
-
-quizRouter.get("/", quizController.findQuiz);
+/*
+GET user by id
+*/
+quizRouter.get("/:id", quizController.findQuiz);
 
 //Update
 quizRouter.post("/addquestion", quizController.addQuestion);
