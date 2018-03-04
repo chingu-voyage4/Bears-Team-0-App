@@ -7,7 +7,7 @@
 - Run server by entering "npm run dev" in terminal and the server will run on local port 3001 by default.
   - You may change this in package.json file.
 
-### For quizzes
+### For quizzes:
 
 #### Get number of total quizzes:
 - Request type: GET
@@ -63,3 +63,61 @@
 - Path: /api/quizzes/:id
 - Params: {String} - key: quiz._id
 - Returns: {Quiz} - The quiz that was deleted
+
+
+### For Users:
+
+#### Get number of total users:
+- Request type: GET
+- Path: /api/users/count
+- Params: {}
+- Returns: Total count of users
+
+#### Get all users:
+- Request type: GET
+- Path: /api/users/
+- Params: {}
+- Returns: {User[]} - An array of users
+
+#### Create new user:
+- Request type: POST
+- Path: /api/users/
+- Params: {Object} - Ex:
+    ```
+    {
+      "user": {
+        "username": "testUser",
+        "roles": ["test role 1", "test role 2"]
+      }
+    }
+    ```
+- Returns: {User} - The created and saved user.
+
+#### Get user by id:
+- Request type: GET
+- Path: /api/users/:id
+- Params: {String} - key: user._id
+- Returns: {User} - The user that was found
+
+#### Update user by id:
+- Request type: PUT
+- Path: /api/users/:id
+- Params: 
+  - {String} - key: user._id
+  - {UpdatedObj} - in request body as "update"
+  - Ex of UpdatedObj request body:
+  ```
+  {
+    "update": {
+      "username": "updatedUserName",
+      "roles": ["updated role 1", "updated role 2"]
+    }
+  }
+  ```
+- Returns: {User} - The user and its updated values.
+
+#### Delete user by id:
+- Request type: DELETE
+- Path: /api/users/:id
+- Params: {String} - key: user._id
+- Returns: {User} - The user that was deleted
