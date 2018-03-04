@@ -97,7 +97,7 @@ exports.create = function create(quiz) {
  * @param {String} key - quiz._id
  * @returns {Quiz} - The deleted quiz .
  */
-exports.deleteQuiz = function destroy(key) {
+exports.destroy = function destroy(key) {
     return exports.connectDb().then( _db => {
         let collection = _db.collection(COLLECTION_NAME);
         let objectID = new mongodb.ObjectId(key);
