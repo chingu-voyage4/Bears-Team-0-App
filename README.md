@@ -8,6 +8,7 @@
   - You may change this in package.json file.
 
 ### For quizzes:
+----------------------------
 
 #### Get number of total quizzes:
 - Request type: GET
@@ -66,6 +67,8 @@
 
 
 ### For Users:
+----------------------------
+
 
 #### Get number of total users:
 - Request type: GET
