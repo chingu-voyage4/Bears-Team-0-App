@@ -6,6 +6,7 @@ import Team from "./Pages/Team";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import AllQuizzes from "./AllQuizzes/AllQuizzes";
+import { MakeQuiz } from "./MakeQuiz/MakeQuiz";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/all" component={AllQuizzes} />
+          <Route exact path="/make-quiz" component={MakeQuiz} />
         </Layout>
       </div>
     );
