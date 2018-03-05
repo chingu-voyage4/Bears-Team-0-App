@@ -8,18 +8,26 @@ import { connect } from "react-redux";
 export class AllQuizzes extends Component {
   render() {
     return (
-      <div className="AllQuizzes">
-        <QuizStart />
-        <QuizSection
-          headingText="Your Quizzes"
-          quizzes={this.props.yourQuizzes}
-          getData={this.props.fetchYourQuizzes}
-        />
-        <QuizSection
-          headingText="Popular Quizzes"
-          quizzes={this.props.popularQuizzes}
-          getData={this.props.fetchAllQuizzes}
-        />
+      <div className="all-quizzes">
+        <section className="all-quizzes-left">
+          <QuizStart />
+        </section>
+        <section className="all-quizzes-right">
+          <QuizSection
+            headingText="Your Quizzes"
+            quizzes={this.props.yourQuizzes}
+            getData={this.props.fetchYourQuizzes}
+            wrap={false}
+            mainColor="secondary"
+          />
+          <QuizSection
+            headingText="Popular Quizzes"
+            quizzes={this.props.popularQuizzes}
+            getData={this.props.fetchAllQuizzes}
+            wrap={true}
+            mainColor="tertiary"
+          />
+    </section>
       </div>
     );
   }

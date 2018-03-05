@@ -35,6 +35,13 @@ button {
   }
 }
 
-.app {
-  text-align: center;
+/* TODO: Move to button component style when set up */
+.blue-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #0062f1;
+  border: none;
+  outline: none;
+  color: color-list("text-light");
+  font-size: 1.5rem;
+  font-weight: 700;
 }

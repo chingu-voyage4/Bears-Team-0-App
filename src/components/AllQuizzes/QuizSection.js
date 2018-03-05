@@ -6,14 +6,17 @@ export class QuizSection extends Component {
     this.props.getData();
   }
   render() {
+    const {headingText, quizzes, mainColor, wrap} = this.props;
     return (
       <div className="quiz-section">
-        <h1>{this.props.headingText}</h1>
-        {this.props.quizzes
-          ? this.props.quizzes.map(e => (
-              <Quiz key={e.id} title={e.title} likes={e.likes} body={e.body} />
+        <h1 className={`quiz-section-heading ${mainColor}`}>{headingText}</h1>
+        <section className={wrap ? "quiz-section-body-wrap" : "quiz-section-body"}>
+        {quizzes
+          ? quizzes.map(e => (
+              <Quiz key={e.id} title={e.title} likes={e.likes} body={e.body} mainColor={mainColor} />
             ))
           : null}
+          </section>
       </div>
     );
   }

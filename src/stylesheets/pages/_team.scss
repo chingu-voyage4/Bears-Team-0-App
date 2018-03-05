@@ -1,0 +1,51 @@
+.team-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: color-list("background");
+  color: color-list("text-light");
+
+  h1 {
+    margin-bottom: 1.5em;
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  
+   .team-member {
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1em 0;
+      
+      > img {
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        background-color: gray;
+      }
+
+      h3 {
+        font-size: 1.4em;
+      }
+
+      a {
+        padding: 0.5em 1em;
+        background-color: color-list("accent");
+        color: color-list("text-light");
+        font-size: 1.2em;
+        text-decoration: none;
+      }
+    }
+  }
+
+}

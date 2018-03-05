@@ -9,9 +9,9 @@ import { connect } from "react-redux";
 class QuizStart extends Component {
   render() {
     return (
-      <form className="quiz-maker">
+      <form className="quiz-start">
         <h1>Quiz Maker</h1>
-        <div className="quizmaker">
+        <div className="quiz-start-body">
           <label htmlFor="quiz-title">Quiz Title</label>
           <input
             id="quiz-title"
