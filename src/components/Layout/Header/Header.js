@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-export class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
+
+class Header extends Component {
+
   render() {
     return this.props.loggedIn ? (
       <div className="header">
         <a href="/">Quizzly Bear</a>
-        <div className="logout">
+        <div className="header-right">
           <a href="/logout">Log Out</a>
           <img src={this.props.userImage} />
         </div>
       </div>
     ) : (
-      <div className="header">Logged Out! {this.props.loggedIn}</div>
-    );
+        <div className="header">Logged Out! {this.props.loggedIn}</div>
+      );
   }
 }
 export default connect(

@@ -1,15 +1,44 @@
-nav {
+.header {
+  position: fixed;
+  top: 0;
+  height: 64px;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-
-  a {
-    margin: 0 2em;
-    padding: 1em;
-    color: black;
+  justify-content: space-between;
+  align-items: center;
+  
+  > a {
+    margin-left: 30px;
+    font-size: 30px;
+    font-weight: lighter;
+    letter-spacing: 0.16rem;
+    color: color-list("text-light");
     text-decoration: none;
+    text-transform: uppercase;
+  }
 
-    @include hocus {
-      background-color: lightgrey;
+  .header-right {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-right: 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: color-list("text-light");
+      text-decoration: none;
+      text-transform: uppercase;
+      @include hocus {
+        cursor: pointer;
+      }
+    }
+    img {
+      margin-right: 30px;
+      height: 50px;
+      width: 50px;
+      background-color: gray;
+      border-radius: 100%;
     }
   }
 }
+

@@ -5,12 +5,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: color-list("primary");
+  background-color: color-list("background");
   color: color-list("text-light");
 
   h1 {
+    width: 572px;
     margin: 0 auto;
-    padding-bottom: 1em;
+    padding: 0.5em 0;
+    border: 1px solid color-list("borders");
+    text-align: center;
   }
 
   form {
