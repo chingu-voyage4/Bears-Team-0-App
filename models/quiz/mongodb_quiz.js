@@ -42,7 +42,9 @@ exports.read = function read(key) {
             .then(doc => {
                 const quiz = new Quiz(
                     doc.title,
-                    doc.questions
+                    doc.questions,
+                    doc.description,
+                    doc.favorites
                 )
                 log(`Quiz found ${util.inspect(quiz)}`);
                 return quiz;
@@ -62,7 +64,7 @@ exports.readAll = function readAll() {
             return collection.find().toArray((err, docs) => {
                 if (err) return reject(err);
                 const returnQuizzes = docs.map(quiz => {
-                    return new Quiz(quiz.title, quiz.questions, quiz._id);
+                    return new Quiz(quiz.title, quiz.questions, quiz.description, quiz.favorites);
                 });
                 return resolve(returnQuizzes);
             });
@@ -84,7 +86,8 @@ exports.create = function create(quiz) {
             log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
             const createdQuiz = new Quiz(
                 created.ops[0].title,
-                created.ops[0].questions
+                created.ops[0].questions,
+                created.ops[0].description
             );
             log('Returning inserted: ' + util.inspect(createdQuiz));
             return createdQuiz;
