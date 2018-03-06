@@ -12,3 +12,7 @@ export const loginTypes = {
   LOGIN: "LOGIN",
   LOGOUT: "LOGOUT"
 };
+
+export const makeQuizTypes = {
+  ADD_MULTIPLE_CHOICE: "ADD_MULTIPLE_CHOICE"
+};
