@@ -16,3 +16,7 @@ export const loginTypes = {
 export const makeQuizTypes = {
   ADD_MULTIPLE_CHOICE: "ADD_MULTIPLE_CHOICE"
 };
+
+export const multipleChoiceTypes = {
+  ADD_OPTION: "ADD_OPTION"
+};
