@@ -5,9 +5,6 @@ import { addMultipleChoice } from "../../actions/makequiz";
 import types from "./types";
 
 export class Box extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div
@@ -42,13 +39,15 @@ const boxSource = {
   },
 
   endDrag(props, monitor) {
-    const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
       switch (props.name) {
         case "Multiple Choice":
           props.addMultipleChoice();
+          break;
+        default:
+          return;
       }
     }
   }
@@ -64,9 +63,6 @@ function collect(connect, monitor) {
   };
 }
 export class DecoratedBox extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { isDragging, connectDragSource } = this.props;
     const { text } = this.props;
