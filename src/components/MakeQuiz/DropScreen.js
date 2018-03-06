@@ -35,7 +35,6 @@ class DropScreen extends Component {
                 return (
                   <MultipleChoice key={question.id} questionData={question} />
                 );
-                break;
               default:
                 return null;
             }
