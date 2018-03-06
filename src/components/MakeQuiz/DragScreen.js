@@ -13,7 +13,7 @@ export class DragScreen extends Component {
         }}
       >
         <p>DragScreen</p>
-        <DecoratedBox text="I'm a Box and I'm Draggable!" />
+        <DecoratedBox text="Multiple Choice" name="Multiple Choice" />
       </div>
     );
   }
