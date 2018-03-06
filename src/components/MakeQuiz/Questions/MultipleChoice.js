@@ -3,9 +3,6 @@ import { addOption } from "../../../actions/multipleChoice";
 import { connect } from "react-redux";
 
 class MultipleChoice extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { questionData, addOption } = this.props;
     const { options, id } = questionData;
