@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Quiz = ({ title, mainColor, body, likes }) => {
   return (
@@ -11,7 +11,7 @@ const Quiz = ({ title, mainColor, body, likes }) => {
         <span>
           <i className="fa fa-heart" /> {likes}
         </span>{" "}
-        <a href="#">Share</a>{" "}
+        <a>Share</a>{" "}
       </section>
     </div>
   );
