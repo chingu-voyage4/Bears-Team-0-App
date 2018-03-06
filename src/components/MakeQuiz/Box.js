@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { DragSource } from "react-dnd";
+import { connect } from "react-redux";
+import { addMultipleChoice } from "../../actions/makequiz";
+import types from "./types";
 
 export class Box extends Component {
   constructor(props) {
@@ -43,7 +46,10 @@ const boxSource = {
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
-      alert(`You dropped ${item.name} into ${dropResult.name}!`); // eslint-disable-line no-alert
+      switch (props.name) {
+        case "Multiple Choice":
+          props.addMultipleChoice();
+      }
     }
   }
 };
@@ -57,9 +63,6 @@ function collect(connect, monitor) {
     isDragging: monitor.isDragging()
   };
 }
-const Types = {
-  CARD: "card"
-};
 export class DecoratedBox extends Component {
   constructor(props) {
     super(props);
@@ -72,4 +75,6 @@ export class DecoratedBox extends Component {
     return connectDragSource(<div style={{ ...style, opacity }}>{text}</div>);
   }
 }
-export default DragSource(Types.CARD, boxSource, collect)(DecoratedBox);
+export default connect(state => ({}), {
+  addMultipleChoice: addMultipleChoice
+})(DragSource(types.BOX, boxSource, collect)(DecoratedBox));

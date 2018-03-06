@@ -27,7 +27,7 @@ export class AllQuizzes extends Component {
             wrap={true}
             mainColor="tertiary"
           />
-    </section>
+        </section>
       </div>
     );
   }
