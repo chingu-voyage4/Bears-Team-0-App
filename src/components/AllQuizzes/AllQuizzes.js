@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import QuizSection from "./QuizSection";
 import QuizStart from "./QuizStart";
 import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
