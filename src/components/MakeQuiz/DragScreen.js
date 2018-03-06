@@ -5,6 +5,7 @@ export class DragScreen extends Component {
   render() {
     return (
       <div
+        className="drag_screen"
         style={{
           color: "#c7c7c7",
           backgroundColor: "#fff",
