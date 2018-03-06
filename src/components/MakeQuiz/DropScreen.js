@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { DropTarget } from "react-dnd";
+import MultipleChoice from "./Questions/MultipleChoice";
 import { connect } from "react-redux";
 import types from "./types";
 const spec = {
@@ -14,16 +15,13 @@ const spec = {
     };
   };
 class DropScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { questions, hovered, connectDropTarget } = this.props;
-    console.log("questions are: ", questions);
     return connectDropTarget(
       <div
         style={{
           color: "#fff",
+          padding: "20px",
           backgroundColor: hovered ? "darkslategray" : "#c7c7c7",
           width: "50%",
           flexBasis: "auto"
@@ -31,7 +29,17 @@ class DropScreen extends Component {
       >
         <p>DropScreen</p>
         <div>
-          {questions.map(question => <code>{JSON.stringify(question)}</code>)}
+          {questions.map(question => {
+            switch (question.format) {
+              case "multiple choice":
+                return (
+                  <MultipleChoice key={question.id} questionData={question} />
+                );
+                break;
+              default:
+                return null;
+            }
+          })}
         </div>
       </div>
     );
