@@ -18,5 +18,7 @@ export const makeQuizTypes = {
 };
 
 export const multipleChoiceTypes = {
-  ADD_OPTION: "ADD_OPTION"
+  ADD_OPTION: "ADD_OPTION",
+  CHANGE_OPTION: "CHANGE_OPTION",
+  TOGGLE_CORRECT: "TOGGLE_CORRECT"
 };
