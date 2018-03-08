@@ -36,14 +36,20 @@ exports.connectDb = function connectDb () {
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        let objectID = new mongodb.ObjectId(key)
-        return collection.findOne({_id: objectID})
+        // let objectID = new mongodb.ObjectId(key)
+        return collection.findOne({id: key})
             .then(doc => {
-                const user = new User(
-                    doc.username,
-                    doc.roles,
-                    doc._id
-                )
+                if (!doc) return undefined
+                const user = new User({
+                    id: doc.id,
+                    displayName: doc.displayName,
+                    familyName: doc.familyName,
+                    givenName: doc.givenName,
+                    emails: doc.emails,
+                    photos: doc.photos,
+                    gender: doc.gender,
+                    provider: doc.provider
+                })
                 log(`User found ${util.inspect(doc)}`)
                 return user
             })
@@ -57,19 +63,31 @@ exports.read = function read(key) {
 exports.create = function create(user) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        let newUser = new User(user.username, user.roles)
-        return newUser.encryptPw(user.password).then(() => {
-            log('Mongo new user: ' + util.inspect(newUser))
-            return collection.insertOne(newUser).then(created => {
-                log('Mongo new user inserted: ' + util.inspect(created.ops[0]))
-                const createdUser = new User(
-                    created.ops[0].username,
-                    created.ops[0].roles,
-                    created.ops[0]._id
-                )
-                log('Returning inserted: ' + util.inspect(createdUser))
-                return createdUser
+        let newUser = new User({
+            id: user.id,
+            displayName: user.displayName,
+            familyName: user.familyName,
+            givenName: user.givenName,
+            emails: user.emails,
+            photos: user.photos,
+            gender: user.gender,
+            provider: user.provider
+        })
+        log("Create new user: " + util.inspect(newUser))
+        return collection.insertOne(newUser).then(created => {
+            log("Created user: " + util.inspect(user))
+            const createdUser = new User({
+                id: created.id,
+                displayName: created.displayName,
+                familyName: created.familyName,
+                givenName: created.givenName,
+                emails: created.emails,
+                photos: created.photos,
+                gender: created.gender,
+                provider: created.provider
             })
+            log('Returning inserted: ' + util.inspect(createdUser))
+            return createdUser
         })
 
     })
@@ -86,7 +104,16 @@ exports.readAll = function readAll() {
             return collection.find().toArray((err, docs) => {
                 if (err) return reject(err)
                 const returnUsers = docs.map(user => {
-                    return new User(user.username, user.roles, user._id)
+                    return new User({
+                        id: user.id,
+                        displayName: user.displayName,
+                        familyName: user.familyName,
+                        givenName: user.givenName,
+                        emails: user.emails,
+                        photos: user.photos,
+                        gender: user.gender,
+                        provider: user.provider
+                    })
                 })
                 return resolve(returnUsers)
             })
@@ -105,11 +132,16 @@ exports.update = function update(key, updateObj) {
         let objectID = new mongodb.ObjectId(key)
         return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj }).then(result => { 
             log('User updated: ' + util.inspect(result))
-            return new User(
-                result.value.username,
-                result.value.roles,
-                result.value._id
-            )
+            return new User({
+                id: user.id,
+                displayName: result.value.displayName,
+                familyName: result.value.familyName,
+                givenName: result.value.givenName,
+                emails: result.value.emails,
+                photos: result.value.photos,
+                gender: result.value.gender,
+                provider: result.value.provider
+            })
          })
     });
 }
@@ -141,5 +173,16 @@ exports.count = function count() {
                 return resolve(count)
             })
         })
+    })
+}
+
+exports.findOrCreate = function findOrCreate(profile) {
+    return exports.read(profile.id).then(user => {
+        if (user) {
+            log("findOrCreate found user: " + util.inspect(user))
+            return user;
+        }
+        log('findOrCreate user: ' + util.inspect(user))
+        return exports.create(profile)
     })
 }
