@@ -2,7 +2,7 @@ import { makeQuizTypes, multipleChoiceTypes } from "../actions/types";
 import shortid from "shortid";
 
 const { ADD_MULTIPLE_CHOICE } = makeQuizTypes;
-const { ADD_OPTION } = multipleChoiceTypes;
+const { ADD_OPTION, CHANGE_OPTION, TOGGLE_CORRECT } = multipleChoiceTypes;
 const initialState = {
   title: "",
   description: "",
@@ -25,8 +25,6 @@ export default (state = initialState, action) => {
         ]
       };
     case ADD_OPTION:
-      console.log("adding option in reducer");
-      console.log("state is, ", state);
       return {
         ...state,
         questions: state.questions.map(question => {
@@ -43,6 +41,31 @@ export default (state = initialState, action) => {
             : // else return the quiz already in place
               { ...question };
         })
+      };
+    case CHANGE_OPTION:
+      return {
+        ...state,
+        questions: [
+          ...state.questions.map(
+            question =>
+              question.id === action.question
+                ? {
+                    ...question,
+                    options: question.options.map(
+                      option =>
+                        option.id === action.option
+                          ? { ...option, val: action.value }
+                          : option
+                    )
+                  }
+                : question
+          )
+        ]
+      };
+    case TOGGLE_CORRECT:
+      console.log("toggling correct");
+      return {
+        ...state
       };
 
     default:
