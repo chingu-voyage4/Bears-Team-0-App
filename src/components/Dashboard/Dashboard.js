@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import QuizSection from "./QuizSection";
 import QuizStart from "./QuizStart";
 import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
-import { connect } from "react-redux";
 
-export class AllQuizzes extends Component {
+export class Dashboard extends Component {
   render() {
     return (
       <div className="all-quizzes">
@@ -43,4 +43,4 @@ export default connect(
     fetchAllQuizzes: fetchAllQuizzes,
     fetchYourQuizzes: fetchYourQuizzes
   }
-)(AllQuizzes);
+)(Dashboard);
