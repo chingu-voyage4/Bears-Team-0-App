@@ -26,7 +26,7 @@ export class Dashboard extends Component {
             wrap={true}
             mainColor="tertiary"
           />
-    </section>
+        </section>
       </div>
     );
   }

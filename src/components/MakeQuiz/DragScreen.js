@@ -5,6 +5,7 @@ export class DragScreen extends Component {
   render() {
     return (
       <div
+        className="drag_screen"
         style={{
           color: "#c7c7c7",
           backgroundColor: "#fff",
@@ -13,7 +14,7 @@ export class DragScreen extends Component {
         }}
       >
         <p>DragScreen</p>
-        <DecoratedBox text="I'm a Box and I'm Draggable!" />
+        <DecoratedBox text="Multiple Choice" name="Multiple Choice" />
       </div>
     );
   }
