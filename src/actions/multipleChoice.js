@@ -1,5 +1,10 @@
 import { multipleChoiceTypes } from "./types";
-const { ADD_OPTION, CHANGE_OPTION, TOGGLE_CORRECT } = multipleChoiceTypes;
+const {
+  ADD_OPTION,
+  CHANGE_OPTION,
+  CHANGE_QUESTION,
+  TOGGLE_CORRECT
+} = multipleChoiceTypes;
 
 export const addOption = index => ({
   type: ADD_OPTION,
@@ -7,7 +12,6 @@ export const addOption = index => ({
 });
 
 export const changeOption = (questionId, optionId, e) => {
-  console.log("in change option action creator");
   return {
     type: CHANGE_OPTION,
     question: questionId,
@@ -16,8 +20,19 @@ export const changeOption = (questionId, optionId, e) => {
   };
 };
 
-export const toggleCorrectOption = (questionId, optionId) => ({
-  type: TOGGLE_CORRECT,
-  question: questionId,
-  option: optionId
-});
+export const toggleCorrectOption = (questionId, optionId) => {
+  return {
+    type: TOGGLE_CORRECT,
+    question: questionId,
+    option: optionId
+  };
+};
+
+export const changeQuestion = e => {
+  console.log("changing question...");
+  return {
+    type: CHANGE_QUESTION,
+    question: 0,
+    payload: e.target.value
+  };
+};
