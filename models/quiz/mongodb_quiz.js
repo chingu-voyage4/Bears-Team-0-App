@@ -73,6 +73,26 @@ exports.readAll = function readAll() {
 }
 
 /**
+ * Get 6 most popular quizzes
+ * @param {}
+ * @returns {Quiz[]} - An array of quizzes.
+ */
+exports.readPopular = function readPopular() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        return new Promise((resolve, reject) => {
+            return collection.find().sort({"favorites": -1}).limit(6).toArray((err, docs) => {
+                if (err) return reject(err);
+                const returnQuizzes = docs.map(quiz => {
+                    return new Quiz(quiz.title, quiz.questions, quiz.description, quiz.favorites);
+                });
+                return resolve(returnQuizzes);
+            });
+        });
+    })
+}
+
+/**
  * Save a quiz to the db
  * @param {Object} 
  * @returns {Quiz} - The saved quiz.

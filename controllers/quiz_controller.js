@@ -29,6 +29,17 @@ module.exports.findAllQuizzes = function(req, res, next) {
 }
 
 /*
+Reading 6 most popular quizzes
+*/
+module.exports.findPopularQuizzes = function(req, res, next) {
+    quizModel.readPopular()
+    .then(docs => {
+        log('Sending popular quizzes');
+        res.json({quizzes: docs});
+    }).catch(err => next(err));
+}
+
+/*
 Get # quizzes
 */
 module.exports.getQuizCount = function(req, res, next) {

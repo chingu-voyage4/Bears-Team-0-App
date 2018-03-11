@@ -8,8 +8,13 @@ GET quiz count
 quizRouter.get('/count', quizController.getQuizCount);
 /*
 GET all quizzes
+(for testing)
 */
-quizRouter.get("/", quizController.findAllQuizzes);
+quizRouter.get("/all", quizController.findAllQuizzes);
+/*
+GET 6 most popular quizzes
+*/
+quizRouter.get("/popular", quizController.findPopularQuizzes);
 
 /*
 QUIZ CRUD Routes
