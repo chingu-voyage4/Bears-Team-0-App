@@ -76,6 +76,22 @@
   ```
 - Returns: {Quiz} - The quiz and its updated values.
 
+#### Update quiz favorites by id:
+- Request type: PATCH
+- Path: /api/quizzes/:id
+- Params: 
+  - {String} - key: quiz._id
+  - {UpdatedObj} - in request body as "update.favorites"
+  - Ex of UpdatedObj request body:
+  ```
+  {
+    "update": {
+      "favorites": 1
+    }
+  }
+  ```
+- Returns: {Quiz} - The quiz and its updated values.
+
 #### Delete quiz by id:
 - Request type: DELETE
 - Path: /api/quizzes/:id

@@ -7,24 +7,7 @@ module.exports = class Quiz {
     this.questions = questions;
     this.description = description;
     this.favorites = 0;
-
-    //metadata
-    if (!this.createdDate) {
-      this.createdDate = generateCurrentDate();
-    }
-    this.updatedDate = generateCurrentDate();
+    // this.createdDate = "";
+    // this.updatedDate = "";
   }
-  
-  addQuestion(question) {
-    if (question instanceof Question) {
-      this.questions.push(question);
-    }
-  }
-
-}
-
-function generateCurrentDate() {
-    //let date = Date;
-    const currentDate = Date.now();
-    return currentDate;
 }
