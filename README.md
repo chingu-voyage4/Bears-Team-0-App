@@ -24,7 +24,7 @@
 
 #### Get user's quizzes:
 - Request type: POST
-- Path: /api/quizzes/
+- Path: /api/quizzes/userQuizzes
 - Params: {Object} - Ex:
     ```
     {

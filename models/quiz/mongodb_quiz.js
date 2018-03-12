@@ -65,7 +65,6 @@ exports.readUserQuizzes = function readUserQuizzes(userId) {
         /*
         NOT USING REAL OBJECT ID DUE TO TESTING ENV
         */
-
         return new Promise((resolve, reject) => {
             return collection.find({ author: userId }).toArray((err, docs) => {
                 if (err) return reject(err);
