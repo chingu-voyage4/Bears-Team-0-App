@@ -18,9 +18,22 @@
 
 #### Get all quizzes:
 - Request type: GET
-- Path: /api/quizzes/
+- Path: /api/quizzes/all
 - Params: {}
 - Returns: {Quiz[]} - An array of quizzes
+
+#### Get user's quizzes:
+- Request type: POST
+- Path: /api/quizzes/
+- Params: {Object} - Ex:
+    ```
+    {
+      "user": {
+        "id": "testUserId"
+      }
+    }
+    ```
+- Returns: {Quiz[]} - An array of the user's quizzes.
 
 #### Create new quiz:
 - Request type: POST
@@ -32,6 +45,9 @@
         "title": "test title",
         "description": "this is a test description for a test quiz."
         "questions": ["test question 1", "test question 2"]
+      },
+      "user": {
+        "id": "testUserId"
       }
     }
     ```

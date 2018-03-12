@@ -1,9 +1,9 @@
 require("./Question");
 
 module.exports = class Quiz {
-  constructor(title, questions, description) {
+  constructor(title, author, questions, description) {
     this.title = title;
-    //this.author = author;
+    this.author = author;
     this.questions = questions;
     this.description = description;
     this.favorites = 0;

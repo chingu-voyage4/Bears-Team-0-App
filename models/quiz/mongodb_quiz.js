@@ -52,6 +52,33 @@ exports.read = function read(key) {
     });
 }
 
+
+/**
+ * Get user quizzes
+ * @param {Object} key: user.id
+ * @returns {Quiz[]} - An array of user's quizzes.
+ */
+exports.readUserQuizzes = function readUserQuizzes(userId) {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        //let objectID = new mongodb.ObjectId(userId);
+        /*
+        NOT USING REAL OBJECT ID DUE TO TESTING ENV
+        */
+
+        return new Promise((resolve, reject) => {
+            return collection.find({ author: userId }).toArray((err, docs) => {
+                if (err) return reject(err);
+                const returnQuizzes = docs.map(quiz => {
+                    return new Quiz(quiz.title, quiz.author, quiz.questions, quiz.description, quiz.favorites);
+                });
+                return resolve(returnQuizzes);
+            });
+        });
+    })
+}
+
+
 /**
  * Get all quizzes
  * @param {}
@@ -97,15 +124,16 @@ exports.readPopular = function readPopular() {
  * @param {Object} 
  * @returns {Quiz} - The saved quiz.
  */
-exports.create = function create(quiz) {
+exports.create = function create(userId, quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let newQuiz = new Quiz(quiz.title, quiz.questions);
+        let newQuiz = new Quiz(quiz.title, userId, quiz.questions, quiz.description);
         return collection.insertOne(newQuiz)
             .then(created => {
             log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
             const createdQuiz = new Quiz(
                 created.ops[0].title,
+                created.ops[0].author,
                 created.ops[0].questions,
                 created.ops[0].description
             );

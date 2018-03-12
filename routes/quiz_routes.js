@@ -17,6 +17,11 @@ GET 6 most popular quizzes
 quizRouter.get("/popular", quizController.findPopularQuizzes);
 
 /*
+GET all user's quizzes
+*/
+quizRouter.post("/userQuizzes", quizController.findUserQuizzes);
+
+/*
 QUIZ CRUD Routes
 */
 

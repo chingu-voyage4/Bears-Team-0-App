@@ -40,6 +40,17 @@ module.exports.findPopularQuizzes = function(req, res, next) {
 }
 
 /*
+Reading user's quizzes
+*/
+module.exports.findUserQuizzes = function(req, res, next) {
+    quizModel.readUserQuizzes(req.body.user.id)
+    .then(found => {
+        log('Sending user\'s quizzes');
+        res.json({quizzes: found});
+    }).catch(err => next(err));
+}
+
+/*
 Get # quizzes
 */
 module.exports.getQuizCount = function(req, res, next) {
@@ -53,7 +64,7 @@ module.exports.getQuizCount = function(req, res, next) {
 Creating a quiz
 */
 module.exports.createQuiz = function(req, res, next) {
-    quizModel.create(req.body.quiz)
+    quizModel.create(req.body.user.id, req.body.quiz)
     .then((quiz) => {
         // log('Sending new quiz: + util.inspect(quiz)');
         res.json({ quiz: quiz });
