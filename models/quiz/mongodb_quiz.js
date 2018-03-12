@@ -165,8 +165,8 @@ exports.destroy = function destroy(key) {
  * @param {Object} updateObj
  * @returns {Quiz} - The updated quiz.
  */
-exports.udate = function update(key, updateObj) {
-    return exports.connectDb.then(_db => {
+exports.update = function update(key, updateObj) {
+    return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
         let objectID = new mongodb.ObjectId(key);
         return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj })
@@ -176,6 +176,25 @@ exports.udate = function update(key, updateObj) {
                     quiz.value.title,
                     quiz.value.questions
                 )
+            });
+    });
+}
+
+/**
+ * Update a quiz
+ * @param {String} key - quiz._id
+ * @param {Object} updateObj
+ * @returns {Quiz} - The updated quiz.
+ */
+exports.updateFavorites = function updateFavorites(key, updateFavorites) {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
+        const updateFavoritesNumber = parseInt(updateFavorites);
+        return collection.findOneAndUpdate({ _id: objectID }, { $inc: { favorites: updateFavoritesNumber } })
+            .then(updated => {
+                log("Quiz update: " + util.inspect(updated));
+                return updated.value;
             });
     });
 }

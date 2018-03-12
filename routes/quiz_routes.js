@@ -38,6 +38,11 @@ PUT quiz
 */
 quizRouter.put("/:id", quizController.updateQuiz);
 /*
+PATCH quiz by id to add to favorites
+*/
+quizRouter.patch("/:id", quizController.updateQuizFavorites);
+
+/*
 DELETE quiz by id
 */
 quizRouter.delete("/:id", quizController.deleteQuiz);

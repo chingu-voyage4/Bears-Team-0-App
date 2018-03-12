@@ -51,6 +51,18 @@ module.exports.findUserQuizzes = function(req, res, next) {
 }
 
 /*
+Update quiz favorites
+*/
+module.exports.updateQuizFavorites = function(req, res, next) {
+    quizModel.updateFavorites(req.params.id, req.body.update.favorites)
+    .then(updated => {
+        log('Updating favorites for quiz');
+        res.json({quiz: updated});
+    }).catch(err => next(err));
+}
+
+
+/*
 Get # quizzes
 */
 module.exports.getQuizCount = function(req, res, next) {
