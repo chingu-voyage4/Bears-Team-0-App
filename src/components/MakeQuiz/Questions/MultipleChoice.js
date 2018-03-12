@@ -11,17 +11,17 @@ import { connect } from "react-redux";
 class MultipleChoice extends Component {
   render() {
     const {
-      questionData,
-      addOption,
-      changeOption,
-      toggleCorrectOption,
-      changeQuestion
-    } = this.props;
-    const { options, id } = questionData;
+        questionData,
+        addOption,
+        changeOption,
+        toggleCorrectOption,
+        changeQuestion
+      } = this.props,
+      { options, id } = questionData;
+
     return (
-      <div>
-        {/*<code style={{ display: "block" }}>{JSON.stringify(questionData)}</code>*/}
-        <input placeholder="Question" onChange={changeQuestion} />
+      <div className="multipleChoice">
+        <input placeholder="Question" onChange={e => changeQuestion(e, id)} />
         <button onClick={() => addOption(id)}>Add Option</button>
         {options.map(option => (
           <Option

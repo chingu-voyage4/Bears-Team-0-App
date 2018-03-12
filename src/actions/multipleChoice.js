@@ -28,11 +28,10 @@ export const toggleCorrectOption = (questionId, optionId) => {
   };
 };
 
-export const changeQuestion = e => {
-  console.log("changing question...");
+export const changeQuestion = (e, id) => {
   return {
     type: CHANGE_QUESTION,
-    question: 0,
+    question: id,
     payload: e.target.value
   };
 };
