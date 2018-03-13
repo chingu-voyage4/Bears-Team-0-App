@@ -1,5 +1,4 @@
 const quizModel = require('../models/quiz/mongodb_quiz');
-const Question = require('../models/quiz/Question');
 
 const log   = require('debug')('api:controller-quiz');
 const error = require('debug')('api:error');

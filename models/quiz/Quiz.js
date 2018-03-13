@@ -1,5 +1,3 @@
-require("./Question");
-
 module.exports = class Quiz {
   constructor(title, author, questions, description) {
     this.title = title;
