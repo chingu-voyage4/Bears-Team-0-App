@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 class Option extends Component {
   render() {
-    const { id, val, change, checked, toggleCorrectOption } = this.props;
+    const {
+      id,
+      val,
+      change,
+      checked,
+      toggleCorrectOption,
+      deleteOption
+    } = this.props;
     return (
       <div key={id}>
         <input value={val} onChange={change} />
@@ -12,6 +19,7 @@ class Option extends Component {
           checked={checked}
           onClick={toggleCorrectOption}
         />
+        <button onClick={deleteOption}>x</button>
       </div>
     );
   }

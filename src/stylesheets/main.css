@@ -630,14 +630,12 @@ ul {
       text-decoration: none;
       text-transform: uppercase; }
 
-.about-page {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #0f143a;
-  color: #ffffff; }
+.drag_screen {
+  padding: 20px;
+  color: "#c7c7c7";
+  background-color: "#fff";
+  width: "50%";
+  flex-basis: "auto"; }
 
 .contact-page {
   height: 100%;

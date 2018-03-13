@@ -3,7 +3,8 @@ const {
   ADD_OPTION,
   CHANGE_OPTION,
   CHANGE_QUESTION,
-  TOGGLE_CORRECT
+  TOGGLE_CORRECT,
+  DELETE_OPTION
 } = multipleChoiceTypes;
 
 export const addOption = index => ({
@@ -11,12 +12,20 @@ export const addOption = index => ({
   index: index
 });
 
-export const changeOption = (questionId, optionId, e) => {
+export const changeOption = (questionId, optionId, event) => {
   return {
     type: CHANGE_OPTION,
     question: questionId,
     option: optionId,
-    value: e.target.value
+    value: event.target.value
+  };
+};
+
+export const deleteOption = (questionId, optionId) => {
+  return {
+    type: DELETE_OPTION,
+    question: questionId,
+    option: optionId
   };
 };
 
@@ -28,10 +37,10 @@ export const toggleCorrectOption = (questionId, optionId) => {
   };
 };
 
-export const changeQuestion = (e, id) => {
+export const changeQuestion = (event, id) => {
   return {
     type: CHANGE_QUESTION,
     question: id,
-    payload: e.target.value
+    payload: event.target.value
   };
 };

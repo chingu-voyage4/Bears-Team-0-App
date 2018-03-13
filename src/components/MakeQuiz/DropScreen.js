@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DropTarget } from "react-dnd";
 import MultipleChoice from "./Questions/MultipleChoice";
+import TrueFalse from "./Questions/TrueFalse";
 import { connect } from "react-redux";
 import types from "./types";
 const spec = {
@@ -35,6 +36,8 @@ class DropScreen extends Component {
                 return (
                   <MultipleChoice key={question.id} questionData={question} />
                 );
+              case "true false":
+                return <TrueFalse key={question.id} questionData={question} />;
               default:
                 return null;
             }

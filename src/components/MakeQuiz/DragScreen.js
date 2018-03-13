@@ -15,6 +15,7 @@ export class DragScreen extends Component {
       >
         <p>DragScreen</p>
         <DecoratedBox text="Multiple Choice" name="Multiple Choice" />
+        <DecoratedBox text="True Or False" name="TrueFalse" />
       </div>
     );
   }

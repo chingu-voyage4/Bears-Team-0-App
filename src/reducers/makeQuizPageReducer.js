@@ -1,12 +1,13 @@
 import { makeQuizTypes, multipleChoiceTypes } from "../actions/types";
 import shortid from "shortid";
 
-const { ADD_MULTIPLE_CHOICE } = makeQuizTypes;
+const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes;
 const {
   ADD_OPTION,
   CHANGE_OPTION,
   CHANGE_QUESTION,
-  TOGGLE_CORRECT
+  TOGGLE_CORRECT,
+  DELETE_OPTION
 } = multipleChoiceTypes;
 const initialState = {
   title: "",
@@ -46,6 +47,20 @@ export default (state = initialState, action) => {
           }
         ]
       };
+
+    case ADD_TRUE_FALSE:
+      return {
+        ...state,
+        questions: [
+          ...state.questions,
+          {
+            id: shortid.generate(),
+            question: "",
+            format: "true false",
+            isTrue: true
+          }
+        ]
+      };
     case ADD_OPTION:
       return {
         ...state,
@@ -65,7 +80,25 @@ export default (state = initialState, action) => {
         })
       };
 
+    case DELETE_OPTION:
+      return {
+        ...state,
+        questions: state.questions.map(question => {
+          return question.id === action.question
+            ? // remove selected option
+              {
+                ...question,
+                options: question.options.filter(option => {
+                  return option.id !== action.option;
+                })
+              }
+            : // return untouched question
+              { ...question };
+        })
+      };
+
     case CHANGE_QUESTION:
+      console.log("changing question, action is: ", action);
       return {
         ...state,
         questions: [

@@ -4,7 +4,8 @@ import {
   addOption,
   changeOption,
   toggleCorrectOption,
-  changeQuestion
+  changeQuestion,
+  deleteOption
 } from "../../../actions/multipleChoice";
 import { connect } from "react-redux";
 
@@ -15,7 +16,8 @@ class MultipleChoice extends Component {
         addOption,
         changeOption,
         toggleCorrectOption,
-        changeQuestion
+        changeQuestion,
+        deleteOption
       } = this.props,
       { options, id } = questionData;
 
@@ -28,6 +30,7 @@ class MultipleChoice extends Component {
             key={option.id}
             change={e => changeOption(id, option.id, e)}
             toggleCorrectOption={() => toggleCorrectOption(id, option.id)}
+            deleteOption={() => deleteOption(id, option.id)}
             questionId={id}
             id={option.id}
             val={option.val}
@@ -37,9 +40,11 @@ class MultipleChoice extends Component {
     );
   }
 }
+
 export default connect(state => ({}), {
   addOption,
   changeOption,
   toggleCorrectOption,
-  changeQuestion
+  changeQuestion,
+  deleteOption
 })(MultipleChoice);

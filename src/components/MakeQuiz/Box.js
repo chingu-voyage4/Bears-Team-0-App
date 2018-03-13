@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { DragSource } from "react-dnd";
 import { connect } from "react-redux";
-import { addMultipleChoice } from "../../actions/makequiz";
+import { addMultipleChoice, addTrueFalse } from "../../actions/makequiz";
 import types from "./types";
 
-export class Box extends Component {
-  render() {
-    return (
-      <div
-        style={{
-          height: "30px",
-          background: "red",
-          width: "90px",
-          color: "black",
-          fontWeight: "bold"
-        }}
-      >
-        {this.props.text}
-      </div>
-    );
-  }
-}
+// export class Box extends Component {
+//   render() {
+//     return (
+//       <div
+//         style={{
+//           height: "30px",
+//           background: "red",
+//           width: "90px",
+//           color: "black",
+//           fontWeight: "bold"
+//         }}
+//       >
+//         {this.props.text}
+//       </div>
+//     );
+//   }
+// }
 const style = {
   border: "1px dashed gray",
   backgroundColor: "white",
@@ -45,6 +45,9 @@ const boxSource = {
       switch (props.name) {
         case "Multiple Choice":
           props.addMultipleChoice();
+          break;
+        case "TrueFalse":
+          props.addTrueFalse();
           break;
         default:
           return;
@@ -72,5 +75,6 @@ export class DecoratedBox extends Component {
   }
 }
 export default connect(state => ({}), {
-  addMultipleChoice: addMultipleChoice
+  addMultipleChoice: addMultipleChoice,
+  addTrueFalse: addTrueFalse
 })(DragSource(types.BOX, boxSource, collect)(DecoratedBox));
