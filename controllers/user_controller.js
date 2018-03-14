@@ -40,7 +40,7 @@ Reading a user
 module.exports.findUser = function(req, res, next){
     const user = userModel.read(req.params.id)
     .then(found => {
-        log('Sending user ' + found)
+        log('Sending user ' + util.inspect(found))
         res.json({ user: found })
     })
     .catch(err => next(err))

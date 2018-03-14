@@ -1,63 +1,31 @@
 const mongodb       = require("mongodb");
 const mongoClient   = require("mongodb").MongoClient;
 const util          = require('util')
+const EventEmitter  = require("events")
 
 const log   = require('debug')('api:mongodb')
 
-class MongoConnection {
-  constructor(url, dbname, collection) {
+class MongoConnection extends EventEmitter {
+ 
+  constructor(url, db_name, collection_name) {
+    super ()
     this.url = url
-    this.dbName = dbname
-    this.collection = collection
-    this.db = false
+    this.db_name = db_name
+    this.collection_name = collection_name
   }
 
-  connectDb () {
-    return new Promise((resolve, reject) => {
-        if (this.db) return resolve(this.db)
-        mongoClient.connect(this.url, (err, _db) => {
-            if (err) return reject(err)
-            this.db = _db.db(this.dbName)
-            log('Mongo connected ' + util.inspect(this.db.databaseName))
-            resolve(this.db)
-        })
-    })
-  }
-
-  readAll () {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).find().toArray()
-    })
-  }
-
-  count () {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).count({})
-    })
-  }
-
-  read (query) {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).findOne(query)
-    })
-  }
-
-  create (user) {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).insertOne(user)
-    })
-  }
-
-  update (query, updateObj) {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).findOneAndUpdate(query, updateObj)
-    })
-  }
-
-  del (query) {
-    return this.connectDb().then(_db => {
-      return _db.collection(this.collection).findOneAndDelete(query)
-    })
+  async connect () {
+    if (this.connection) {
+      return this.connection
+    } else {
+      try {
+        this.connection = await mongoClient.connect(this.url, {keepAlive: 2000})
+        this.collection = await this.connection.db(this.db_name).collection(this.collection_name)
+        this.emit('connected')
+      } catch (err) {
+        this.emit('error', err)
+      }
+    }
   }
 
 }
