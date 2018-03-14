@@ -43,7 +43,7 @@
     {
       "quiz": {
         "title": "test title",
-        "description": "this is a test description for a test quiz."
+        "description": "this is a test description for a test quiz.",
         "questions": ["test question 1", "test question 2"]
       },
       "user": {
