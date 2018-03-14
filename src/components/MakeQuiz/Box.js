@@ -4,23 +4,6 @@ import { connect } from "react-redux";
 import { addMultipleChoice, addTrueFalse } from "../../actions/makequiz";
 import types from "./types";
 
-// export class Box extends Component {
-//   render() {
-//     return (
-//       <div
-//         style={{
-//           height: "30px",
-//           background: "red",
-//           width: "90px",
-//           color: "black",
-//           fontWeight: "bold"
-//         }}
-//       >
-//         {this.props.text}
-//       </div>
-//     );
-//   }
-// }
 const style = {
   border: "1px dashed gray",
   backgroundColor: "white",
