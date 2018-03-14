@@ -7,11 +7,13 @@ const {
   DELETE_OPTION
 } = multipleChoiceTypes;
 
+// add option to multiple choice question
 export const addOption = index => ({
   type: ADD_OPTION,
   index: index
 });
 
+// action to change multiple choice option text
 export const changeOption = (questionId, optionId, event) => {
   return {
     type: CHANGE_OPTION,
@@ -21,6 +23,7 @@ export const changeOption = (questionId, optionId, event) => {
   };
 };
 
+// action to delete option
 export const deleteOption = (questionId, optionId) => {
   return {
     type: DELETE_OPTION,
@@ -29,6 +32,7 @@ export const deleteOption = (questionId, optionId) => {
   };
 };
 
+// action to toggle whether or not option is a "correct answer"
 export const toggleCorrectOption = (questionId, optionId) => {
   return {
     type: TOGGLE_CORRECT,
@@ -37,6 +41,7 @@ export const toggleCorrectOption = (questionId, optionId) => {
   };
 };
 
+// option to change the text of a question
 export const changeQuestion = (event, id) => {
   return {
     type: CHANGE_QUESTION,

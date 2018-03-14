@@ -1,3 +1,4 @@
+// all action type constants
 export const quizTypes = {
   REQUEST_ALL_QUIZZES: "REQUEST_ALL_QUIZZES",
   RECEIVE_ALL_QUIZZES: "RECEIVE_ALL_QUIZZES",
