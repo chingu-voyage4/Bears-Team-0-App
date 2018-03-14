@@ -1,4 +1,8 @@
-import { makeQuizTypes, multipleChoiceTypes } from "../actions/types";
+import {
+  makeQuizTypes,
+  multipleChoiceTypes,
+  trueFalseTypes
+} from "../actions/types";
 import shortid from "shortid";
 
 const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes;
@@ -9,6 +13,7 @@ const {
   TOGGLE_CORRECT,
   DELETE_OPTION
 } = multipleChoiceTypes;
+const { TOGGLE, DELETE_QUESTION } = trueFalseTypes;
 const initialState = {
   title: "",
   description: "",
@@ -98,7 +103,6 @@ export default (state = initialState, action) => {
       };
 
     case CHANGE_QUESTION:
-      console.log("changing question, action is: ", action);
       return {
         ...state,
         questions: [
@@ -137,6 +141,28 @@ export default (state = initialState, action) => {
                   }
                 : question
           )
+        ]
+      };
+    case TOGGLE:
+      return {
+        ...state,
+        questions: [
+          ...state.questions.map(
+            question =>
+              question.id === action.question
+                ? {
+                    ...question,
+                    isTrue: !question.isTrue
+                  }
+                : question
+          )
+        ]
+      };
+    case DELETE_QUESTION:
+      return {
+        ...state,
+        questions: [
+          ...state.questions.filter(question => question.id !== action.question)
         ]
       };
 
