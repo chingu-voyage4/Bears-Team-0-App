@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Delete from "./Delete";
 import Option from "./Option";
 import {
   addOption,
@@ -23,7 +24,7 @@ class MultipleChoice extends Component {
 
     return (
       <div className="multipleChoice">
-        <input placeholder="Question" onChange={e => changeQuestion(e, id)} />
+        <input placeholder="Question" onChange={changeQuestion} />
         <button onClick={() => addOption(id)}>Add Option</button>
         {options.map(option => (
           <Option
@@ -36,6 +37,7 @@ class MultipleChoice extends Component {
             val={option.val}
           />
         ))}
+        <Delete questionId={id} />
       </div>
     );
   }
