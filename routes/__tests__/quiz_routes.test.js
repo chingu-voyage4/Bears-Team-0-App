@@ -46,7 +46,6 @@ describe("Quiz Routes", () => {
 
             const quizCreated = response.body.quiz;
             testQuizId = quizCreated._id;
-            console.log(testQuizId);
 
             expect(response.statusCode).toBe(200);
             expect(quizCreated).toBeInstanceOf(Object);
@@ -55,8 +54,24 @@ describe("Quiz Routes", () => {
             
         });
 
-        //update quiz title
+        //update quiz info
+        it("update a quiz by id", async () => {
+            const response = await request(api).put("/api/quizzes/" + testQuizId)
+                .send({
+                    "update": {
+                        "title": "updated title",
+                        "questions": ["updated question 1", "updated question 2"]
+                    }
+                });
 
+            const quizUpdated = response.body.quiz;
+
+            expect(response.statusCode).toBe(200);
+            expect(quizUpdated.title).toBe("updated title");
+            expect(quizUpdated.questions).toEqual(["updated question 1", "updated question 2"]);
+
+        });
+        
         //update favorites
 
         //read
@@ -65,7 +80,6 @@ describe("Quiz Routes", () => {
         it("deletes a quiz by id", async () => {
             const response = await request(api).delete("/api/quizzes/" + testQuizId);
             expect(response.statusCode).toBe(200);
-            console.log(response.body);
         });
 
 });

@@ -162,21 +162,32 @@ exports.destroy = function destroy(key) {
 
 /**
  * Update a quiz
- * @param {String} key - quiz._id
+ * @param {String} quizId - quiz._id
  * @param {Object} updateObj
  * @returns {Quiz} - The updated quiz.
  */
-exports.update = function update(key, updateObj) {
+exports.update = function update(quizId, updateObj) {
     return exports.connectDb().then(_db => {
+        
+        if (updateObj.hasOwnProperty("favorites") || updateObj.hasOwnProperty("_id")) {
+            return error;
+        }
+
         let collection = _db.collection(COLLECTION_NAME);
-        let objectID = new mongodb.ObjectId(key);
-        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj })
-            .then(result => {
-                log("Quiz update: " + util.inspect(result));
-                return new Quiz(
-                    quiz.value.title,
-                    quiz.value.questions
-                )
+        let objectID = new mongodb.ObjectId(quizId);
+        let objectToSet = {};
+        let updateKeys = Object.keys(updateObj);
+
+        updateKeys.forEach((key) => {
+            objectToSet[key] = updateObj[key];
+        });
+
+        return collection.findOneAndUpdate({ _id: objectID },
+            { $set: objectToSet },
+            { returnOriginal: false })
+            .then(quiz => {
+                log("Quiz update: " + util.inspect(quiz));
+                return quiz.value;
             });
     });
 }
