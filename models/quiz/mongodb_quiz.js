@@ -134,7 +134,8 @@ exports.create = function create(userId, quiz) {
                 created.ops[0].title,
                 created.ops[0].author,
                 created.ops[0].questions,
-                created.ops[0].description
+                created.ops[0].description,
+                created.insertedId
             );
             log('Returning inserted: ' + util.inspect(createdQuiz));
             return createdQuiz;
