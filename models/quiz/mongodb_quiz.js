@@ -47,7 +47,7 @@ exports.read = function read(key) {
                     doc.favorites
                 )
                 log(`Quiz found ${util.inspect(quiz)}`);
-                return quiz;
+                return doc;
             });
     });
 }
@@ -193,17 +193,19 @@ exports.update = function update(quizId, updateObj) {
 }
 
 /**
- * Update a quiz
+ * Update a quiz and add to favorites
  * @param {String} key - quiz._id
  * @param {Object} updateObj
  * @returns {Quiz} - The updated quiz.
  */
-exports.updateFavorites = function updateFavorites(key, updateFavorites) {
+exports.updateFavorites = function updateFavorites(quizId, updateFavorites) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let objectID = new mongodb.ObjectId(key);
+        let objectID = new mongodb.ObjectId(quizId);
         const updateFavoritesNumber = parseInt(updateFavorites);
-        return collection.findOneAndUpdate({ _id: objectID }, { $inc: { favorites: updateFavoritesNumber } })
+        return collection.findOneAndUpdate({ _id: objectID },
+            { $inc: { favorites: updateFavoritesNumber } },
+            { returnOriginal: false })
             .then(updated => {
                 log("Quiz update: " + util.inspect(updated));
                 return updated.value;

@@ -73,12 +73,35 @@ describe("Quiz Routes", () => {
         });
         
         //update favorites
+        it("add to favorites", async () => {
+            const response = await request(api).patch("/api/quizzes/" + testQuizId)
+                .send({
+                    "update": {
+                        "favorites": "1"
+                    }
+                });
+
+            const quizUpdated = response.body.quiz;
+
+            expect(response.statusCode).toBe(200);
+            expect(quizUpdated.favorites).toEqual(1);
+
+        });
 
         //read
+        it("reads quiz by id", async () => {
+            const response = await request(api).get("/api/quizzes/" + testQuizId);
+
+            const quizRead = response.body.quiz;
+
+            expect(response.statusCode).toBe(200);
+            expect(quizRead._id).toEqual(testQuizId);
+        });
 
         //delete
         it("deletes a quiz by id", async () => {
             const response = await request(api).delete("/api/quizzes/" + testQuizId);
+
             expect(response.statusCode).toBe(200);
         });
 

@@ -11,7 +11,7 @@ module.exports.findQuiz = function(req, res, next){
     quizModel.read(req.params.id)
     .then(found => {
         log('Sending quiz ' + found);
-        res.json({ data: found });
+        res.json({ quiz: found });
     })
     .catch(err => next(err));
 };
