@@ -26,3 +26,8 @@ export const multipleChoiceTypes = {
   TOGGLE_CORRECT: "TOGGLE_CORRECT",
   DELETE_OPTION: "DELETE_OPTION"
 };
+
+export const trueFalseTypes = {
+  TOGGLE: "TOGGLE",
+  DELETE_QUESTION: "DELETE_QUESTION"
+};
