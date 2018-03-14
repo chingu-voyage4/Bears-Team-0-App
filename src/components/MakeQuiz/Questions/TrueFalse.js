@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import Delete from "./Delete";
 import { changeQuestion } from "../../../actions/multipleChoice";
+import { toggleTrueFalse } from "../../../actions/trueFalse";
 import { connect } from "react-redux";
 
 class TrueFalse extends Component {
   render() {
-    const { question, id, isTrue } = this.props.questionData;
-    console.log(this.props);
+    const { question, id, isTrue } = this.props.questionData,
+      { changeQuestion, toggleTrueFalse, deleteQuestion } = this.props;
     return (
       <form>
         <input type="text" onChange={event => changeQuestion(event, id)} />
-        <button>Delete</button>
+        <Delete questionId={id} />
         <label htmlFor={id + "true"}>True</label>
         <input
           type="radio"
@@ -17,7 +19,7 @@ class TrueFalse extends Component {
           name={id}
           value="true"
           checked={isTrue}
-          onChange={() => {}}
+          onChange={() => toggleTrueFalse(id)}
         />
         <label htmlFor={id + "false"}>False</label>
         <input
@@ -26,7 +28,7 @@ class TrueFalse extends Component {
           name={id}
           value="false"
           checked={!isTrue}
-          onChange={() => {}}
+          onChange={() => toggleTrueFalse(id)}
         />
       </form>
     );
@@ -34,5 +36,6 @@ class TrueFalse extends Component {
 }
 
 export default connect(state => ({}), {
-  changeQuestion
+  changeQuestion,
+  toggleTrueFalse
 })(TrueFalse);
