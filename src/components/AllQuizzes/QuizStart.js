@@ -6,6 +6,7 @@ import {
 } from "../../actions/quizzes";
 import { connect } from "react-redux";
 
+// this component collects the title and description for a started quiz
 class QuizStart extends Component {
   render() {
     return (
