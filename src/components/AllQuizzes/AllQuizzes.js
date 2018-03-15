@@ -9,9 +9,11 @@ export class AllQuizzes extends Component {
     return (
       <div className="all-quizzes">
         <section className="all-quizzes-left">
+          {/* manages creation of title and description for new quiz */}
           <QuizStart />
         </section>
         <section className="all-quizzes-right">
+          {/* this component shows your quizzes */}
           <QuizSection
             headingText="Your Quizzes"
             quizzes={this.props.yourQuizzes}
@@ -19,6 +21,7 @@ export class AllQuizzes extends Component {
             wrap={false}
             mainColor="secondary"
           />
+          {/* this component shows popular quizzes made by others */}
           <QuizSection
             headingText="Popular Quizzes"
             quizzes={this.props.popularQuizzes}
