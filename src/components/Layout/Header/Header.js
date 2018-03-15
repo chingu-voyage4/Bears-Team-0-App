@@ -21,5 +21,5 @@ export default connect(
     loggedIn: state.login.isLoggedIn,
     userImage: state.login.userImage
   }),
-  () => ({})
+  {}
 )(Header);
