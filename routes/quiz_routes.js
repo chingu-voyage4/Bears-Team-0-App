@@ -19,7 +19,7 @@ quizRouter.get("/popular", quizController.findPopularQuizzes);
 /*
 GET all user's quizzes
 */
-quizRouter.post("/userQuizzes", quizController.findUserQuizzes);
+quizRouter.get("/", quizController.findUserQuizzes);
 
 /*
 QUIZ CRUD Routes

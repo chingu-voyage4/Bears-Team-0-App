@@ -42,7 +42,7 @@ module.exports.findPopularQuizzes = function(req, res, next) {
 Reading user's quizzes
 */
 module.exports.findUserQuizzes = function(req, res, next) {
-    quizModel.readUserQuizzes(req.body.user.id)
+    quizModel.readUserQuizzes(req.user.id)
     .then(found => {
         log('Sending user\'s quizzes');
         res.json({quizzes: found});

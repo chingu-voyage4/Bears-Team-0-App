@@ -4,7 +4,7 @@
   "description": "Voyage-4",
   "scripts": {
     "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start",
-    "test": "jest --watch",
+    "test": "jest",
     "start": "node ./bin/www"
   },
   "repository": {

@@ -20,12 +20,13 @@ describe("Quiz Routes", () => {
         });
 
         it("gets a user's quizzes by user id", async () => {
-            const response = await request(api).post("/api/quizzes/userQuizzes")
-                .send({
-                    "user": {
-                        "id": TEST_USER_ID
-                    }
-                });
+            const response = await request(api).get("/api/quizzes/");
+                // .set({
+                //     "user": {
+                //         "id": TEST_USER_ID
+                //     }
+                // });
+
             expect(response.statusCode).toBe(200);
             expect(response.body.quizzes).toBeInstanceOf(Array);
         });

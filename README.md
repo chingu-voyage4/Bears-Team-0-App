@@ -23,16 +23,9 @@
 - Returns: {Quiz[]} - An array of quizzes
 
 #### Get user's quizzes:
-- Request type: POST
-- Path: /api/quizzes/userQuizzes
-- Params: {Object} - Ex:
-    ```
-    {
-      "user": {
-        "id": "testUserId"
-      }
-    }
-    ```
+- Request type: GET
+- Path: /api/quizzes/
+- Params: {Object} - key: request.user.id
 - Returns: {Quiz[]} - An array of the user's quizzes.
 
 #### Create new quiz:
