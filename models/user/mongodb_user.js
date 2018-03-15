@@ -20,19 +20,6 @@ const mongo = new mongoConnection(MONGO_URL, DATABASE_NAME, COLLECTION_NAME)
 
 mongo.connect()
 
-mongo.on('connected', () => {
-    log('Mongo ' + mongo.db_name + ' connected')
-})
-
-mongo.on('error', () => {
-    error('Error with mongo ', err);
-    mongo.connect()
-})
-
-mongo.on('disconnected', () => {
-    log('Mongo ' + mongo.db_name + ' disconnected')
-})
-
 /**
  * Find a user
  * @param {String} key: user._id

@@ -12,6 +12,15 @@ class MongoConnection extends EventEmitter {
     this.url = url
     this.db_name = db_name
     this.collection_name = collection_name
+    this.on('connected', () => {
+      log('Mongo ' + this.db_name + ' connected')
+    })
+    this.on('error', () => {
+      this.connect()
+    })
+    this.on('disconnected', () => {
+      log('Mongo ' + this.db_name + ' disconnected')
+    })
   }
 
   async connect () {
