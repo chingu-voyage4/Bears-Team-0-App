@@ -6,20 +6,20 @@ let testQuizId = "";
 
 describe("Quiz Routes", () => {
 
-        it("gets all quizzes", async () => {
+        it("gets all quizzes through route", async () => {
             const response = await request(api).get('/api/quizzes/all');
             expect(response.statusCode).toBe(200);
             expect(response.body.quizzes).toBeInstanceOf(Array);
         });
 
-        it("gets count of quizzes", async () => {
+        it("gets count of quizzes through route", async () => {
             const response = await request(api).get("/api/quizzes/count");
             expect(response.statusCode).toBe(200);
             expect(response.body.count).toBeGreaterThanOrEqual(0);
             console.log(response.body.count);
         });
 
-        it("gets a user's quizzes by user id", async () => {
+        it("gets a user's quizzes by user id through route", async () => {
             const response = await request(api).get("/api/quizzes/");
                 // .set({
                 //     "user": {
@@ -32,7 +32,7 @@ describe("Quiz Routes", () => {
         });
 
         //create
-        it("create a new quiz", async () => {
+        it("create a new quiz and id through route", async () => {
             const response = await request(api).post("/api/quizzes/")
                 .send({
                     "quiz": {
@@ -56,7 +56,7 @@ describe("Quiz Routes", () => {
         });
 
         //update quiz info
-        it("update a quiz by id", async () => {
+        it("update a quiz by id through route", async () => {
             const response = await request(api).put("/api/quizzes/" + testQuizId)
                 .send({
                     "update": {
@@ -74,7 +74,7 @@ describe("Quiz Routes", () => {
         });
         
         //update favorites
-        it("add to favorites", async () => {
+        it("add to favorites by id through route", async () => {
             const response = await request(api).patch("/api/quizzes/" + testQuizId)
                 .send({
                     "update": {
@@ -90,7 +90,7 @@ describe("Quiz Routes", () => {
         });
 
         //read
-        it("reads quiz by id", async () => {
+        it("reads quiz by id through route", async () => {
             const response = await request(api).get("/api/quizzes/" + testQuizId);
 
             const quizRead = response.body.quiz;
@@ -100,7 +100,7 @@ describe("Quiz Routes", () => {
         });
 
         //delete
-        it("deletes a quiz by id", async () => {
+        it("deletes a quiz by id through route", async () => {
             const response = await request(api).delete("/api/quizzes/" + testQuizId);
 
             expect(response.statusCode).toBe(200);
