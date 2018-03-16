@@ -41,7 +41,7 @@ exports.read = function read(key) {
             .then(doc => {
                 if (!doc) return undefined
                 log(`User found ${util.inspect(doc)}`)
-                return userSerializer(doc)
+                return serializeUser(doc)
             })
     })
 }
@@ -66,7 +66,7 @@ exports.create = function create(user) {
         log("Create new user: " + util.inspect(newUser))
         return collection.insertOne(newUser).then(created => {
             log("Created user: " + util.inspect(created))
-            return userSerializer(created)
+            return serializeUser(created)
         })
 
     })
@@ -83,7 +83,7 @@ exports.readAll = function readAll() {
             return collection.find().toArray((err, docs) => {
                 if (err) return reject(err)
                 const returnUsers = docs.map(user => {
-                    return userSerializer(user)
+                    return serializeUser(user)
                 })
                 return resolve(returnUsers)
             })
@@ -101,7 +101,7 @@ exports.update = function update(key, updateObj) {
         let collection = _db.collection(COLLECTION_NAME)
         return collection.findOneAndUpdate({ id: key }, { $set: updateObj }, { returnOriginal: false }).then(result => { 
             log('User updated: ' + util.inspect(result))
-            return userSerializer(result.value)
+            return serializeUser(result.value)
          })
     });
 }
@@ -139,14 +139,14 @@ exports.findOrCreate = function findOrCreate(profile) {
     return exports.read(profile.id).then(user => {
         if (user) {
             log("findOrCreate found user: " + util.inspect(user))
-            return userSerializer(user);
+            return serializeUser(user);
         }
         log('findOrCreate user: ' + util.inspect(user))
         return exports.create(profile)
     })
 }
 
-function userSerializer (user) {
+function serializeUser (user) {
     log('serializing ' + util.inspect(user))
     return new User({
         id: user.id,
