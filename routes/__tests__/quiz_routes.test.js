@@ -1,9 +1,9 @@
 const request = require("supertest");
 const api = require("../../server");
 
+
 const TEST_USER_ID = "testUserId";
 let testQuizId = "";
-
 describe("Quiz Routes", () => {
 
         it("gets all quizzes through route", async () => {
@@ -20,15 +20,15 @@ describe("Quiz Routes", () => {
         });
 
         it("gets a user's quizzes by user id through route", async () => {
+            //add user id to request object
+            api.request.user = {"id": TEST_USER_ID};
+            
             const response = await request(api).get("/api/quizzes/");
-                // .set({
-                //     "user": {
-                //         "id": TEST_USER_ID
-                //     }
-                // });
 
             expect(response.statusCode).toBe(200);
             expect(response.body.quizzes).toBeInstanceOf(Array);
+
+            delete api.request.user;
         });
 
         //create
