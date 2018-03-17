@@ -32,3 +32,7 @@ export const trueFalseTypes = {
   TOGGLE: "TOGGLE",
   DELETE_QUESTION: "DELETE_QUESTION"
 };
+
+export const dropdownTypes = {
+  ADD_DROPDOWN: "ADD_DROPDOWN"
+};
