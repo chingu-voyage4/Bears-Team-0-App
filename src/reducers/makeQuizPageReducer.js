@@ -1,7 +1,8 @@
 import {
   makeQuizTypes,
   multipleChoiceTypes,
-  trueFalseTypes
+  trueFalseTypes,
+  dropdownTypes
 } from "../actions/types";
 import shortid from "shortid";
 
@@ -13,6 +14,7 @@ const {
   TOGGLE_CORRECT,
   DELETE_OPTION
 } = multipleChoiceTypes;
+const { ADD_DROPDOWN } = dropdownTypes;
 const { TOGGLE, DELETE_QUESTION } = trueFalseTypes;
 const initialState = {
   title: "",
@@ -63,6 +65,20 @@ export default (state = initialState, action) => {
             question: "",
             format: "true false",
             isTrue: true
+          }
+        ]
+      };
+    case ADD_DROPDOWN:
+      return {
+        ...state,
+        questions: [
+          ...state.questions,
+          {
+            id: shortid.generate(),
+            question: "",
+            format: "dropdown",
+            options: [],
+            answer: ""
           }
         ]
       };
