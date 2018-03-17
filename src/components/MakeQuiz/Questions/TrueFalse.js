@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 class TrueFalse extends Component {
   render() {
-    const { question, id, isTrue } = this.props.questionData,
-      { changeQuestion, toggleTrueFalse, deleteQuestion } = this.props;
+    const { id, isTrue } = this.props.questionData,
+      { changeQuestion, toggleTrueFalse } = this.props;
     return (
       <form>
         <input type="text" onChange={event => changeQuestion(event, id)} />
