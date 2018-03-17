@@ -2,6 +2,8 @@ const express       = require("express");
 const compression   = require("compression");
 const bodyParser    = require("body-parser");
 const morgan        = require("morgan");
+const helmet        = require("helmet")
+const cors          = require("cors");
 const config        = require("./config");
 
 const log           = require('debug')('api:server');
@@ -14,7 +16,9 @@ const apiServer = express();
 /*
 Global Middleware
 */
+apiServer.use(cors());
 apiServer.use(compression());
+apiServer.use(helmet());
 apiServer.use(morgan('dev'));
 apiServer.use(bodyParser.urlencoded({extended : true}));
 apiServer.use(bodyParser.json());
