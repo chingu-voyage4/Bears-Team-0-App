@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { DragSource } from "react-dnd";
 import { connect } from "react-redux";
-import { addMultipleChoice, addTrueFalse } from "../../actions/makequiz";
+import {
+  addMultipleChoice,
+  addTrueFalse,
+  addDropdown
+} from "../../actions/makequiz";
 import types from "./types";
 
 const style = {
@@ -32,6 +36,9 @@ const boxSource = {
         case "TrueFalse":
           props.addTrueFalse();
           break;
+        case "Dropdown":
+          props.addDropdown();
+          break;
         default:
           return;
       }
@@ -59,5 +66,6 @@ export class DecoratedBox extends Component {
 }
 export default connect(state => ({}), {
   addMultipleChoice: addMultipleChoice,
-  addTrueFalse: addTrueFalse
+  addTrueFalse: addTrueFalse,
+  addDropdown: addDropdown
 })(DragSource(types.BOX, boxSource, collect)(DecoratedBox));
