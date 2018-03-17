@@ -1,52 +1,13 @@
 import React, { Component } from "react";
 import Delete from "./Delete";
 import Option from "./Option";
-import {
-  addOption,
-  changeOption,
-  toggleCorrectOption,
-  changeQuestion,
-  deleteOption
-} from "../../../actions/multipleChoice";
+import OptionQuestion from "./OptionQuestion";
 import { connect } from "react-redux";
 
 class MultipleChoice extends Component {
   render() {
-    const {
-        questionData,
-        addOption,
-        changeOption,
-        toggleCorrectOption,
-        changeQuestion,
-        deleteOption
-      } = this.props,
-      { options, id } = questionData;
-
-    return (
-      <div className="multipleChoice">
-        <input placeholder="Question" onChange={changeQuestion} />
-        <button onClick={() => addOption(id)}>Add Option</button>
-        {options.map(option => (
-          <Option
-            key={option.id}
-            change={e => changeOption(id, option.id, e)}
-            toggleCorrectOption={() => toggleCorrectOption(id, option.id)}
-            deleteOption={() => deleteOption(id, option.id)}
-            questionId={id}
-            id={option.id}
-            val={option.val}
-          />
-        ))}
-        <Delete questionId={id} />
-      </div>
-    );
+    return <OptionQuestion questionData={this.props.questionData} />;
   }
 }
 
-export default connect(state => ({}), {
-  addOption,
-  changeOption,
-  toggleCorrectOption,
-  changeQuestion,
-  deleteOption
-})(MultipleChoice);
+export default MultipleChoice;
