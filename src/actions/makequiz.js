@@ -1,5 +1,6 @@
-import { makeQuizTypes } from "./types";
-const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes;
+import { makeQuizTypes, dropdownTypes } from "./types";
+const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes,
+  { ADD_DROPDOWN } = dropdownTypes;
 
 // action to add multiple choice question
 export const addMultipleChoice = () => {
@@ -12,5 +13,11 @@ export const addMultipleChoice = () => {
 export const addTrueFalse = () => {
   return {
     type: ADD_TRUE_FALSE
+  };
+};
+
+export const addDropdown = () => {
+  return {
+    type: ADD_DROPDOWN
   };
 };
