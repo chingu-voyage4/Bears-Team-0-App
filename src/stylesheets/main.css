@@ -637,6 +637,9 @@ ul {
   width: "50%";
   flex-basis: "auto"; }
 
+.multipleChoice {
+  background: red; }
+
 .contact-page {
   height: 100%;
   width: 100%;

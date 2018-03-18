@@ -4,56 +4,70 @@ exports[`QuizSection renders with appropriate props 1`] = `
 <div
   className="quiz-section"
 >
-  <h1 />
-  <div
-    className="quiz"
+  <h1
+    className="quiz-section-heading undefined"
+  />
+  <section
+    className="quiz-section-body"
   >
-    <h1>
-      a title
-    </h1>
-    <p>
-      a body
-    </p>
-    <p>
-      <span>
-        <i
-          className="fa fa-heart"
-        />
-         
-      </span>
-       
-      <a
-        href="#"
+    <div
+      className="quiz"
+    >
+      <h2>
+        a title
+      </h2>
+      <section
+        className="quiz-body"
       >
-        Share
-      </a>
-       
-    </p>
-  </div>
-  <div
-    className="quiz"
-  >
-    <h1>
-      another title
-    </h1>
-    <p>
-      another body
-    </p>
-    <p>
-      <span>
-        <i
-          className="fa fa-heart"
-        />
-         
-      </span>
-       
-      <a
-        href="#"
+        <p>
+          a body
+        </p>
+      </section>
+      <section
+        className="quiz-footer undefined"
       >
-        Share
-      </a>
-       
-    </p>
-  </div>
+        <span>
+          <i
+            className="fa fa-heart"
+          />
+           
+        </span>
+         
+        <a>
+          Share
+        </a>
+         
+      </section>
+    </div>
+    <div
+      className="quiz"
+    >
+      <h2>
+        another title
+      </h2>
+      <section
+        className="quiz-body"
+      >
+        <p>
+          another body
+        </p>
+      </section>
+      <section
+        className="quiz-footer undefined"
+      >
+        <span>
+          <i
+            className="fa fa-heart"
+          />
+           
+        </span>
+         
+        <a>
+          Share
+        </a>
+         
+      </section>
+    </div>
+  </section>
 </div>
 `;
