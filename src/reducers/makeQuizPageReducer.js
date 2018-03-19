@@ -19,8 +19,6 @@ const { ADD_DROPDOWN } = dropdownTypes;
 const { TOGGLE, DELETE_QUESTION } = trueFalseTypes;
 
 const persistedState = loadState();
-console.log(persistedState);
-
 const initialState = persistedState || {
   title: "",
   description: "",
