@@ -9,9 +9,9 @@ const error = require('debug')('api:error');
 
 let db;
 
-const MONGO_URL         = config.MONGO_QUIZES_URL;
-const DATABASE_NAME     = config.MONGO_QUIZES_DBNAME;
-const COLLECTION_NAME   = 'quizes';
+const MONGO_URL         = config.MONGO_QUIZZES_URL;
+const DATABASE_NAME     = config.MONGO_QUIZZES_DBNAME;
+const COLLECTION_NAME   = 'quizzes';
 
 /*
 DB Connection Handler
@@ -123,10 +123,10 @@ exports.readPopular = function readPopular() {
  * @param {Object} 
  * @returns {Quiz} - The saved quiz.
  */
-exports.create = function create(userId, quiz) {
+exports.create = function create(user, quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let newQuiz = new Quiz(quiz.title, userId, quiz.questions, quiz.description);
+        let newQuiz = new Quiz(quiz.title, user.id, quiz.questions, quiz.description);
         return collection.insertOne(newQuiz)
             .then(created => {
             log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));

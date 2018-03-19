@@ -75,7 +75,7 @@ module.exports.getQuizCount = function(req, res, next) {
 Creating a quiz
 */
 module.exports.createQuiz = function(req, res, next) {
-    quizModel.create(req.body.user.id, req.body.quiz)
+    quizModel.create(req.body.user, req.body.quiz)
     .then((quiz) => {
         // log('Sending new quiz: + util.inspect(quiz)');
         res.json({ quiz: quiz });
@@ -90,7 +90,6 @@ module.exports.deleteQuiz = function(req, res, next) {
         .then((deleted) => {
             res.json({quiz: deleted});
         }).catch(err => next(err));
-
 }
 
 /*
