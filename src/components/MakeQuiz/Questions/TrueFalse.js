@@ -6,11 +6,15 @@ import { connect } from "react-redux";
 
 class TrueFalse extends Component {
   render() {
-    const { id, isTrue } = this.props.questionData,
+    const { id, isTrue, question } = this.props.questionData,
       { changeQuestion, toggleTrueFalse } = this.props;
     return (
       <form>
-        <input type="text" onChange={event => changeQuestion(event, id)} />
+        <input
+          type="text"
+          value={question}
+          onChange={event => changeQuestion(event, id)}
+        />
         <Delete questionId={id} />
         <label htmlFor={id + "true"}>True</label>
         <input
