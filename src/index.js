@@ -10,7 +10,6 @@ import registerServiceWorker from "./registerServiceWorker";
 
 import { saveState } from "./store/localStorage";
 store.subscribe(() => {
-  console.log("state is: ", store.getState().makeQuizzes);
   saveState({
     makeQuizzes: store.getState().makeQuizzes
   });
