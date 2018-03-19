@@ -8,6 +8,14 @@ import "../node_modules/font-awesome/css/font-awesome.min.css";
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
+import { saveState } from "./store/localStorage";
+store.subscribe(() => {
+  console.log("state is: ", store.getState().makeQuizzes);
+  saveState({
+    makeQuizzes: store.getState().makeQuizzes
+  });
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
