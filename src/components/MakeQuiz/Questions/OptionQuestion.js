@@ -20,11 +20,15 @@ class OptionQuestion extends Component {
         changeQuestion,
         deleteOption
       } = this.props,
-      { options, id } = questionData;
+      { options, id, question } = questionData;
 
     return (
       <div className="optionQuestion">
-        <input placeholder="Question" onChange={changeQuestion} />
+        <input
+          placeholder="Question"
+          value={question}
+          onChange={e => changeQuestion(e, id)}
+        />
         <button onClick={() => addOption(id)}>Add Option</button>
         {options.map(option => (
           <Option
