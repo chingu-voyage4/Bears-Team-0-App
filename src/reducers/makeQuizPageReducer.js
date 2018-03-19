@@ -4,6 +4,7 @@ import {
   trueFalseTypes,
   dropdownTypes
 } from "../actions/types";
+import { loadState } from "../store/localStorage";
 import shortid from "shortid";
 
 const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes;
@@ -16,7 +17,11 @@ const {
 } = multipleChoiceTypes;
 const { ADD_DROPDOWN } = dropdownTypes;
 const { TOGGLE, DELETE_QUESTION } = trueFalseTypes;
-const initialState = {
+
+const persistedState = loadState();
+console.log(persistedState);
+
+const initialState = persistedState || {
   title: "",
   description: "",
   questions: []
