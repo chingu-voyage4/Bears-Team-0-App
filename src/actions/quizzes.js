@@ -10,25 +10,37 @@ const {
   SUBMIT_QUIZ_START
 } = quizTypes;
 
+// action to request all quizzes
 export const requestAllQuizzes = () => ({
   type: REQUEST_ALL_QUIZZES
 });
 
+// action to receive all quizzes
 export const receiveAllQuizzes = quizzes => ({
   type: RECEIVE_ALL_QUIZZES,
   payload: quizzes
 });
 
+// action to request a user's quizzes
 export const requestYourQuizzes = userId => ({
   type: REQUEST_YOUR_QUIZZES,
   userId
 });
 
+// action to receive a user's quizzes
 export const receiveYourQuizzes = quizzes => ({
   type: RECEIVE_YOUR_QUIZZES,
   payload: quizzes
 });
 
+// This is an asynchronous action creator which returns a "thunk".
+// According to the "redux-thunk" docs:
+// "A thunk is a function that wraps an expression to delay its evaluation."
+// In this case, the return value of fetchAllQuizzes is a function
+// which itself takes a function called "dispatch" as a parameter.
+// The "redux-thunk" library will call this thunk, passing in
+// it's own dispatch function (allowing the dispatch of actions
+// to our reducers).
 export const fetchAllQuizzes = () => {
   return function(dispatch) {
     dispatch(requestAllQuizzes());
@@ -43,6 +55,7 @@ export const fetchAllQuizzes = () => {
   };
 };
 
+// see the above comment for fetchAllQuizzes
 export const fetchYourQuizzes = () => {
   return function(dispatch) {
     dispatch(requestYourQuizzes());
@@ -57,6 +70,7 @@ export const fetchYourQuizzes = () => {
   };
 };
 
+// action to change the title of a quiz
 export const changeTitle = e => {
   return {
     type: CHANGE_TITLE,
@@ -64,6 +78,7 @@ export const changeTitle = e => {
   };
 };
 
+// action to change the description of a quiz
 export const changeDescription = e => {
   return {
     type: CHANGE_DESCRIPTION,
@@ -71,6 +86,7 @@ export const changeDescription = e => {
   };
 };
 
+// action to flip over the UI to the quiz making page
 export const submitQuizStart = () => {
   return {
     type: SUBMIT_QUIZ_START

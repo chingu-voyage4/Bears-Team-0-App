@@ -1,5 +1,6 @@
 import React from "react";
 
+// representation of quiz for allquizzes page
 const Quiz = ({ title, mainColor, body, likes }) => {
   return (
     <div className="quiz">

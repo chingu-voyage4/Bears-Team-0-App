@@ -18,56 +18,111 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Connect(QuizStart) />,
-        <QuizSection
-          getData={undefined}
-          headingText="Your Quizzes"
-          quizzes={undefined}
-/>,
-        <QuizSection
-          getData={undefined}
-          headingText="Popular Quizzes"
-          quizzes={undefined}
-/>,
+        <section
+          className="all-quizzes-left"
+>
+          <Connect(QuizStart) />
+</section>,
+        <section
+          className="all-quizzes-right"
+>
+          <QuizSection
+                    getData={undefined}
+                    headingText="Your Quizzes"
+                    mainColor="secondary"
+                    quizzes={undefined}
+                    wrap={false}
+          />
+          <QuizSection
+                    getData={undefined}
+                    headingText="Popular Quizzes"
+                    mainColor="tertiary"
+                    quizzes={undefined}
+                    wrap={true}
+          />
+</section>,
       ],
-      "className": "AllQuizzes",
+      "className": "all-quizzes",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "host",
+        "props": Object {
+          "children": <Connect(QuizStart) />,
+          "className": "all-quizzes-left",
+        },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "section",
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "host",
         "props": Object {
-          "getData": undefined,
-          "headingText": "Your Quizzes",
-          "quizzes": undefined,
+          "children": Array [
+            <QuizSection
+              getData={undefined}
+              headingText="Your Quizzes"
+              mainColor="secondary"
+              quizzes={undefined}
+              wrap={false}
+/>,
+            <QuizSection
+              getData={undefined}
+              headingText="Popular Quizzes"
+              mainColor="tertiary"
+              quizzes={undefined}
+              wrap={true}
+/>,
+          ],
+          "className": "all-quizzes-right",
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "getData": undefined,
-          "headingText": "Popular Quizzes",
-          "quizzes": undefined,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "getData": undefined,
+              "headingText": "Your Quizzes",
+              "mainColor": "secondary",
+              "quizzes": undefined,
+              "wrap": false,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "getData": undefined,
+              "headingText": "Popular Quizzes",
+              "mainColor": "tertiary",
+              "quizzes": undefined,
+              "wrap": true,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "section",
       },
     ],
     "type": "div",
@@ -79,56 +134,111 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Connect(QuizStart) />,
-          <QuizSection
-            getData={undefined}
-            headingText="Your Quizzes"
-            quizzes={undefined}
-/>,
-          <QuizSection
-            getData={undefined}
-            headingText="Popular Quizzes"
-            quizzes={undefined}
-/>,
+          <section
+            className="all-quizzes-left"
+>
+            <Connect(QuizStart) />
+</section>,
+          <section
+            className="all-quizzes-right"
+>
+            <QuizSection
+                        getData={undefined}
+                        headingText="Your Quizzes"
+                        mainColor="secondary"
+                        quizzes={undefined}
+                        wrap={false}
+            />
+            <QuizSection
+                        getData={undefined}
+                        headingText="Popular Quizzes"
+                        mainColor="tertiary"
+                        quizzes={undefined}
+                        wrap={true}
+            />
+</section>,
         ],
-        "className": "AllQuizzes",
+        "className": "all-quizzes",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "host",
+          "props": Object {
+            "children": <Connect(QuizStart) />,
+            "className": "all-quizzes-left",
+          },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "section",
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "host",
           "props": Object {
-            "getData": undefined,
-            "headingText": "Your Quizzes",
-            "quizzes": undefined,
+            "children": Array [
+              <QuizSection
+                getData={undefined}
+                headingText="Your Quizzes"
+                mainColor="secondary"
+                quizzes={undefined}
+                wrap={false}
+/>,
+              <QuizSection
+                getData={undefined}
+                headingText="Popular Quizzes"
+                mainColor="tertiary"
+                quizzes={undefined}
+                wrap={true}
+/>,
+            ],
+            "className": "all-quizzes-right",
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "getData": undefined,
-            "headingText": "Popular Quizzes",
-            "quizzes": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "getData": undefined,
+                "headingText": "Your Quizzes",
+                "mainColor": "secondary",
+                "quizzes": undefined,
+                "wrap": false,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "getData": undefined,
+                "headingText": "Popular Quizzes",
+                "mainColor": "tertiary",
+                "quizzes": undefined,
+                "wrap": true,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "section",
         },
       ],
       "type": "div",
