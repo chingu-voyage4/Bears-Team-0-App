@@ -25,7 +25,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/stylesheets -o src/stylesheets --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "test-watch": "npm test -- --watch",
     "eject": "react-scripts eject"
   },
