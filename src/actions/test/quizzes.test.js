@@ -1,7 +1,8 @@
 import {
   requestAllQuizzes,
   receiveAllQuizzes,
-  requestYourQuizzes
+  requestYourQuizzes,
+  fetchAllQuizzes
 } from "../quizzes";
 
 describe("quiz actions", () => {
@@ -27,5 +28,9 @@ describe("quiz actions", () => {
       type: "REQUEST_YOUR_QUIZZES",
       userId: 1
     });
+  });
+
+  it("should fetch all quizzes, returning an array of 6 objects", () => {
+    expect.assertions(2);
   });
 });
