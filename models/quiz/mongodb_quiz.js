@@ -109,10 +109,10 @@ exports.readPopular = function readPopular() {
         return new Promise((resolve, reject) => {
             return collection.find().sort({"favorites": -1}).limit(6).toArray((err, docs) => {
                 if (err) return reject(err);
-                const returnQuizzes = docs.map(quiz => {
-                    return new Quiz(quiz.title, quiz.questions, quiz.description, quiz.favorites);
-                });
-                return resolve(returnQuizzes);
+                // const returnQuizzes = docs.map(quiz => {
+                //     return new Quiz(quiz.title, quiz.author, quiz.questions, quiz.description, quiz.favorites, quiz.id);
+                // });
+                return resolve(docs);
             });
         });
     })
