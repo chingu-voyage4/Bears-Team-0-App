@@ -3,25 +3,21 @@ const api = require("../../server");
 
 describe("User Routes", () => {
 
-  describe("/GET users", async () => {
-    
-    test("GET all users", async() => {
-      const response = await request(api).get('/api/users/count');
-      expect(response.statusCode).toBe(200);
-    });
-
+  it("gets all users through route", async () => {
+    const response = await request(api).get('/api/users/');
+    console.warn(response.body);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.users).toBeInstanceOf(Array);
   });
 
 });
 
-// let data;
+    
+// describe("/GET users", async () => {
+    
+//   test("GET all users", async() => {
+//     const response = await request(api).get('/api/users/count');
+//     expect(response.statusCode).toBe(200);
+//   });
 
-    // beforeAll(async () => {
-    //   data = await request(api).get("/api/users/").expect(200);
-    // });
-    
-    // test("Should return an array", (data) => {
-    //   console.log(data);
-    //   expect(data).toBeInstanceOf(Array);
-    // });
-    
+// });
