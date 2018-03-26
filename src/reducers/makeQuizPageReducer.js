@@ -184,7 +184,6 @@ export default (state = initialState, action) => {
           ...state.questions.filter(question => question.id !== action.question)
         ]
       };
-
     default:
       return state;
   }
