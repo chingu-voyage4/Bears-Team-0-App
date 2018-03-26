@@ -36,8 +36,8 @@ exports.connectDb = function connectDb () {
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        // let objectID = new mongodb.ObjectId(key)
-        return collection.findOne({googleId: key})
+        let objectID = new mongodb.ObjectId(key)
+        return collection.findOne({_id: objectID})
             .then(doc => {
                 if (!doc) return undefined
                 log(`User found ${util.inspect(doc)}`)
@@ -53,7 +53,6 @@ exports.read = function read(key) {
 exports.create = function create(user) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        console.warn(user.googleId)
         let newUser = new User({
             googleId: user.googleId,
             displayName: user.displayName,
@@ -100,7 +99,7 @@ exports.readAll = function readAll() {
 exports.update = function update(key, updateObj) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        return collection.findOneAndUpdate({ id: key }, { $set: updateObj }, { returnOriginal: false }).then(result => { 
+        return collection.findOneAndUpdate({ _id: key }, { $set: updateObj }, { returnOriginal: false }).then(result => { 
             log('User updated: ' + util.inspect(result))
             return serializeUser(result.value)
          })
@@ -115,7 +114,7 @@ exports.update = function update(key, updateObj) {
 exports.destroy = function destroy(key) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
-        return collection.findOneAndDelete({ id: key }).then(deletedDoc => {
+        return collection.findOneAndDelete({ _id: key }).then(deletedDoc => {
             log('Mongo deleted user: ' + util.inspect(deletedDoc.value))
             return deletedDoc.value
         })
@@ -137,7 +136,18 @@ exports.count = function count() {
 }
 
 exports.findOrCreate = function findOrCreate(profile) {
-    return exports.read(profile.googleId).then(user => {
+
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        // let objectID = new mongodb.ObjectId(key)
+        return collection.findOne({googleId: profile.googleId})
+            .then(doc => {
+                if (!doc) return undefined
+                log(`User found ${util.inspect(doc)}`)
+                return serializeUser(doc)
+            })
+    })
+    .then(user => {
         if (user) {
             log("findOrCreate found user: " + util.inspect(user))
             return serializeUser(user);
