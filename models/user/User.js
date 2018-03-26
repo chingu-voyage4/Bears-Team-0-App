@@ -4,7 +4,7 @@ const error = require('debug')('api:error')
 
 module.exports = class User {
   constructor(profile) {
-    this.id = profile.id
+    this.googleId = profile.googleId
     this.displayName = profile.displayName
     this.familyName = profile.familyName,
     this.givenName = profile.givenName,

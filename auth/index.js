@@ -57,7 +57,7 @@ passport.use(new GoogleStrategy({
 },
 function(accessToken, refreshToken, profile, cb) {
     const user = {
-      id: profile.id,
+      googleId: profile.id,
       displayName: profile.displayName,
       familyName: profile.name.familyName,
       givenName: profile.name.givenName,

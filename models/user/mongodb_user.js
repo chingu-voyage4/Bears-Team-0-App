@@ -37,7 +37,7 @@ exports.read = function read(key) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
         // let objectID = new mongodb.ObjectId(key)
-        return collection.findOne({id: key})
+        return collection.findOne({googleId: key})
             .then(doc => {
                 if (!doc) return undefined
                 log(`User found ${util.inspect(doc)}`)
@@ -53,8 +53,9 @@ exports.read = function read(key) {
 exports.create = function create(user) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
+        console.warn(user.googleId)
         let newUser = new User({
-            id: user.id,
+            googleId: user.googleId,
             displayName: user.displayName,
             familyName: user.familyName,
             givenName: user.givenName,
@@ -136,7 +137,7 @@ exports.count = function count() {
 }
 
 exports.findOrCreate = function findOrCreate(profile) {
-    return exports.read(profile.id).then(user => {
+    return exports.read(profile.googleId).then(user => {
         if (user) {
             log("findOrCreate found user: " + util.inspect(user))
             return serializeUser(user);
@@ -149,7 +150,7 @@ exports.findOrCreate = function findOrCreate(profile) {
 function serializeUser (user) {
     log('serializing ' + util.inspect(user))
     return new User({
-        id: user.id,
+        googleId: user.googleId,
         displayName: user.displayName,
         familyName: user.familyName,
         givenName: user.givenName,
