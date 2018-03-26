@@ -1,7 +1,7 @@
 export default () =>
   new Promise((resolve, reject) => {
     resolve({
-      json: {
+      json: () => ({
         id: "test",
         questionData: [
           // true false question
@@ -25,6 +25,6 @@ export default () =>
             answerIndex: 0
           }
         ]
-      }
+      })
     });
   });

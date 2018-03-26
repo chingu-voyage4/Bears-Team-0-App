@@ -36,3 +36,8 @@ export const trueFalseTypes = {
 export const dropdownTypes = {
   ADD_DROPDOWN: "ADD_DROPDOWN"
 };
+
+export const takeQuizTypes = {
+  RECEIVE_QUIZ: "RECEIVE_QUIZ",
+  REQUEST_QUIZ: "REQUEST_QUIZ"
+};
