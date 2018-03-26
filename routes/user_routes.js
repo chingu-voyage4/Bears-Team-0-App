@@ -11,6 +11,10 @@ userRouter.get('/count', userController.getUserCount);
 GET all users
 */
 userRouter.get('/', userController.findAllUsers);
+/*
+GET current user
+*/
+userRouter.get('/currentUser', userController.readCurrentUser);
 
 /*
 USER CRUD Routes

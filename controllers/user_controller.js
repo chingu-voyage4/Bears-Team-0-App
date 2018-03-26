@@ -23,6 +23,13 @@ module.exports.getUserCount = function(req, res, next) {
         res.json({ count: count });
     }).catch(err => next(err));
 }
+/*
+Get current user
+*/
+module.exports.readCurrentUser = function(req, res, next) {
+    console.warn(req.user);
+    res.json({ user: req });
+}
 
 /*
 Creating a user

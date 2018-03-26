@@ -71,7 +71,8 @@ function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate(user).then((user) => {
       log("Google Strategy " + util.inspect(user));
       return cb(null, user);
-    }).catch(err => {
+    }) 
+      .catch(err => {
       error("Error in Google Strategy");
       return cb(err, null);
     });
