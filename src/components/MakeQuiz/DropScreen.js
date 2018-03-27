@@ -47,7 +47,14 @@ class DropScreen extends Component {
             }
           })}
           {questions.length > 0 ? (
-            <button onClick={submitQuiz}>Submit</button>
+            <button
+              onClick={event => {
+                event.preventDefault();
+                submitQuiz(questions);
+              }}
+            >
+              Submit
+            </button>
           ) : null}
         </div>
       </div>
