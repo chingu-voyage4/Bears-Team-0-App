@@ -28,7 +28,7 @@ Get current user
 */
 module.exports.readCurrentUser = function(req, res, next) {
     console.warn(req.user);
-    res.json({ user: req });
+    res.send(req.user);
 }
 
 /*
