@@ -8,6 +8,8 @@ import Contact from "./Pages/Contact";
 import Dashboard from "./Dashboard/Dashboard";
 import { MakeQuiz } from "./MakeQuiz/MakeQuiz";
 import TakeQuiz from "./TakeQuiz/TakeQuiz";
+import dotenv from "dotenv";
+dotenv.config();
 
 class App extends Component {
   render() {
