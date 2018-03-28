@@ -1,3 +1,4 @@
+// TODO: sync title and description with local storage
 import { makeQuizTypes, dropdownTypes } from "./types";
 import axios from "axios";
 
@@ -25,6 +26,8 @@ export const addDropdown = () => {
 };
 
 export const submitQuiz = ({ title, description, questions }) => {
+  console.log("inside submit quiz, description is: ", description);
+  console.log("quiz title is: ", title);
   return dispatch => {
     // make call to server here
     const quiz = {
