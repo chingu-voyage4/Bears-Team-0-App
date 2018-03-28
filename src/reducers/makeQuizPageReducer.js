@@ -18,10 +18,8 @@ const {
 const { ADD_DROPDOWN } = dropdownTypes;
 const { TOGGLE, DELETE_QUESTION } = trueFalseTypes;
 
-const persistedState = loadState();
+const persistedState = loadState("makeQuizzes");
 const initialState = persistedState || {
-  title: "",
-  description: "",
   questions: []
 };
 
