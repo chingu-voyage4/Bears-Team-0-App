@@ -1,7 +1,7 @@
 import { makeQuizTypes, dropdownTypes } from "./types";
 import axios from "axios";
 
-const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE, SUBMIT_QUIZ } = makeQuizTypes,
+const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes,
   { ADD_DROPDOWN } = dropdownTypes;
 
 // action to add multiple choice question
