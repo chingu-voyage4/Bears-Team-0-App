@@ -18,11 +18,7 @@ class TakeQuiz extends Component {
   }
 
   renderSwitch(questionObj) {
-    const {
-      question: questionStr,
-      answer: answer,
-      type: questionType
-    } = questionObj;
+    const { question: questionStr, type: questionType } = questionObj;
     switch (questionType) {
       case "true false":
         return <FillTrueFalse question={questionStr} />;
@@ -30,6 +26,8 @@ class TakeQuiz extends Component {
         return <p>Multiple Choice</p>;
       case "dropdown":
         return <p>Dropdown</p>;
+      default:
+        return null;
     }
   }
 
@@ -38,7 +36,7 @@ class TakeQuiz extends Component {
     return (
       <div>
         <h1>Take Quiz</h1>
-        <code>{JSON.stringify(this.props.currentQuestion)}</code>
+        <code>{JSON.stringify(currentQuestion)}</code>
         <code>
           {JSON.stringify(
             this.props.currentQuestion ? this.props.currentQuestion.type : ""
