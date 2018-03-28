@@ -27,6 +27,9 @@ class QuizStart extends Component {
             value={description}
             onChange={this.props.changeDescription}
           />
+          {/* Pass history object via props into 
+              button's click handler.  Allows for
+              dynamic routing to makeQuiz page */}
           <button type="button" onClick={() => submit(history)}>
             Make A Quiz
           </button>
@@ -35,7 +38,9 @@ class QuizStart extends Component {
     );
   }
 }
-
+// Wrap connected QuizStart component inside
+// higher order "withRouter" component.
+// Allows dynamic routing with react router.
 export default withRouter(
   connect(
     state => ({
