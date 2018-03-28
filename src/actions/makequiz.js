@@ -1,5 +1,5 @@
 import { makeQuizTypes, dropdownTypes } from "./types";
-const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes,
+const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE, SUBMIT_QUIZ } = makeQuizTypes,
   { ADD_DROPDOWN } = dropdownTypes;
 
 // action to add multiple choice question
@@ -19,5 +19,11 @@ export const addTrueFalse = () => {
 export const addDropdown = () => {
   return {
     type: ADD_DROPDOWN
+  };
+};
+
+export const submitQuiz = quiz => {
+  return dispatch => {
+    // make call to server here
   };
 };
