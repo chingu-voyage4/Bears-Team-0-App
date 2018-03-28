@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { submitQuiz } from "../../actions/makequiz";
 import { DropTarget } from "react-dnd";
 import MultipleChoice from "./Questions/MultipleChoice";
 import TrueFalse from "./Questions/TrueFalse";
@@ -18,7 +19,7 @@ const spec = {
   };
 class DropScreen extends Component {
   render() {
-    const { questions, hovered, connectDropTarget } = this.props;
+    const { questions, hovered, connectDropTarget, submitQuiz } = this.props;
     return connectDropTarget(
       <div
         style={{
@@ -45,6 +46,16 @@ class DropScreen extends Component {
                 return null;
             }
           })}
+          {questions.length > 0 ? (
+            <button
+              onClick={event => {
+                event.preventDefault();
+                submitQuiz(questions);
+              }}
+            >
+              Submit
+            </button>
+          ) : null}
         </div>
       </div>
     );
@@ -54,5 +65,5 @@ export default connect(
   state => ({
     questions: state.makeQuizzes.questions
   }),
-  {}
+  { submitQuiz }
 )(DropTarget(types.BOX, spec, collect)(DropScreen));

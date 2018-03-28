@@ -4,6 +4,10 @@ const { RECEIVE_QUIZ } = takeQuizTypes;
 
 const initialState = {
   questions: [],
+  answers: [
+    //question id
+    //answer
+  ],
   questionCursor: 0
 };
 
