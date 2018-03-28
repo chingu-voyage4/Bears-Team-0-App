@@ -9,7 +9,6 @@ export default endpoint => {
           .slice(0, -1)
           .join("/")
       : str;
-  const id = str => str.split("/").slice(-1);
   console.log("endpoint is: ", firstPart(endpoint));
   switch (firstPart(endpoint)) {
     case "/api/yourquizzes":
