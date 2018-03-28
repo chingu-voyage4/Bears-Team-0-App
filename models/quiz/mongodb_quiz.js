@@ -29,61 +29,121 @@ exports.connectDb = function connectDb () {
     })
 }
 
+/**
+ * Find a quiz
+ * @param {String} key: quiz._id
+ * @returns {Quiz} - The found quiz.
+ */
 exports.read = function read(key) {
     return exports.connectDb().then(_db => {
-        let collection = _db.collection(COLLECTION_NAME)
-        let objectID = new mongodb.ObjectId(key)
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(key);
         return collection.findOne({_id: objectID})
             .then(doc => {
-                // const quiz = new Quiz(
-                //     doc.title
-                // )
-                log(`Quiz found ${util.inspect(doc)}`)
-                return doc
-            })
-    })
+                const quiz = new Quiz(
+                    doc.title,
+                    doc.questions,
+                    doc.description,
+                    doc.favorites
+                )
+                log(`Quiz found ${util.inspect(quiz)}`);
+                return quiz;
+            });
+    });
 }
 
+/**
+ * Get all quizzes
+ * @param {}
+ * @returns {Quiz[]} - An array of quizzes.
+ */
 exports.readAll = function readAll() {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        return collection.find().toArray()
-            .then( (result) => {
-                log(result);
-                log(result.length);
-                return result;
-            })
+        return new Promise((resolve, reject) => {
+            return collection.find().toArray((err, docs) => {
+                if (err) return reject(err);
+                const returnQuizzes = docs.map(quiz => {
+                    return new Quiz(quiz.title, quiz.questions, quiz.description, quiz.favorites);
+                });
+                return resolve(returnQuizzes);
+            });
+        });
     })
 }
 
-exports.addAnotherQuiz = function addAnotherQuiz() {
+/**
+ * Save a quiz to the db
+ * @param {Object} 
+ * @returns {Quiz} - The saved quiz.
+ */
+exports.create = function create(quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        return collection.insertOne(new Quiz("another quiz"));
+        let newQuiz = new Quiz(quiz.title, quiz.questions);
+        return collection.insertOne(newQuiz)
+            .then(created => {
+            log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
+            const createdQuiz = new Quiz(
+                created.ops[0].title,
+                created.ops[0].questions,
+                created.ops[0].description
+            );
+            log('Returning inserted: ' + util.inspect(createdQuiz));
+            return createdQuiz;
+        });
     })
 }
 
-exports.deleteQuiz = function deleteQuiz(key) {
+/**
+ * Delete a quiz
+ * @param {String} key - quiz._id
+ * @returns {Quiz} - The deleted quiz .
+ */
+exports.destroy = function destroy(key) {
     return exports.connectDb().then( _db => {
         let collection = _db.collection(COLLECTION_NAME);
         let objectID = new mongodb.ObjectId(key);
-        try {
-            return collection.deleteOne( {_id: objectID} );
-        } catch (err) {
-            log(err);
-        }
-    })
+        return collection.findOneAndDelete({ _id: objectID })
+            .then(deletedDoc => {
+                log("Mongo deleted quiz: " + util.inspect(deletedDoc.value));
+                return deletedDoc.value;
+            });
+    });
 } 
 
-exports.addQuestion = function addQuestion(key, question) {
-    return exports.connectDb().then( _db => {
+/**
+ * Update a quiz
+ * @param {String} key - quiz._id
+ * @param {Object} updateObj
+ * @returns {Quiz} - The updated quiz.
+ */
+exports.udate = function update(key, updateObj) {
+    return exports.connectDb.then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
         let objectID = new mongodb.ObjectId(key);
-        let newQuestion = { $push: { questions: question } };
-        try {
-            return collection.updateOne({_id: objectID}, newQuestion);
-        } catch (err) {
-            log(err);
-        }
+        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj })
+            .then(result => {
+                log("Quiz update: " + util.inspect(result));
+                return new Quiz(
+                    quiz.value.title,
+                    quiz.value.questions
+                )
+            });
     });
+}
+
+/**
+ * Get count of # quizzes
+ */
+exports.count = function count() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME)
+        return new Promise((resolve, reject) => {
+            collection.count({}, (err, count) => {
+                if (err) return reject(err)
+                return resolve(count)
+            })
+        })
+    })
 }

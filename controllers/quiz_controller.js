@@ -1,70 +1,71 @@
-const quizModel = require('../models/quiz/mongodb_quiz')
-const Question = require('../models/quiz/Question')
+const quizModel = require('../models/quiz/mongodb_quiz');
+const Question = require('../models/quiz/Question');
 
-const log   = require('debug')('api:controller-quiz')
-const error = require('debug')('api:error')
+const log   = require('debug')('api:controller-quiz');
+const error = require('debug')('api:error');
 
+
+/*
+Reading a quiz
+*/
 module.exports.findQuiz = function(req, res, next){
-    /*
-    This is hardcoded for initial testing
-    */
-    const user = quizModel.read("5a8db085ede1ae12a48d660e")
-
-    user.then(x => {
-        log('Sending quiz ' + x)
-        res.json({ data: x })
+    quizModel.read(req.params.id)
+    .then(found => {
+        log('Sending quiz ' + found);
+        res.json({ data: found });
     })
-    .catch(e => next(e))
+    .catch(err => next(err));
 };
 
-module.exports.readAllQuizzes = function(req, res, next) {
-    const user = quizModel.readAll();
-    user.then(x => {
-            res.json({data: x});
-        })
-        .catch(e => next(e));
+/*
+Reading all quizzes (Testing route)
+*/
+module.exports.findAllQuizzes = function(req, res, next) {
+    quizModel.readAll()
+    .then(docs => {
+        log('Sending all quizzes');
+        res.json({quizzes: docs});
+    }).catch(err => next(err));
 }
 
-module.exports.addQuiz = function(req, res, next) {
-    const addQuizPromise = quizModel.addAnotherQuiz()
-    addQuizPromise.then(() => {
-        //readAll logs all quizzes to see if successful
-        quizModel.readAll();
-        res.json({status: "success"});
-    }
-    ).catch(e => next(e));
+/*
+Get # quizzes
+*/
+module.exports.getQuizCount = function(req, res, next) {
+    quizModel.count().then(count => {
+        log("Found # quizzes: " + count);
+        res.json({ count: count });
+    }).catch(err => next(err));
 }
 
+/*
+Creating a quiz
+*/
+module.exports.createQuiz = function(req, res, next) {
+    quizModel.create(req.body.quiz)
+    .then((quiz) => {
+        // log('Sending new quiz: + util.inspect(quiz)');
+        res.json({ quiz: quiz });
+    }).catch(err => next(err));
+}
+
+/*
+Deleting a quiz
+*/
 module.exports.deleteQuiz = function(req, res, next) {
-    /*
-    This is hardcoded for initial testing. Use request param later
-    */
-    const user = quizModel.deleteQuiz("5a8eef4f4796351bcccb4d1d");
+    quizModel.destroy(req.params.id)
+        .then((deleted) => {
+            res.json({quiz: deleted});
+        }).catch(err => next(err));
 
-    user.then(() => {
-        log('Deleting quiz ');
-        quizModel.readAll();
-        res.json({status: "quiz deleted"});
-    })
-    .catch(e => next(e))
 }
 
-module.exports.addQuestion = function(req, res, next) {
-    /*
-    Quiz is hardcoded for initial testing. Use request param later
-    */
-   const question = req.body.question;
-   const format = req.body.format;
-
-   const questionToPush = new Question(question, format);
-   const user = quizModel.addQuestion("5a8db085ede1ae12a48d660e", questionToPush);
-
-   user.then(() => {
-       log('adding quiz');
-       quizModel.read("5a8db085ede1ae12a48d660e")
-            .then(x => {
-                res.json({data: x});
-            })
-            .catch(e => next(e));
-   }).catch(e => next(e))
+/*
+Updating a quiz
+*/
+module.exports.updateQuiz = function(req, res, next) {
+    quizModel.update(req.params.id, req.body.update)
+    .then(updated => {
+        res.json({ quiz: updated })
+    }).catch(err => next(err));
 }

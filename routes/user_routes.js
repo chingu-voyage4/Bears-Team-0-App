@@ -10,7 +10,7 @@ userRouter.get('/count', userController.getUserCount);
 /*
 GET all users
 */
-userRouter.get('/', auth.jwtCheck, userController.findAllUsers);
+userRouter.get('/', userController.findAllUsers);
 
 /*
 USER CRUD Routes
