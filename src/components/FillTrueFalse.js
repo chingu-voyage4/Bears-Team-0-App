@@ -22,10 +22,8 @@ class FillTrueFalse extends Component {
         margin: "0 auto",
         textAlign: "center",
         width: "100%"
-      },
-      optionStyles = {
-        display: "block"
       };
+
     return (
       <div style={styles}>
         <h1 style={h1Styles}>{question}</h1>
