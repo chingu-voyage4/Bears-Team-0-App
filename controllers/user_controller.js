@@ -27,7 +27,6 @@ module.exports.getUserCount = function(req, res, next) {
 Get current user
 */
 module.exports.readCurrentUser = function(req, res, next) {
-    console.warn(req.user);
     res.send(req.user);
 }
 
