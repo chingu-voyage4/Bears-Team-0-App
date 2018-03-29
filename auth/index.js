@@ -24,11 +24,6 @@ authRouter.get('/google/redirect',
     res.json({ user: req.user, token: token});
   });
 
-// authRouter.get("/logout", (req, res) => {
-//   req.logout();
-//   res.redirect("/");
-// });
-
 module.exports.router = authRouter
 
 module.exports.jwtCheck = function jwtCheck(req, res, next) {
@@ -47,7 +42,6 @@ module.exports.jwtCheck = function jwtCheck(req, res, next) {
 
 module.exports.initPassport = (api) => {
   api.use(passport.initialize());
-  // api.use(passport.session());
 }
 
 passport.use(new GoogleStrategy({
@@ -77,19 +71,3 @@ function(accessToken, refreshToken, profile, cb) {
     });
   })
 );
-
-// passport.serializeUser((user, done) => {
-//   log("Serializing " + user.id);
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser((id, done) => {
-//   ("Deserializing " + util.inspect(id));
-//   userModel.read(id).then(user => {
-//     log("Deserializing user: " + util.inspect(user));
-//     done(null, user);
-//   }).catch(err => {
-//     log("Error deserializing");
-//     done(err, null);
-//   });
-// });
