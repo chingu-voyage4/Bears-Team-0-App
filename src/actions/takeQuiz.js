@@ -17,7 +17,6 @@ export const fetchQuiz = quizId => {
     return mockFetch(`/api/quiz/${quizId}`)
       .then(
         res => {
-          //          console.log("fetched quiz is: ", res.json());
           return res.json();
         },
         error => console.log("an error occurred...", error)
