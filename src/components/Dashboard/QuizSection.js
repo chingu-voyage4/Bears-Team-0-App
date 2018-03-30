@@ -16,16 +16,18 @@ export class QuizSection extends Component {
         >
           {/* display quizzes received through props*/}
           {quizzes
-            ? quizzes.map(quiz => (
-                <Quiz
-                  key={quiz.id}
-                  id={quiz.id}
-                  title={quiz.title}
-                  likes={quiz.likes}
-                  body={quiz.body}
-                  mainColor={mainColor}
-                />
-              ))
+            ? quizzes
+                .map(quiz => (
+                  <Quiz
+                    key={quiz.id}
+                    id={quiz.id}
+                    title={quiz.title}
+                    likes={quiz.likes}
+                    body={quiz.body}
+                    mainColor={mainColor}
+                  />
+                ))
+                .slice(0, 3)
             : null}
         </section>
       </div>
