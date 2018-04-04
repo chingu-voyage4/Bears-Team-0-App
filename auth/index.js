@@ -51,7 +51,7 @@ passport.use(new GoogleStrategy({
 },
 function(accessToken, refreshToken, profile, cb) {
     const user = {
-      id: profile.id,
+      googleId: profile.id,
       displayName: profile.displayName,
       familyName: profile.name.familyName,
       givenName: profile.name.givenName,
@@ -65,7 +65,8 @@ function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate(user).then((user) => {
       log("Google Strategy " + util.inspect(user));
       return cb(null, user);
-    }).catch(err => {
+    }) 
+      .catch(err => {
       error("Error in Google Strategy");
       return cb(err, null);
     });
