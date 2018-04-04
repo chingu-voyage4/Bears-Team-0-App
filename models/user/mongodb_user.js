@@ -54,7 +54,6 @@ exports.read = function read(key) {
  * @returns {User} - The saved user.
  */
 exports.create = function create(user) {
-<<<<<<< HEAD
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
         let newUser = new User({
@@ -73,25 +72,6 @@ exports.create = function create(user) {
             return serializeUser(created)
         })
 
-=======
-    let newUser = new User({
-        id: user.id,
-        displayName: user.displayName,
-        familyName: user.familyName,
-        givenName: user.givenName,
-        emails: user.emails,
-        photos: user.photos,
-        gender: user.gender,
-        provider: user.provider
-    })
-    log("Create new user: " + util.inspect(newUser))
-    return mongo.collection.insertOne(newUser).then(created => {
-        log("Created user: " + util.inspect(created.ops[0]))
-        return serializeUser(created)
-        log('Returning inserted: ' + util.inspect(createdUser))
-        
-        return createdUser
->>>>>>> develop
     })
 }
 /**
