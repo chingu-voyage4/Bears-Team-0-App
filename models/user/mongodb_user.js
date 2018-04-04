@@ -26,7 +26,6 @@ mongo.connect()
  * @returns {User} - The found user.
  */
 exports.read = function read(key) {
-<<<<<<< HEAD
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
         let objectID = new mongodb.ObjectId(key)
@@ -36,16 +35,6 @@ exports.read = function read(key) {
                 log(`User found ${util.inspect(doc)}`)
                 return serializeUser(doc)
             })
-=======
-    return mongo.collection.findOne({id: key})
-        .then(doc => {
-          if (!doc) {
-            return undefined;
-          } else {
-            log(`User found ${util.inspect(doc)}`);
-            return serializeUser(doc)
-          }
->>>>>>> develop
     })
 }
 /**
@@ -87,9 +76,8 @@ exports.readAll = function readAll() {
         })
         
         return returnUsers
-    })
-
 }
+
 /**
  * Update a user
  * @param {String} key - user._id
@@ -97,7 +85,6 @@ exports.readAll = function readAll() {
  * @returns {User} - The updated user.
  */
 exports.update = function update(key, updateObj) {
-<<<<<<< HEAD
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
         return collection.findOneAndUpdate({ _id: key }, { $set: updateObj }, { returnOriginal: false }).then(result => { 
@@ -105,13 +92,6 @@ exports.update = function update(key, updateObj) {
             return serializeUser(result.value)
          })
     });
-=======
-    return mongo.collection.findOneAndUpdate({ id: key }, { $set: updateObj }).then(result => {
-        log('User updated: ' + util.inspect(result))
-        
-        return serializeUser(result.value)
-    })
->>>>>>> develop
 }
 
 /**
@@ -120,19 +100,12 @@ exports.update = function update(key, updateObj) {
  * @returns {User} - The deleted User .
  */
 exports.destroy = function destroy(key) {
-<<<<<<< HEAD
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
         return collection.findOneAndDelete({ _id: key }).then(deletedDoc => {
             log('Mongo deleted user: ' + util.inspect(deletedDoc.value))
             return deletedDoc.value
         })
-=======
-    return mongo.collection.findOneAndDelete({ id: key }).then(deletedDoc => {
-        log('Mongo deleted user: ' + util.inspect(deletedDoc.value))
-        
-        return deletedDoc.value
->>>>>>> develop
     })
 }
 /**
@@ -143,7 +116,6 @@ exports.count = function count() {
 }
 
 exports.findOrCreate = function findOrCreate(profile) {
-<<<<<<< HEAD
 
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME)
@@ -156,9 +128,6 @@ exports.findOrCreate = function findOrCreate(profile) {
             })
     })
     .then(user => {
-=======
-    return mongo.collection.findOne({id: profile.id}).then(user => {
->>>>>>> develop
         if (user) {
             log("findOrCreate found user: " + util.inspect(user))            
             return serializeUser(user);
