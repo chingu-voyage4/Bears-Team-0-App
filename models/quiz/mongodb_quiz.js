@@ -9,9 +9,9 @@ const error = require('debug')('api:error');
 
 let db;
 
-const MONGO_URL         = config.MONGO_QUIZES_URL;
-const DATABASE_NAME     = config.MONGO_QUIZES_DBNAME;
-const COLLECTION_NAME   = 'quizes';
+const MONGO_URL         = config.MONGO_QUIZZES_URL;
+const DATABASE_NAME     = config.MONGO_QUIZZES_DBNAME;
+const COLLECTION_NAME   = 'quizzes';
 
 /*
 DB Connection Handler
@@ -47,10 +47,36 @@ exports.read = function read(key) {
                     doc.favorites
                 )
                 log(`Quiz found ${util.inspect(quiz)}`);
-                return quiz;
+                return doc;
             });
     });
 }
+
+
+/**
+ * Get user quizzes
+ * @param {Object} key: user.id
+ * @returns {Quiz[]} - An array of user's quizzes.
+ */
+exports.readUserQuizzes = function readUserQuizzes(userId) {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        //let objectID = new mongodb.ObjectId(userId);
+        /*
+        NOT USING REAL OBJECT ID DUE TO TESTING ENV
+        */
+        return new Promise((resolve, reject) => {
+            return collection.find({ author: userId }).toArray((err, docs) => {
+                if (err) return reject(err);
+                const returnQuizzes = docs.map(quiz => {
+                    return new Quiz(quiz.title, quiz.author, quiz.questions, quiz.description, quiz.favorites);
+                });
+                return resolve(returnQuizzes);
+            });
+        });
+    })
+}
+
 
 /**
  * Get all quizzes
@@ -73,21 +99,43 @@ exports.readAll = function readAll() {
 }
 
 /**
+ * Get 6 most popular quizzes
+ * @param {}
+ * @returns {Quiz[]} - An array of quizzes.
+ */
+exports.readPopular = function readPopular() {
+    return exports.connectDb().then(_db => {
+        let collection = _db.collection(COLLECTION_NAME);
+        return new Promise((resolve, reject) => {
+            return collection.find().sort({"favorites": -1}).limit(6).toArray((err, docs) => {
+                if (err) return reject(err);
+                // const returnQuizzes = docs.map(quiz => {
+                //     return new Quiz(quiz.title, quiz.author, quiz.questions, quiz.description, quiz.favorites, quiz.id);
+                // });
+                return resolve(docs);
+            });
+        });
+    })
+}
+
+/**
  * Save a quiz to the db
  * @param {Object} 
  * @returns {Quiz} - The saved quiz.
  */
-exports.create = function create(quiz) {
+exports.create = function create(user, quiz) {
     return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let newQuiz = new Quiz(quiz.title, quiz.questions);
+        let newQuiz = new Quiz(quiz.title, user.id, quiz.questions, quiz.description);
         return collection.insertOne(newQuiz)
             .then(created => {
             log('Mongo new quiz inserted: ' + util.inspect(created.ops[0]));
             const createdQuiz = new Quiz(
                 created.ops[0].title,
+                created.ops[0].author,
                 created.ops[0].questions,
-                created.ops[0].description
+                created.ops[0].description,
+                created.insertedId
             );
             log('Returning inserted: ' + util.inspect(createdQuiz));
             return createdQuiz;
@@ -114,21 +162,53 @@ exports.destroy = function destroy(key) {
 
 /**
  * Update a quiz
+ * @param {String} quizId - quiz._id
+ * @param {Object} updateObj
+ * @returns {Quiz} - The updated quiz.
+ */
+exports.update = function update(quizId, updateObj) {
+    return exports.connectDb().then(_db => {
+        
+        if (updateObj.hasOwnProperty("favorites") || updateObj.hasOwnProperty("_id")) {
+            return error;
+        }
+
+        let collection = _db.collection(COLLECTION_NAME);
+        let objectID = new mongodb.ObjectId(quizId);
+        let objectToSet = {};
+        let updateKeys = Object.keys(updateObj);
+
+        updateKeys.forEach((key) => {
+            objectToSet[key] = updateObj[key];
+        });
+
+        return collection.findOneAndUpdate({ _id: objectID },
+            { $set: objectToSet },
+            { returnOriginal: false })
+            .then(quiz => {
+                log("Quiz update: " + util.inspect(quiz));
+                return quiz.value;
+            });
+    });
+}
+
+/**
+ * Update a quiz and add to favorites
  * @param {String} key - quiz._id
  * @param {Object} updateObj
  * @returns {Quiz} - The updated quiz.
  */
-exports.udate = function update(key, updateObj) {
-    return exports.connectDb.then(_db => {
+exports.updateFavorites = function updateFavorites(quizId, updateFavorites) {
+    return exports.connectDb().then(_db => {
         let collection = _db.collection(COLLECTION_NAME);
-        let objectID = new mongodb.ObjectId(key);
-        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj })
-            .then(result => {
-                log("Quiz update: " + util.inspect(result));
-                return new Quiz(
-                    quiz.value.title,
-                    quiz.value.questions
-                )
+        let objectID = new mongodb.ObjectId(quizId);
+        const updateFavoritesNumber = parseInt(updateFavorites);
+        return collection.findOneAndUpdate({ _id: objectID },
+            { $inc: { favorites: updateFavoritesNumber } },
+            { returnOriginal: false })
+            .then(updated => {
+                log("Quiz update: " + util.inspect(updated));
+                return updated.value;
             });
     });
 }

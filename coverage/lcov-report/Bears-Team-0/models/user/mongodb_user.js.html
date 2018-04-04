@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Bears-Team-0/models/user/mongodb_user.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">Bears-Team-0/models/user</a> mongodb_user.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">39.74% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>31/78</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>3/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26.92% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">42.47% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>31/73</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mongodb       = require("mongodb");
+const mongoClient   = require("mongodb").MongoClient;
+const util          = require('util')
+const config        = require('../../config')
+const User          = require('./User')
+&nbsp;
+const log   = require('debug')('api:mongodb-user')
+const error = require('debug')('api:error')
+&nbsp;
+let db;
+&nbsp;
+const MONGO_URL         = config.MONGO_USERS_URL;
+const DATABASE_NAME     = config.MONGO_USERS_DBNAME;
+const COLLECTION_NAME   = 'users'
+&nbsp;
+/*
+DB Connection Handler
+If connected returns connection else grabs connection from mLab
+*/
+exports.connectDb = function connectDb () {
+    return new Promise((resolve, reject) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (db) <span class="cstat-no" title="statement not covered" >return resolve(db)</span>
+        mongoClient.connect(MONGO_URL, (err, _db) =&gt; {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (err) <span class="cstat-no" title="statement not covered" >return reject(err)</span>
+            db = _db.db(DATABASE_NAME)
+            log('Mongo connected ' + util.inspect(db.databaseName))
+            resolve(db)
+        })
+    })
+}
+/**
+ * Find a user
+ * @param {String} key: user._id
+ * @returns {User} - The found user.
+ */
+exports.read = function <span class="fstat-no" title="function not covered" >read(</span>key) {
+<span class="cstat-no" title="statement not covered" >    return exports.connectDb().then(<span class="fstat-no" title="function not covered" >_d</span>b =&gt; {</span>
+        let collection = <span class="cstat-no" title="statement not covered" >_db.collection(COLLECTION_NAME)</span>
+        // let objectID = new mongodb.ObjectId(key)
+<span class="cstat-no" title="statement not covered" >        return collection.findOne({id: key})</span>
+            .then(<span class="fstat-no" title="function not covered" >do</span>c =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!doc) <span class="cstat-no" title="statement not covered" >return undefined</span></span>
+                const user = <span class="cstat-no" title="statement not covered" >new User({</span>
+                    id: doc.id,
+                    displayName: doc.displayName,
+                    familyName: doc.familyName,
+                    givenName: doc.givenName,
+                    emails: doc.emails,
+                    photos: doc.photos,
+                    gender: doc.gender,
+                    provider: doc.provider
+                })
+<span class="cstat-no" title="statement not covered" >                log(`User found ${util.inspect(doc)}`)</span>
+<span class="cstat-no" title="statement not covered" >                return user</span>
+            })
+    })
+}
+/**
+ * Save a user to the db
+ * @param {Object} 
+ * @returns {User} - The saved user.
+ */
+exports.create = function <span class="fstat-no" title="function not covered" >create(</span>user) {
+<span class="cstat-no" title="statement not covered" >    return exports.connectDb().then(<span class="fstat-no" title="function not covered" >_d</span>b =&gt; {</span>
+        let collection = <span class="cstat-no" title="statement not covered" >_db.collection(COLLECTION_NAME)</span>
+        let newUser = <span class="cstat-no" title="statement not covered" >new User({</span>
+            id: user.id,
+            displayName: user.displayName,
+            familyName: user.familyName,
+            givenName: user.givenName,
+            emails: user.emails,
+            photos: user.photos,
+            gender: user.gender,
+            provider: user.provider
+        })
+<span class="cstat-no" title="statement not covered" >        log("Create new user: " + util.inspect(newUser))</span>
+<span class="cstat-no" title="statement not covered" >        return collection.insertOne(newUser).then(<span class="fstat-no" title="function not covered" >cr</span>eated =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            log("Created user: " + util.inspect(user))</span>
+            const createdUser = <span class="cstat-no" title="statement not covered" >new User({</span>
+                id: created.id,
+                displayName: created.displayName,
+                familyName: created.familyName,
+                givenName: created.givenName,
+                emails: created.emails,
+                photos: created.photos,
+                gender: created.gender,
+                provider: created.provider
+            })
+<span class="cstat-no" title="statement not covered" >            log('Returning inserted: ' + util.inspect(createdUser))</span>
+<span class="cstat-no" title="statement not covered" >            return createdUser</span>
+        })
+&nbsp;
+    })
+}
+/**
+ * Get all users
+ * @param {}
+ * @returns {User[]} - An array of users.
+ */
+exports.readAll = function <span class="fstat-no" title="function not covered" >readAll(</span>) {
+<span class="cstat-no" title="statement not covered" >    return exports.connectDb().then(<span class="fstat-no" title="function not covered" >_d</span>b =&gt; {</span>
+        let collection = <span class="cstat-no" title="statement not covered" >_db.collection(COLLECTION_NAME)</span>
+<span class="cstat-no" title="statement not covered" >        return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return collection.find().toArray(<span class="fstat-no" title="function not covered" >(e</span>rr, docs) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (err) <span class="cstat-no" title="statement not covered" >return reject(err)</span></span>
+                const returnUsers = <span class="cstat-no" title="statement not covered" >docs.map(<span class="fstat-no" title="function not covered" >us</span>er =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    return new User({</span>
+                        id: user.id,
+                        displayName: user.displayName,
+                        familyName: user.familyName,
+                        givenName: user.givenName,
+                        emails: user.emails,
+                        photos: user.photos,
+                        gender: user.gender,
+                        provider: user.provider
+                    })
+                })
+<span class="cstat-no" title="statement not covered" >                return resolve(returnUsers)</span>
+            })
+        })
+    })
+}
+/**
+ * Update a user
+ * @param {String} key - user._id
+ * @param {Object} updateObj
+ * @returns {User} - The updated user.
+ */
+exports.update = function <span class="fstat-no" title="function not covered" >update(</span>key, updateObj) {
+<span class="cstat-no" title="statement not covered" >    return exports.connectDb().then(<span class="fstat-no" title="function not covered" >_d</span>b =&gt; {</span>
+        let collection = <span class="cstat-no" title="statement not covered" >_db.collection(COLLECTION_NAME)</span>
+        let objectID = <span class="cstat-no" title="statement not covered" >new mongodb.ObjectId(key)</span>
+<span class="cstat-no" title="statement not covered" >        return collection.findOneAndUpdate({ _id: objectID }, { $set: updateObj }).then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; { </span>
+<span class="cstat-no" title="statement not covered" >            log('User updated: ' + util.inspect(result))</span>
+<span class="cstat-no" title="statement not covered" >            return new User({</span>
+                id: user.id,
+                displayName: result.value.displayName,
+                familyName: result.value.familyName,
+                givenName: result.value.givenName,
+                emails: result.value.emails,
+                photos: result.value.photos,
+                gender: result.value.gender,
+                provider: result.value.provider
+            })
+         })
+    });
+}
+&nbsp;
+/**
+ * Delete a user
+ * @param {String} key - user._id
+ * @returns {User} - The deleted User .
+ */
+exports.destroy = function <span class="fstat-no" title="function not covered" >destroy(</span>key) {
+<span class="cstat-no" title="statement not covered" >    return exports.connectDb().then(<span class="fstat-no" title="function not covered" >_d</span>b =&gt; {</span>
+        let collection = <span class="cstat-no" title="statement not covered" >_db.collection(COLLECTION_NAME)</span>
+        let objectID = <span class="cstat-no" title="statement not covered" >new mongodb.ObjectId(key)</span>
+<span class="cstat-no" title="statement not covered" >        return collection.findOneAndDelete({ _id: objectID }).then(<span class="fstat-no" title="function not covered" >de</span>letedDoc =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            log('Mongo deleted user: ' + util.inspect(deletedDoc.value))</span>
+<span class="cstat-no" title="statement not covered" >            return deletedDoc.value</span>
+        })
+    })
+}
+/**
+ * Get count of # users
+ */
+exports.count = function count() {
+    return exports.connectDb().then(_db =&gt; {
+        let collection = _db.collection(COLLECTION_NAME)
+        return new Promise((resolve, reject) =&gt; {
+            collection.count({}, (err, count) =&gt; {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (err) <span class="cstat-no" title="statement not covered" >return reject(err)</span>
+                return resolve(count)
+            })
+        })
+    })
+}
+&nbsp;
+exports.findOrCreate = function <span class="fstat-no" title="function not covered" >findOrCreate(</span>profile) {
+<span class="cstat-no" title="statement not covered" >    return exports.read(profile.id).then(<span class="fstat-no" title="function not covered" >us</span>er =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (user) {</span>
+<span class="cstat-no" title="statement not covered" >            log("findOrCreate found user: " + util.inspect(user))</span>
+<span class="cstat-no" title="statement not covered" >            return user;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        log('findOrCreate user: ' + util.inspect(user))</span>
+<span class="cstat-no" title="statement not covered" >        return exports.create(profile)</span>
+    })
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 15 2018 09:56:49 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

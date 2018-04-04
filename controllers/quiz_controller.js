@@ -1,5 +1,4 @@
 const quizModel = require('../models/quiz/mongodb_quiz');
-const Question = require('../models/quiz/Question');
 
 const log   = require('debug')('api:controller-quiz');
 const error = require('debug')('api:error');
@@ -12,7 +11,7 @@ module.exports.findQuiz = function(req, res, next){
     quizModel.read(req.params.id)
     .then(found => {
         log('Sending quiz ' + found);
-        res.json({ data: found });
+        res.json({ quiz: found });
     })
     .catch(err => next(err));
 };
@@ -29,6 +28,40 @@ module.exports.findAllQuizzes = function(req, res, next) {
 }
 
 /*
+Reading 6 most popular quizzes
+*/
+module.exports.findPopularQuizzes = function(req, res, next) {
+    quizModel.readPopular()
+    .then(docs => {
+        log('Sending popular quizzes');
+        res.json({quizzes: docs});
+    }).catch(err => next(err));
+}
+
+/*
+Reading user's quizzes
+*/
+module.exports.findUserQuizzes = function(req, res, next) {
+    quizModel.readUserQuizzes(req.user.id)
+    .then(found => {
+        log('Sending user\'s quizzes');
+        res.json({quizzes: found});
+    }).catch(err => next(err));
+}
+
+/*
+Update quiz favorites
+*/
+module.exports.updateQuizFavorites = function(req, res, next) {
+    quizModel.updateFavorites(req.params.id, req.body.update.favorites)
+    .then(updated => {
+        log('Updating favorites for quiz');
+        res.json({quiz: updated});
+    }).catch(err => next(err));
+}
+
+
+/*
 Get # quizzes
 */
 module.exports.getQuizCount = function(req, res, next) {
@@ -42,7 +75,7 @@ module.exports.getQuizCount = function(req, res, next) {
 Creating a quiz
 */
 module.exports.createQuiz = function(req, res, next) {
-    quizModel.create(req.body.quiz)
+    quizModel.create(req.body.user, req.body.quiz)
     .then((quiz) => {
         // log('Sending new quiz: + util.inspect(quiz)');
         res.json({ quiz: quiz });
@@ -57,7 +90,6 @@ module.exports.deleteQuiz = function(req, res, next) {
         .then((deleted) => {
             res.json({quiz: deleted});
         }).catch(err => next(err));
-
 }
 
 /*

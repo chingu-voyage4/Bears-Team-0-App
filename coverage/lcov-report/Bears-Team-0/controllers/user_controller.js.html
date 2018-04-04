@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Bears-Team-0/controllers/user_controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">Bears-Team-0/controllers</a> user_controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40.63% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>13/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.11% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40.63% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/32</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const util      = require('util')
+const userModel = require('../models/user/mongodb_user')
+&nbsp;
+const log   = require('debug')('api:controller-user')
+const error = require('debug')('api:error')
+&nbsp;
+/*
+Reading all users (Testing route)
+*/
+module.exports.findAllUsers = <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {
+<span class="cstat-no" title="statement not covered" >    userModel.readAll()</span>
+    .then(<span class="fstat-no" title="function not covered" >do</span>cs =&gt; {
+<span class="cstat-no" title="statement not covered" >        log('Sending all users')</span>
+<span class="cstat-no" title="statement not covered" >        res.json({ users: docs })</span>
+    }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>
+}
+/*
+Get # users
+*/
+module.exports.getUserCount = function(req, res, next) {
+    userModel.count().then(count =&gt; {
+        log('Found # users: ' + count);
+        res.json({ count: count });
+    }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>;
+}
+&nbsp;
+/*
+Creating a user
+*/
+module.exports.createUser = <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {
+<span class="cstat-no" title="statement not covered" >    userModel.create(req.body.user)</span>
+    .then(<span class="fstat-no" title="function not covered" >us</span>er =&gt; {
+<span class="cstat-no" title="statement not covered" >        log('Sending new user: ' + util.inspect(user))</span>
+<span class="cstat-no" title="statement not covered" >        res.json({ user: user })</span>
+    }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>
+}
+/*
+Reading a user
+*/
+module.exports.findUser = <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next){
+<span class="cstat-no" title="statement not covered" >    userModel.read(req.params.id)</span>
+    .then(<span class="fstat-no" title="function not covered" >fo</span>und =&gt; {
+<span class="cstat-no" title="statement not covered" >        log('Sending user ' + found)</span>
+<span class="cstat-no" title="statement not covered" >        res.json({ user: found })</span>
+    })
+    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>
+};
+/*
+Updating a user
+*/
+module.exports.updateUser = <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {
+<span class="cstat-no" title="statement not covered" >    userModel.update(req.params.id, req.body.update).then(<span class="fstat-no" title="function not covered" >up</span>dated =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({ user: updated })</span>
+    }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>
+}
+&nbsp;
+/*
+Deleting a user
+*/
+module.exports.deleteUser = <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {
+<span class="cstat-no" title="statement not covered" >    userModel.destroy(req.params.id).then(<span class="fstat-no" title="function not covered" >de</span>leted =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({ user: deleted })</span>
+    }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >next(err))</span>
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 15 2018 09:56:49 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

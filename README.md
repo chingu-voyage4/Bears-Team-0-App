@@ -18,9 +18,15 @@
 
 #### Get all quizzes:
 - Request type: GET
-- Path: /api/quizzes/
+- Path: /api/quizzes/all
 - Params: {}
 - Returns: {Quiz[]} - An array of quizzes
+
+#### Get user's quizzes:
+- Request type: GET
+- Path: /api/quizzes/
+- Params: {Object} - key: request.user.id
+- Returns: {Quiz[]} - An array of the user's quizzes.
 
 #### Create new quiz:
 - Request type: POST
@@ -30,8 +36,11 @@
     {
       "quiz": {
         "title": "test title",
-        "description": "this is a test description for a test quiz."
+        "description": "this is a test description for a test quiz.",
         "questions": ["test question 1", "test question 2"]
+      },
+      "user": {
+        "id": "testUserId"
       }
     }
     ```
@@ -55,6 +64,22 @@
     "update": {
       "title": "updated title",
       "questions": ["updated question 1", "updated question 2"]
+    }
+  }
+  ```
+- Returns: {Quiz} - The quiz and its updated values.
+
+#### Update quiz favorites by id:
+- Request type: PATCH
+- Path: /api/quizzes/:id
+- Params: 
+  - {String} - key: quiz._id
+  - {UpdatedObj} - in request body as "update.favorites"
+  - Ex of UpdatedObj request body:
+  ```
+  {
+    "update": {
+      "favorites": 1
     }
   }
   ```

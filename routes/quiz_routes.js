@@ -8,8 +8,18 @@ GET quiz count
 quizRouter.get('/count', quizController.getQuizCount);
 /*
 GET all quizzes
+(for testing)
 */
-quizRouter.get("/", quizController.findAllQuizzes);
+quizRouter.get("/all", quizController.findAllQuizzes);
+/*
+GET 6 most popular quizzes
+*/
+quizRouter.get("/popular", quizController.findPopularQuizzes);
+
+/*
+GET all user's quizzes
+*/
+quizRouter.get("/", quizController.findUserQuizzes);
 
 /*
 QUIZ CRUD Routes
@@ -27,6 +37,11 @@ quizRouter.get("/:id", quizController.findQuiz);
 PUT quiz
 */
 quizRouter.put("/:id", quizController.updateQuiz);
+/*
+PATCH quiz by id to add to favorites
+*/
+quizRouter.patch("/:id", quizController.updateQuizFavorites);
+
 /*
 DELETE quiz by id
 */

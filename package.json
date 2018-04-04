@@ -4,7 +4,7 @@
   "description": "Voyage-4",
   "scripts": {
     "dev": "DEBUG=api:* NODE_ENV=development PORT=3001 nodemon npm start",
-    "test": "jest",
+    "test": "jest --watch",
     "start": "node ./bin/www"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "jest": "^22.4.2",
     "nodemon": "^1.15.0",
     "supertest": "^3.0.0"
