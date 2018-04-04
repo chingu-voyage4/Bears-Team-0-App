@@ -1,9 +1,9 @@
 // slightly modified
 // from Dan Abramov's video on persisting state to local storage
 // https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage
-export const loadState = () => {
+export const loadState = stateSlice => {
   try {
-    const serializedState = localStorage.getItem("makeQuizzes");
+    const serializedState = localStorage.getItem(stateSlice);
     if (serializedState === null) {
       return undefined;
     }
@@ -13,10 +13,12 @@ export const loadState = () => {
   }
 };
 
-export const saveState = state => {
+// save a piece of data into localStorage
+// with the given key storeSlice
+export const saveState = (storeSlice, data) => {
   try {
-    const serializedState = JSON.stringify(state.makeQuizzes);
-    localStorage.setItem("makeQuizzes", serializedState);
+    const serializedState = JSON.stringify(data);
+    localStorage.setItem(storeSlice, serializedState);
   } catch (err) {
     console.log(err);
   }

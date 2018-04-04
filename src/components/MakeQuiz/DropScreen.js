@@ -19,7 +19,14 @@ const spec = {
   };
 class DropScreen extends Component {
   render() {
-    const { questions, hovered, connectDropTarget, submitQuiz } = this.props;
+    const {
+      title,
+      description,
+      questions,
+      hovered,
+      connectDropTarget,
+      submitQuiz
+    } = this.props;
     return connectDropTarget(
       <div
         style={{
@@ -50,7 +57,7 @@ class DropScreen extends Component {
             <button
               onClick={event => {
                 event.preventDefault();
-                submitQuiz(questions);
+                submitQuiz({ questions, title, description });
               }}
             >
               Submit
@@ -63,7 +70,9 @@ class DropScreen extends Component {
 }
 export default connect(
   state => ({
-    questions: state.makeQuizzes.questions
+    questions: state.makeQuizzes.questions,
+    title: state.titleAndDescription.title,
+    description: state.titleAndDescription.description
   }),
   { submitQuiz }
 )(DropTarget(types.BOX, spec, collect)(DropScreen));

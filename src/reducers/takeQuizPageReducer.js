@@ -6,7 +6,7 @@ const initialState = {
   questions: [],
   answers: [
     //question id
-    //anser
+    //answer
   ],
   questionCursor: 0
 };

@@ -41,12 +41,12 @@ ShallowWrapper {
         <Route
                 component={[Function]}
                 exact={true}
-                path="/all"
+                path="/dashboard"
         />
         <Route
                 component={[Function]}
                 exact={true}
-                path="/make-quiz"
+                path="/makequiz"
         />
 </Layout>,
       "className": "app",
@@ -81,12 +81,12 @@ ShallowWrapper {
           <Route
             component={[Function]}
             exact={true}
-            path="/all"
+            path="/dashboard"
 />,
           <Route
             component={[Function]}
             exact={true}
-            path="/make-quiz"
+            path="/makequiz"
 />,
         ],
       },
@@ -151,7 +151,7 @@ ShallowWrapper {
           "props": Object {
             "component": [Function],
             "exact": true,
-            "path": "/all",
+            "path": "/dashboard",
           },
           "ref": null,
           "rendered": null,
@@ -164,7 +164,7 @@ ShallowWrapper {
           "props": Object {
             "component": [Function],
             "exact": true,
-            "path": "/make-quiz",
+            "path": "/makequiz",
           },
           "ref": null,
           "rendered": null,
@@ -205,12 +205,12 @@ ShallowWrapper {
           <Route
                     component={[Function]}
                     exact={true}
-                    path="/all"
+                    path="/dashboard"
           />
           <Route
                     component={[Function]}
                     exact={true}
-                    path="/make-quiz"
+                    path="/makequiz"
           />
 </Layout>,
         "className": "app",
@@ -245,12 +245,12 @@ ShallowWrapper {
             <Route
               component={[Function]}
               exact={true}
-              path="/all"
+              path="/dashboard"
 />,
             <Route
               component={[Function]}
               exact={true}
-              path="/make-quiz"
+              path="/makequiz"
 />,
           ],
         },
@@ -315,7 +315,7 @@ ShallowWrapper {
             "props": Object {
               "component": [Function],
               "exact": true,
-              "path": "/all",
+              "path": "/dashboard",
             },
             "ref": null,
             "rendered": null,
@@ -328,7 +328,7 @@ ShallowWrapper {
             "props": Object {
               "component": [Function],
               "exact": true,
-              "path": "/make-quiz",
+              "path": "/makequiz",
             },
             "ref": null,
             "rendered": null,

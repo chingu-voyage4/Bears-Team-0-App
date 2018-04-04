@@ -8,12 +8,11 @@ import "../node_modules/font-awesome/css/font-awesome.min.css";
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
+// saveState allows caching to localStorage
 import { saveState } from "./store/localStorage";
-store.subscribe(() => {
-  saveState({
-    makeQuizzes: store.getState().makeQuizzes
-  });
-});
+
+// cache data from MakeQuiz page
+store.subscribe(() => saveState("makeQuizzes", store.getState().makeQuizzes));
 
 ReactDOM.render(
   <Provider store={store}>

@@ -19,6 +19,7 @@ export class QuizSection extends Component {
             ? quizzes.map(quiz => (
                 <Quiz
                   key={quiz.id}
+                  id={quiz.id}
                   title={quiz.title}
                   likes={quiz.likes}
                   body={quiz.body}
