@@ -1,0 +1,2 @@
+bug: oauth2 requires a clientid option -> strategy.js:82
+-> index.js:53:14
