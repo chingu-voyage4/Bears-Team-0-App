@@ -58,7 +58,6 @@ module.exports = app => {
 
     const quiz = await new Quiz({
       title: req.body.title,
-      author: req.body.author,
       questions: req.body.questions,
       description: req.body.description,
       favorites: 0,
@@ -82,7 +81,6 @@ module.exports = app => {
         res.status(500).send(err);
       } else {
         quiz.title = req.body.title || quiz.title;
-        quiz.author = req.body.author || quiz.author;
         quiz.questions = req.body.questions || quiz.questions;
         quiz.description = req.body.description || quiz.description;
         quiz.favorites = req.body.favorites || quiz.favorites;
