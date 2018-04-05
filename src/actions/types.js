@@ -7,18 +7,17 @@ export const quizTypes = {
   CHANGE_TITLE: "CHANGE_TITLE",
   CHANGE_DESCRIPTION: "CHANGE_DESCRIPTION",
   CHANGE_QUESTION: "CHANGE_QUESTION",
-  SUBMIT_QUIZ_START: "SUBMIT_QUIZ_START"
+  SUBMIT_QUIZ_START: "SUBMIT_QUIZ_START",
+  FETCH_POPULAR_QUIZZES: "FETCH_POPULAR_QUIZZES"
 };
 
-export const loginTypes = {
-  LOGIN: "LOGIN",
-  LOGOUT: "LOGOUT"
+export const userTypes = {
+  FETCH_USER: "FETCH_USER"
 };
 
 export const makeQuizTypes = {
   ADD_MULTIPLE_CHOICE: "ADD_MULTIPLE_CHOICE",
-  ADD_TRUE_FALSE: "ADD_TRUE_FALSE",
-  SUBMIT_QUIZ: "SUBMIT_QUIZ"
+  ADD_TRUE_FALSE: "ADD_TRUE_FALSE"
 };
 
 export const multipleChoiceTypes = {
@@ -39,6 +38,5 @@ export const dropdownTypes = {
 };
 
 export const takeQuizTypes = {
-  RECEIVE_QUIZ: "RECEIVE_QUIZ",
-  REQUEST_QUIZ: "REQUEST_QUIZ"
+  FETCH_SPECIFIC_QUIZ: "FETCH_SPECIFIC_QUIZ"
 };

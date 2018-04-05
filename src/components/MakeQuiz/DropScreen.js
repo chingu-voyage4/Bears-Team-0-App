@@ -57,7 +57,7 @@ class DropScreen extends Component {
             <button
               onClick={event => {
                 event.preventDefault();
-                submitQuiz({ questions, title, description });
+                submitQuiz({ title, description, questions });
               }}
             >
               Submit

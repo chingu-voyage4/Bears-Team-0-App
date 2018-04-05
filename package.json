@@ -2,6 +2,14 @@
   "name": "bears-0",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/auth/*": {
+      "target": "http://localhost:3001"
+    },
+    "/api/*": {
+      "target": "http://localhost:3001"
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",

@@ -1,8 +1,9 @@
 // TODO: sync title and description with local storage
-import { makeQuizTypes, dropdownTypes } from "./types";
+import { makeQuizTypes, dropdownTypes, userTypes } from "./types";
 import axios from "axios";
 
-const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE, SUBMIT_QUIZ } = makeQuizTypes,
+const { ADD_MULTIPLE_CHOICE, ADD_TRUE_FALSE } = makeQuizTypes,
+  { FETCH_USER } = userTypes,
   { ADD_DROPDOWN } = dropdownTypes;
 
 // action to add multiple choice question
@@ -25,16 +26,18 @@ export const addDropdown = () => {
   };
 };
 
+/**
+ * Creates a Quiz
+ * @param {} Object containing String title, String author, String description, Array of questions
+ */
 export const submitQuiz = ({ title, description, questions }) => async dispatch => {
-  console.log("inside submit quiz, description is: ", description);
-  console.log("quiz title is: ", title);
-
   const quiz = {
-    quiz: { title, description, questions }
+    title: title,
+    description: description,
+    questions: questions
   };
 
-  const res = await axios.post("/api/quizzes/", quiz);
-
-  dispatch({type: SUBMIT_QUIZ, payload: res.data});
+  const res = await axios.post("/api/quizzes", quiz);
+  dispatch({type: FETCH_USER, payload: res.data});
     
 };

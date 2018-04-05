@@ -1,65 +1,47 @@
 import React, { Component } from "react";
 import FillTrueFalse from "../FillTrueFalse";
-import { fetchQuiz } from "../../actions/takeQuiz.js";
 import { connect } from "react-redux";
+import * as actions from "../../actions/takeQuiz";
 // component allows client to take a quiz
 
 class TakeQuiz extends Component {
-  constructor(props) {
-    super(props);
-    console.log("props are: ", props);
+
+  componentDidMount(){
+    this.props.fetchSpecificQuiz(this.props.match.params.id);
   }
 
-  componentWillMount() {
-    // dispatch action to fetch quiz
-    const { fetchQuiz, match: { params: { id } } } = this.props;
-    console.log(id, "is props.match");
-    fetchQuiz(id);
-  }
-
-  renderSwitch(questionObj) {
-    const { question: questionStr, type: questionType } = questionObj;
-    switch (questionType) {
+  renderQuestion(question) {
+    console.log(question)
+    switch (question.format) {
       case "true false":
-        return <FillTrueFalse question={questionStr} />;
+        return <FillTrueFalse key={question.id} question={question} />;
       case "multiple choice":
-        return <p>Multiple Choice</p>;
+        return <p key={question.id}>Multiple Choice</p>;
       case "dropdown":
-        return <p>Dropdown</p>;
+        return <p key={question.id}>Dropdown</p>;
       default:
         return null;
     }
   }
 
   render() {
-    const { currentQuestion } = this.props;
-    return (
-      <div>
-        <h1>Take Quiz</h1>
-        <code>{JSON.stringify(currentQuestion)}</code>
-        <code>
-          {JSON.stringify(
-            this.props.currentQuestion ? this.props.currentQuestion.type : ""
-          )}
-        </code>
-        {this.props.currentQuestion
-          ? this.renderSwitch(this.props.currentQuestion)
-          : null}
-      </div>
-    );
+    if(!!this.props.takeQuizzes) {
+      const {title, description, questions} = this.props.takeQuizzes;
+      return (
+        <div className="quiz-display">
+          <h1>{title}</h1>
+          <h3>{description}</h3>
+          {questions.map(question => { return this.renderQuestion(question) })}
+        </div>
+      );
+    } else {
+      return "Loading";
+    }
   }
 }
 
-export default connect(
-  state => {
-    console.log("state.takeQuizzes is: ", state.takeQuizzes);
-    const stateSlice = state.takeQuizzes;
-    return {
-      questions: stateSlice.questions,
-      currentQuestion: stateSlice
-        ? stateSlice.questions[stateSlice.questionCursor]
-        : null
-    };
-  },
-  { fetchQuiz }
-)(TakeQuiz);
+function mapStateToProps({takeQuizzes}){
+  return {takeQuizzes};
+}
+
+export default connect(mapStateToProps, actions)(TakeQuiz);

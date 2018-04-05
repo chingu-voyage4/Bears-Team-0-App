@@ -1,3 +1,4 @@
+import axios from "axios";
 import mockFetch from "../mockFetch/mockFetch";
 import { quizTypes } from "./types";
 const {
@@ -7,7 +8,8 @@ const {
   RECEIVE_YOUR_QUIZZES,
   CHANGE_TITLE,
   CHANGE_DESCRIPTION,
-  SUBMIT_QUIZ_START
+  SUBMIT_QUIZ_START,
+  FETCH_POPULAR_QUIZZES
 } = quizTypes;
 
 // action to request all quizzes
@@ -54,6 +56,13 @@ export const fetchAllQuizzes = () => {
       .then(json => dispatch(receiveAllQuizzes(json)));
   };
 };
+
+// Fetch Popular Quizzes
+export const fetchPopularQuizzes = () => async dispatch => {
+  const res = await axios.get("/api/quizzes/popular");
+
+  dispatch({type: FETCH_POPULAR_QUIZZES, payload: res.data });
+}
 
 // see the above comment for fetchAllQuizzes
 export const fetchYourQuizzes = () => {
