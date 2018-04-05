@@ -5,87 +5,72 @@
 ## Getting Started
 - Connect databases by creating a dev.js file in the config folder.
 - Run server by entering "npm run dev" in terminal and the server will run on local port 3001 by default.
-  - You may change this in package.json file.
+- You may change this in index.js file.
 
 ### For quizzes:
 ----------------------------
 
-#### Get number of total quizzes:
-- Request type: GET
-- Path: /api/quizzes/count
-- Params: {}
-- Returns: Total count of quizzes
-
-#### Get all quizzes:
-- Request type: GET
-- Path: /api/quizzes/all
-- Params: {}
-- Returns: {Quiz[]} - An array of quizzes
-
-#### Get user's quizzes:
-- Request type: GET
-- Path: /api/quizzes/
-- Params: {Object} - key: request.user.id
-- Returns: {Quiz[]} - An array of the user's quizzes.
+#### Get user's quizzes:  
+- Requires Login  
+- Request type: GET  
+- Path: /api/quizzes/  
+- Returns: [] - An array of the current user's quizzes.  
 
 #### Create new quiz:
-- Request type: POST
-- Path: /api/quizzes/
+- Requires Login    
+- Request type: POST  
+- Path: /api/quizzes/  
 - Params: {Object} - Ex:
     ```
     {
-      "quiz": {
-        "title": "test title",
-        "description": "this is a test description for a test quiz.",
-        "questions": ["test question 1", "test question 2"]
-      },
-      "user": {
-        "id": "testUserId"
-      }
+      "title": "test title",
+      "description": "this is a test description for a test quiz.",
+      "questions": ["test question 1", "test question 2"]
     }
     ```
 - Returns: {Quiz} - The created and saved quiz.
 
-#### Get quiz by id:
+#### Get quiz by id:  
+- Requires Login (Verify with team if this is necessary)
 - Request type: GET
 - Path: /api/quizzes/:id
 - Params: {String} - key: quiz._id
 - Returns: {Quiz} - The quiz that was found
 
 #### Update quiz by id:
+- Requires Login   
 - Request type: PUT
 - Path: /api/quizzes/:id
 - Params: 
   - {String} - key: quiz._id
-  - {UpdatedObj} - in request body as "update"
+  - {UpdatedObj} - in request body
   - Ex of UpdatedObj request body:
   ```
   {
-    "update": {
-      "title": "updated title",
-      "questions": ["updated question 1", "updated question 2"]
-    }
+    "title": "updated title",
+    "description": "updated description"
+    "questions": ["updated question 1", "updated question 2"]
   }
   ```
 - Returns: {Quiz} - The quiz and its updated values.
 
 #### Update quiz favorites by id:
+- Requires Login   
 - Request type: PATCH
 - Path: /api/quizzes/:id
 - Params: 
   - {String} - key: quiz._id
-  - {UpdatedObj} - in request body as "update.favorites"
+  - {UpdatedObj} - in request body as "favChange"
   - Ex of UpdatedObj request body:
   ```
   {
-    "update": {
-      "favorites": 1
-    }
+    "favChange": 1
   }
   ```
 - Returns: {Quiz} - The quiz and its updated values.
 
 #### Delete quiz by id:
+- Requires Login   
 - Request type: DELETE
 - Path: /api/quizzes/:id
 - Params: {String} - key: quiz._id
@@ -95,34 +80,17 @@
 ### For Users:
 ----------------------------
 
+#### Users are created using Passport Google OAuth Login
+#### Deletion of users is not possible via API
 
-#### Get number of total users:
+#### Get current user:
+- Requires Login
 - Request type: GET
-- Path: /api/users/count
-- Params: {}
-- Returns: Total count of users
-
-#### Get all users:
-- Request type: GET
-- Path: /api/users/
-- Params: {}
-- Returns: {User[]} - An array of users
-
-#### Create new user:
-- Request type: POST
-- Path: /api/users/
-- Params: {Object} - Ex:
-    ```
-    {
-      "user": {
-        "username": "testUser",
-        "roles": ["test role 1", "test role 2"]
-      }
-    }
-    ```
-- Returns: {User} - The created and saved user.
+- Path: /api/users/currentUser
+- Returns: {User} - The current user that was found
 
 #### Get user by id:
+- Requires Login (Verify with team if this is necessary)
 - Request type: GET
 - Path: /api/users/:id
 - Params: {String} - key: user._id
@@ -137,16 +105,10 @@
   - Ex of UpdatedObj request body:
   ```
   {
-    "update": {
-      "username": "updatedUserName",
-      "roles": ["updated role 1", "updated role 2"]
-    }
+    displayName = "updated display name"
+    familyName = "updated last/fmaily name"
+    givenName = "updated first/given name"
+    gender = "updated gender" (male, female, other)
   }
   ```
 - Returns: {User} - The user and its updated values.
-
-#### Delete user by id:
-- Request type: DELETE
-- Path: /api/users/:id
-- Params: {String} - key: user._id
-- Returns: {User} - The user that was deleted
