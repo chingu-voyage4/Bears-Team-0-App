@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-eslint": "^8.1.1",
     "dotenv": "^5.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -11,6 +12,8 @@
     "lodash": "^4.17.5",
     "node-sass": "^4.7.2",
     "node-sass-chokidar": "0.0.3",
+    "prettier-eslint": "^8.8.1",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
@@ -34,12 +37,17 @@
     "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
-    "redux-thunk": "^2.2.0",
-    "shortid": "^2.2.8",
-    "@storybook/react": "^3.3.15",
     "@storybook/addon-actions": "^3.3.15",
     "@storybook/addon-links": "^3.3.15",
     "@storybook/addons": "^3.3.15",
-    "babel-core": "^6.26.0"
+    "@storybook/react": "^3.3.15",
+    "babel-core": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.7.0",
+    "redux-thunk": "^2.2.0",
+    "shortid": "^2.2.8"
   }
 }

@@ -1,45 +1,37 @@
-import React, { Component } from "react";
-import TrueFalseOption from "./TrueFalseOption";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { sendOption } from '../actions/takeQuiz';
+import TrueFalseOption from './TrueFalseOption';
 
 class FillTrueFalse extends Component {
-  constructor(props) {
-    super(props);
-    this.optionClickHandler = this.optionClickHandler.bind(this);
-  }
-  optionClickHandler(value) {
-    console.log(value);
-  }
   render() {
-    const { question } = this.props,
-      styles = {
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center"
-      },
-      h1Styles = {
-        fontFamily: "Helvetica",
-        fontWeight: "lighter",
-        margin: "0 auto",
-        textAlign: "center",
-        width: "100%"
-      };
+    const { question } = this.props;
+    const styles = {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    };
+    const h1Styles = {
+      fontFamily: 'Helvetica',
+      fontWeight: 'lighter',
+      margin: '0 auto',
+      textAlign: 'center',
+      width: '100%',
+    };
 
     return (
       <div style={styles}>
         <h1 style={h1Styles}>{question}</h1>
-        <TrueFalseOption
-          text={"True"}
-          value={true}
-          handleClick={this.optionClickHandler}
-        />
-        <TrueFalseOption
-          text={"False"}
-          value={false}
-          handleClick={this.optionClickHandler}
-        />
+        <TrueFalseOption text="True" value handleClick={() => sendOption(true)} />
+        <TrueFalseOption text="False" value={false} handleClick={() => sendOption(false)} />
       </div>
     );
   }
 }
 
-export default FillTrueFalse;
+FillTrueFalse.propTypes = {
+  question: PropTypes.string.isRequired,
+};
+
+export default connect(() => ({}), { sendOption })(FillTrueFalse);

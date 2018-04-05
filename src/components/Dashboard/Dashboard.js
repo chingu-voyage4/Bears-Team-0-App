@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import QuizSection from "./QuizSection";
-import QuizStart from "./QuizStart";
-import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import QuizSection from './QuizSection';
+import QuizStart from './QuizStart';
+import { fetchAllQuizzes, fetchYourQuizzes } from '../../actions/quizzes';
 
-export class Dashboard extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div className="all-quizzes">
@@ -26,7 +26,7 @@ export class Dashboard extends Component {
             headingText="Popular Quizzes"
             quizzes={this.props.popularQuizzes}
             getData={this.props.fetchAllQuizzes}
-            wrap={true}
+            wrap
             mainColor="tertiary"
           />
         </section>
@@ -36,14 +36,12 @@ export class Dashboard extends Component {
 }
 
 export default connect(
-  state => {
-    return {
-      popularQuizzes: state.allQuizzes.popularQuizzes,
-      yourQuizzes: state.allQuizzes.yourQuizzes
-    };
-  },
+  state => ({
+    popularQuizzes: state.allQuizzes.popularQuizzes,
+    yourQuizzes: state.allQuizzes.yourQuizzes,
+  }),
   {
-    fetchAllQuizzes: fetchAllQuizzes,
-    fetchYourQuizzes: fetchYourQuizzes
-  }
+    fetchAllQuizzes,
+    fetchYourQuizzes,
+  },
 )(Dashboard);

@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import Layout from "./Layout/Layout";
-import Landing from "./Landing/Landing";
-import Team from "./Pages/Team";
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
-import Dashboard from "./Dashboard/Dashboard";
-import { MakeQuiz } from "./MakeQuiz/MakeQuiz";
-import TakeQuiz from "./TakeQuiz/TakeQuiz";
-import dotenv from "dotenv";
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import dotenv from 'dotenv';
+import Layout from './Layout/Layout';
+import Landing from './Landing/Landing';
+import Team from './Pages/Team';
+import About from './Pages/About';
+import Contact from './Pages/Contact';
+import Dashboard from './Dashboard/Dashboard';
+import { MakeQuiz } from './MakeQuiz/MakeQuiz';
+import TakeQuiz from './TakeQuiz/TakeQuiz';
+
 dotenv.config();
 
 class App extends Component {
