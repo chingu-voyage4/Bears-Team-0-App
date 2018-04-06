@@ -5,7 +5,7 @@ const quizSchema = new Schema({
   title: String,
   questions: Array,
   description: String,
-  favorites: Number,
+  favorites: { type: Number, default: 0},
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 

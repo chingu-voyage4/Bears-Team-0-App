@@ -14,7 +14,6 @@ module.exports = app => {
     }
 
     const popularQuizzes = await Quiz.find().sort({ favorites: -1 }).limit(6);
-    console.log(popularQuizzes)
     
     return res.send(popularQuizzes);
   })
@@ -95,20 +94,7 @@ module.exports = app => {
       }
     });
   });
-
-  /**
-   * PATCH Update favorites tally
-   */
-  app.patch("/api/quizzes/:id", async (req, res) => {
-    if (!req.user) {
-      return res.status(401).send({ error: "Login Required" });
-    }
-    
-    const quiz = await Quiz.findOneAndUpdate({ id: req.params.id }, { $gte: 1 }, { $inc: { favorites: req.body.favChange }});
-
-    return res.send(quiz);
-  })
-
+  
   /**
    * DELETE Delete Quiz by Id - Requires Login
    */
