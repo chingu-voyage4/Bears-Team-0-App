@@ -1,7 +1,7 @@
 import { takeQuizTypes } from './types';
 import axios from 'axios';
 
-const { FETCH_SPECIFIC_QUIZ } = takeQuizTypes;
+const { FETCH_SPECIFIC_QUIZ, SEND_OPTION } = takeQuizTypes;
 
 export const fetchSpecificQuiz = quizId => async dispatch => {
   const res = await axios.get(`/api/quizzes/${quizId}`);
