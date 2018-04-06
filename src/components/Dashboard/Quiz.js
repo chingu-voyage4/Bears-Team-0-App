@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // representation of quiz for allquizzes page
-const Quiz = ({ title, mainColor, body, favorites, id }) => {
+const Quiz = ({ title, mainColor, body, favorites, id, updateQuiz }) => {
   return (
     <div className="quiz">
       <Link
@@ -16,7 +16,7 @@ const Quiz = ({ title, mainColor, body, favorites, id }) => {
       </section>
       <section className={`quiz-footer ${mainColor}`}>
         <span>
-          <i className="fa fa-heart" /> {favorites}
+          <i className="fa fa-heart" onClick={updateQuiz} /> {favorites}
         </span>
         <a>Share</a>
       </section>

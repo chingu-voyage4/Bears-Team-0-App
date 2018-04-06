@@ -45,6 +45,6 @@ export default connect(
   {
     fetchAllQuizzes: fetchAllQuizzes,
     fetchYourQuizzes: fetchYourQuizzes,
-    fetchPopularQuizzes: fetchPopularQuizzes
+    fetchPopularQuizzes: fetchPopularQuizzes,
   }
 )(Dashboard);

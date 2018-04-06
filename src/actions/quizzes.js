@@ -1,6 +1,6 @@
 import axios from "axios";
 import mockFetch from "../mockFetch/mockFetch";
-import { quizTypes } from "./types";
+import { quizTypes, takeQuizTypes } from "./types";
 const {
   REQUEST_ALL_QUIZZES,
   RECEIVE_ALL_QUIZZES,
@@ -12,6 +12,10 @@ const {
   FETCH_POPULAR_QUIZZES,
   FETCH_YOUR_QUIZZES
 } = quizTypes;
+
+const {
+  FETCH_SPECIFIC_QUIZ
+} = takeQuizTypes;
 
 // action to request all quizzes
 export const requestAllQuizzes = () => ({
@@ -70,6 +74,17 @@ export const fetchYourQuizzes =() => async dispatch => {
   const res = await axios.get("/api/quizzes");
 
   dispatch({ type: FETCH_YOUR_QUIZZES, payload: res.data });
+}
+
+/**
+ * Increase or Decrease Favorites
+ * param - favChange is the number of the change (usually +1 or -1)
+ * param - quizId is the _id from the quiz that needs to be updated
+ */
+export const updateQuiz = (quizId, quiz) => async dispatch => {
+  const res = await axios.put(`/api/quizzes/${quizId}`, quiz);
+
+  dispatch({ type: FETCH_SPECIFIC_QUIZ, payload: res.data })
 }
 
 // // see the above comment for fetchAllQuizzes
