@@ -1,69 +1,47 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import FillTrueFalse from '../FillTrueFalse';
-import { fetchQuiz } from '../../actions/takeQuiz';
-
-// given a JSON object representation of a question,
-// this function will render the appropriate component
-function renderSwitch(questionObj) {
-  const { question: questionStr, type: questionType } = questionObj;
-  switch (questionType) {
-    case 'true false':
-      return <FillTrueFalse question={questionStr} />;
-    case 'multiple choice':
-      return <p>Multiple Choice</p>;
-    case 'dropdown':
-      return <p>Dropdown</p>;
-    default:
-      return null;
-  }
-}
-
+import { connect } from 'react-redux';
+import * as actions from '../../actions/takeQuiz';
 // component allows client to take a quiz
+
 class TakeQuiz extends Component {
-  componentWillMount() {
-    // dispatch action to fetch quiz
-    const { fetchQuiz, match: { params: { id } } } = this.props;
-    fetchQuiz(id);
+  componentDidMount() {
+    this.props.fetchSpecificQuiz(this.props.match.params.id);
+  }
+
+  renderQuestion(question) {
+    switch (question.format) {
+      case 'true false':
+        return <FillTrueFalse key={question.id} question={question} />;
+      case 'multiple choice':
+        return <p key={question.id}>Multiple Choice</p>;
+      case 'dropdown':
+        return <p key={question.id}>Dropdown</p>;
+      default:
+        return null;
+    }
   }
 
   render() {
-    const { currentQuestion } = this.props;
-    return (
-      <div>
-        <h1>Take Quiz</h1>
-        {currentQuestion ? renderSwitch(currentQuestion) : null}
-      </div>
-    );
+    if (!!this.props.takeQuizzes) {
+      const { title, description, questions } = this.props.takeQuizzes;
+      return (
+        <div className="quiz-display">
+          <h1>{title}</h1>
+          <h3>{description}</h3>
+          {questions.map(question => {
+            return this.renderQuestion(question);
+          })}
+        </div>
+      );
+    } else {
+      return 'Loading';
+    }
   }
 }
 
-TakeQuiz.defaultProps = {
-  currentQuestion: null,
-};
+function mapStateToProps({ takeQuizzes }) {
+  return { takeQuizzes };
+}
 
-TakeQuiz.propTypes = {
-  currentQuestion: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    question: PropTypes.string.isRequired,
-    answer: PropTypes.bool.isRequired,
-  }),
-  fetchQuiz: PropTypes.func.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: Number,
-    }),
-  }).isRequired,
-};
-
-export default connect(
-  (state) => {
-    const stateSlice = state.takeQuizzes;
-    return {
-      questions: stateSlice.questions,
-      currentQuestion: stateSlice ? stateSlice.questions[stateSlice.questionCursor] : null,
-    };
-  },
-  { fetchQuiz },
-)(TakeQuiz);
+export default connect(mapStateToProps, actions)(TakeQuiz);

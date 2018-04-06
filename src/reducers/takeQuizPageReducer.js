@@ -1,6 +1,6 @@
 import { takeQuizTypes } from '../actions/types';
 
-const { RECEIVE_QUIZ, SEND_OPTION } = takeQuizTypes;
+const { RECEIVE_QUIZ, SEND_OPTION, FETCH_SPECIFIC_QUIZ } = takeQuizTypes;
 
 const initialState = {
   questions: [],
@@ -8,7 +8,7 @@ const initialState = {
     // question id
     // answer
   ],
-  questionCursor: 0,
+  questionCursor: 0
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case RECEIVE_QUIZ:
       return {
         ...state,
-        questions: [...action.payload.questionData],
+        questions: [...action.payload.questionData]
       };
     case SEND_OPTION:
       return {
@@ -25,11 +25,13 @@ export default (state = initialState, action) => {
           ...state.answers,
           {
             // questionId: state.questions[state.questionCursor].id,
-            answer: action.payload,
-          },
+            answer: action.payload
+          }
         ],
-        questionCursor: state.questionCursor + 1,
+        questionCursor: state.questionCursor + 1
       };
+    case FETCH_SPECIFIC_QUIZ:
+      return action.payload || false;
     default:
       return state;
   }
