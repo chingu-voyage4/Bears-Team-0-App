@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateQuiz } from '../../actions/quizzes';
 import Quiz from './Quiz';
