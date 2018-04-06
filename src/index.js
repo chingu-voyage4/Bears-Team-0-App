@@ -14,6 +14,9 @@ import { saveState } from './store/localStorage';
 // cache data from MakeQuiz page
 store.subscribe(() => saveState('makeQuizzes', store.getState().makeQuizzes));
 
+// cache data from Dashboard page
+store.subscribe(() => saveState('titleAndDescription', store.getState().titleAndDescription));
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

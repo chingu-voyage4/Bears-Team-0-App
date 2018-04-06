@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import { DragDropContextProvider } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
-import { DragScreen } from "./DragScreen";
-import DropScreen from "./DropScreen";
+import React, { Component } from 'react';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragScreen } from './DragScreen';
+import DropScreen from './DropScreen';
 
-export class MakeQuiz extends Component {
+export default class MakeQuiz extends Component {
   render() {
     const makeQuizStyle = {
-      display: "flex",
-      width: "100%",
-      height: "500px",
-      background: "red"
+      display: 'flex',
+      width: '100%',
+      height: '500px',
     };
 
     return (

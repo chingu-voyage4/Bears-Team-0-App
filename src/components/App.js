@@ -7,7 +7,7 @@ import Team from './Pages/Team';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Dashboard from './Dashboard/Dashboard';
-import { MakeQuiz } from './MakeQuiz/MakeQuiz';
+import MakeQuiz from './MakeQuiz/MakeQuiz';
 import TakeQuiz from './TakeQuiz/TakeQuiz';
 
 dotenv.config();

@@ -1,7 +1,7 @@
 // slightly modified
 // from Dan Abramov's video on persisting state to local storage
 // https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage
-export const loadState = stateSlice => {
+export const loadState = (stateSlice) => {
   try {
     const serializedState = localStorage.getItem(stateSlice);
     if (serializedState === null) {
