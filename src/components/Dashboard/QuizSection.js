@@ -18,8 +18,8 @@ export class QuizSection extends Component {
           {quizzes
             ? quizzes.map(quiz => (
                 <Quiz
-                  key={quiz.id}
-                  id={quiz.id}
+                  key={quiz._id}
+                  id={quiz._id}
                   title={quiz.title}
                   favorites={quiz.favorites}
                   body={quiz.description}

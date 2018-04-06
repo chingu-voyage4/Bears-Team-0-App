@@ -17,8 +17,8 @@ const Quiz = ({ title, mainColor, body, favorites, id }) => {
       <section className={`quiz-footer ${mainColor}`}>
         <span>
           <i className="fa fa-heart" /> {favorites}
-        </span>{" "}
-        <a>Share</a>{" "}
+        </span>
+        <a>Share</a>
       </section>
     </div>
   );

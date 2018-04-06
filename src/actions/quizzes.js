@@ -9,7 +9,8 @@ const {
   CHANGE_TITLE,
   CHANGE_DESCRIPTION,
   SUBMIT_QUIZ_START,
-  FETCH_POPULAR_QUIZZES
+  FETCH_POPULAR_QUIZZES,
+  FETCH_YOUR_QUIZZES
 } = quizTypes;
 
 // action to request all quizzes
@@ -64,20 +65,27 @@ export const fetchPopularQuizzes = () => async dispatch => {
   dispatch({type: FETCH_POPULAR_QUIZZES, payload: res.data });
 }
 
-// see the above comment for fetchAllQuizzes
-export const fetchYourQuizzes = () => {
-  return function(dispatch) {
-    dispatch(requestYourQuizzes());
-    return mockFetch("/api/yourquizzes")
-      .then(
-        res => {
-          return res.json();
-        },
-        error => console.log("an error occurred...", error)
-      )
-      .then(json => dispatch(receiveYourQuizzes(json)));
-  };
-};
+// Fetch the User's Quizzes
+export const fetchYourQuizzes =() => async dispatch => {
+  const res = await axios.get("/api/quizzes");
+
+  dispatch({ type: FETCH_YOUR_QUIZZES, payload: res.data });
+}
+
+// // see the above comment for fetchAllQuizzes
+// export const fetchYourQuizzes = () => {
+//   return function(dispatch) {
+//     dispatch(requestYourQuizzes());
+//     return mockFetch("/api/yourquizzes")
+//       .then(
+//         res => {
+//           return res.json();
+//         },
+//         error => console.log("an error occurred...", error)
+//       )
+//       .then(json => dispatch(receiveYourQuizzes(json)));
+//   };
+// };
 
 // action to change the title of a quiz
 export const changeTitle = e => {
