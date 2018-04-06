@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import QuizSection from "./QuizSection";
 import QuizStart from "./QuizStart";
-import { fetchAllQuizzes, fetchYourQuizzes } from "../../actions/quizzes";
+import { fetchAllQuizzes, fetchYourQuizzes, fetchPopularQuizzes } from "../../actions/quizzes";
 
 export class Dashboard extends Component {
   render() {
@@ -25,7 +25,7 @@ export class Dashboard extends Component {
           <QuizSection
             headingText="Popular Quizzes"
             quizzes={this.props.popularQuizzes}
-            getData={this.props.fetchAllQuizzes}
+            getData={this.props.fetchPopularQuizzes}
             wrap={true}
             mainColor="tertiary"
           />
@@ -44,6 +44,7 @@ export default connect(
   },
   {
     fetchAllQuizzes: fetchAllQuizzes,
-    fetchYourQuizzes: fetchYourQuizzes
+    fetchYourQuizzes: fetchYourQuizzes,
+    fetchPopularQuizzes: fetchPopularQuizzes
   }
 )(Dashboard);

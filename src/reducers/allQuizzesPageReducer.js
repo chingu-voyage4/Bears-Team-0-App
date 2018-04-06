@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "SUBMIT_QUIZ_START":
       return state;
-    case "RECEIVE_ALL_QUIZZES":
+    case "FETCH_POPULAR_QUIZZES":
       return {
         ...state,
         popularQuizzes: action.payload

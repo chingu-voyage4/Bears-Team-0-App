@@ -21,8 +21,8 @@ export class QuizSection extends Component {
                   key={quiz.id}
                   id={quiz.id}
                   title={quiz.title}
-                  likes={quiz.likes}
-                  body={quiz.body}
+                  favorites={quiz.favorites}
+                  body={quiz.description}
                   mainColor={mainColor}
                 />
               ))
