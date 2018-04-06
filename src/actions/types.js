@@ -19,7 +19,8 @@ export const userTypes = {
 
 export const makeQuizTypes = {
   ADD_MULTIPLE_CHOICE: 'ADD_MULTIPLE_CHOICE',
-  ADD_TRUE_FALSE: 'ADD_TRUE_FALSE'
+  ADD_TRUE_FALSE: 'ADD_TRUE_FALSE',
+  QUIZ_WAS_SUBMITTED: 'QUIZ_WAS_SUBMITTED'
 };
 
 export const multipleChoiceTypes = {
