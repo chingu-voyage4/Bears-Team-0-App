@@ -1,5 +1,5 @@
 const initialState = {
-  isLoggedIn: true,
+  currentUser: null,
   userImage:
     // from http://www.clker.com
     "http://www.clker.com/cliparts/n/N/u/W/i/c/circle-teddy-bear-black-and-white-md.png"
@@ -7,15 +7,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case "FETCH_USER":
       return {
         ...state,
-        isLoggedIn: true
-      };
-    case "LOGOUT":
-      return {
-        ...state,
-        isLoggedIn: false
+        currentUser: action.payload
       };
     default:
       return state;

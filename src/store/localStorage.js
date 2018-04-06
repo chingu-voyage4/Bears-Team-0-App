@@ -23,3 +23,7 @@ export const saveState = (storeSlice, data) => {
     console.log(err);
   }
 };
+
+export const remove = key => {
+  localStorage.removeItem(key);
+};

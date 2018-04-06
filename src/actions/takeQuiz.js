@@ -1,27 +1,15 @@
-import { takeQuizTypes } from "./types";
-import mockFetch from "../mockFetch/mockFetch";
+import { takeQuizTypes } from './types';
+import axios from 'axios';
 
-const { REQUEST_QUIZ, RECEIVE_QUIZ } = takeQuizTypes;
+const { FETCH_SPECIFIC_QUIZ, SEND_OPTION } = takeQuizTypes;
 
-const requestQuiz = quizId => ({ type: REQUEST_QUIZ, id: quizId });
+export const fetchSpecificQuiz = quizId => async dispatch => {
+  const res = await axios.get(`/api/quizzes/${quizId}`);
 
-const receiveQuiz = data => ({
-  type: RECEIVE_QUIZ,
-  payload: data
-});
-
-export const fetchQuiz = quizId => {
-  console.log("fetching quiz...");
-  return dispatch => {
-    dispatch(requestQuiz());
-    return mockFetch(`/api/quiz/${quizId}`)
-      .then(
-        res => {
-          //          console.log("fetched quiz is: ", res.json());
-          return res.json();
-        },
-        error => console.log("an error occurred...", error)
-      )
-      .then(json => dispatch(receiveQuiz(json)));
-  };
+  dispatch({ type: FETCH_SPECIFIC_QUIZ, payload: res.data });
 };
+
+export const sendOption = option => ({
+  type: SEND_OPTION,
+  payload: option
+});

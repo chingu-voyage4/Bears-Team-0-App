@@ -1,21 +1,22 @@
-import React, { Component } from "react";
-import { DragSource } from "react-dnd";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { DragSource } from 'react-dnd';
+import { connect } from 'react-redux';
 import {
   addMultipleChoice,
   addTrueFalse,
   addDropdown
-} from "../../actions/makequiz";
-import types from "./types";
+} from '../../actions/makequiz';
+import types from './types';
 
 const style = {
-  border: "1px dashed gray",
-  backgroundColor: "white",
-  padding: "0.5rem 1rem",
-  marginRight: "1.5rem",
-  marginBottom: "1.5rem",
-  cursor: "move",
-  float: "left"
+  border: '1px dashed black',
+  color: 'black',
+  backgroundColor: 'white',
+  padding: '0.5rem 1rem',
+  marginRight: '1.5rem',
+  marginBottom: '1.5rem',
+  cursor: 'move',
+  float: 'left'
 };
 
 const boxSource = {
@@ -30,13 +31,13 @@ const boxSource = {
 
     if (dropResult) {
       switch (props.name) {
-        case "Multiple Choice":
+        case 'Multiple Choice':
           props.addMultipleChoice();
           break;
-        case "TrueFalse":
+        case 'TrueFalse':
           props.addTrueFalse();
           break;
-        case "Dropdown":
+        case 'Dropdown':
           props.addDropdown();
           break;
         default:
