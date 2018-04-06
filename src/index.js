@@ -9,13 +9,30 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 // saveState allows caching to localStorage
-import { saveState } from './store/localStorage';
+import { saveState, remove } from './store/localStorage';
 
-// cache data from MakeQuiz page
-store.subscribe(() => saveState('makeQuizzes', store.getState().makeQuizzes));
+store.subscribe(() => {
+  const makeQuizzes = store.getState().makeQuizzes;
+  const titleAndDescription = store.getState().titleAndDescription;
+  // cache data from MakeQuiz page
+  if (
+    makeQuizzes &&
+    makeQuizzes.questions &&
+    makeQuizzes.questions.length > 0
+  ) {
+    saveState('makeQuizzes', makeQuizzes);
+  } else {
+    //    remove('makeQuizzes');
+    remove('makeQuizzes');
+  }
 
-// cache data from Dashboard page
-store.subscribe(() => saveState('titleAndDescription', store.getState().titleAndDescription));
+  // cache data from Dashboard page
+  if (titleAndDescription.title && titleAndDescription.description) {
+    saveState('titleAndDescription', titleAndDescription);
+  } else {
+    remove('titleAndDescription');
+  }
+});
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,6 +40,6 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 registerServiceWorker();

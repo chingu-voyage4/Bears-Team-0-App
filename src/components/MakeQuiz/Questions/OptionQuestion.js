@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import Delete from "./Delete";
-import Option from "./Option";
+import React, { Component } from 'react';
+import Delete from './Delete';
+import Option from './Option';
 import {
   addOption,
   changeOption,
   toggleCorrectOption,
   changeQuestion,
   deleteOption
-} from "../../../actions/multipleChoice";
-import { connect } from "react-redux";
+} from '../../../actions/multipleChoice';
+import { connect } from 'react-redux';
 
 class OptionQuestion extends Component {
   render() {
@@ -22,14 +22,36 @@ class OptionQuestion extends Component {
       } = this.props,
       { options, id, question } = questionData;
 
+    const styles = {
+      optionQuestion: {
+        width: '100%'
+      },
+      button: {
+        background: 'inherit',
+        border: 0,
+        color: '#215fe9',
+        fontWeight: 'bold',
+        width: '20%'
+      },
+      input: {
+        background: 'inherit',
+        border: 0,
+        width: '60%'
+      }
+    };
+
     return (
-      <div className="optionQuestion">
+      <div className="optionQuestion" style={styles.optionQuestion}>
         <input
           placeholder="Question"
+          style={styles.input}
           value={question}
           onChange={e => changeQuestion(e, id)}
         />
-        <button onClick={() => addOption(id)}>Add Option</button>
+        <button style={styles.button} onClick={() => addOption(id)}>
+          Add Option
+        </button>
+        <Delete questionId={id} style={styles.button} />
         {options.map(option => (
           <Option
             key={option.id}
@@ -41,7 +63,6 @@ class OptionQuestion extends Component {
             val={option.val}
           />
         ))}
-        <Delete questionId={id} />
       </div>
     );
   }

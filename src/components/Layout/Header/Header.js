@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../../../actions/user";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../actions/user';
 
 class Header extends Component {
   componentDidMount() {
@@ -8,10 +8,16 @@ class Header extends Component {
   }
 
   render() {
+    const headerStyle = {
+      background: '#0f1538',
+      height: '64px',
+      zIndex: 1
+    };
+
     if (!!this.props.user.currentUser) {
       // Logged In
       return (
-        <div className="header">
+        <div className="header" style={headerStyle}>
           <a href="/">Quizzly Bear</a>
           <div className="header-right">
             <a href="/api/logout">Log Out</a>

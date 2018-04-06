@@ -9,7 +9,9 @@ export default class MakeQuiz extends Component {
     const makeQuizStyle = {
       display: 'flex',
       width: '100%',
-      height: '500px',
+      position: 'absolute',
+      top: '64px',
+      bottom: '64px'
     };
 
     return (

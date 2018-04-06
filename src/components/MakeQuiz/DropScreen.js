@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { submitQuiz } from "../../actions/makequiz";
-import { DropTarget } from "react-dnd";
-import MultipleChoice from "./Questions/MultipleChoice";
-import TrueFalse from "./Questions/TrueFalse";
-import Dropdown from "./Questions/Dropdown";
-import { connect } from "react-redux";
-import types from "./types";
+import React, { Component } from 'react';
+import { submitQuiz } from '../../actions/makequiz';
+import { DropTarget } from 'react-dnd';
+import MultipleChoice from './Questions/MultipleChoice';
+import TrueFalse from './Questions/TrueFalse';
+import Dropdown from './Questions/Dropdown';
+import { connect } from 'react-redux';
+import types from './types';
 const spec = {
     drop() {
-      return { name: "builder" };
+      return { name: 'builder' };
     }
   },
   collect = (connect, monitor) => {
@@ -27,27 +27,57 @@ class DropScreen extends Component {
       connectDropTarget,
       submitQuiz
     } = this.props;
+    const styles = {
+      title: {
+        color: hovered ? '#fff' : 'black',
+        marginTop: '0px',
+        marginBottom: '0px',
+        display: 'inline-block',
+        marginRight: '5%'
+      },
+      description: {
+        color: hovered ? '#fff' : 'black',
+        display: 'inline-block',
+        textDecoration: 'underline',
+        fontWeight: 'lighter'
+      },
+      paragraph: {
+        color: hovered ? '#fff' : 'black',
+        fontWeight: 'bolder'
+      },
+      questions: {
+        marginTop: '0px'
+      }
+    };
     return connectDropTarget(
       <div
         style={{
-          color: "#fff",
-          padding: "20px",
-          backgroundColor: hovered ? "darkslategray" : "#c7c7c7",
-          width: "50%",
-          flexBasis: "auto"
+          color: '#fff',
+          padding: '20px',
+          backgroundColor: hovered ? 'darkslategray' : '#fff',
+          letterSpacing: '0.05rem',
+          borderLeft: '2px solid black',
+          width: '70%',
+          height: '100%',
+          overflow: 'scroll',
+          flexBasis: 'auto'
         }}
       >
-        <p>DropScreen</p>
-        <div>
+        <h1 style={styles.title}>{title}</h1>
+        <h2 style={styles.description}>{description}</h2>
+        {questions.length === 0 ? (
+          <p style={styles.paragraph}>Drag a new question here!</p>
+        ) : null}
+        <div style={styles.questions}>
           {questions.map(question => {
             switch (question.format) {
-              case "multiple choice":
+              case 'multiple choice':
                 return (
                   <MultipleChoice key={question.id} questionData={question} />
                 );
-              case "true false":
+              case 'true false':
                 return <TrueFalse key={question.id} questionData={question} />;
-              case "dropdown":
+              case 'dropdown':
                 return <Dropdown key={question.id} questionData={question} />;
               default:
                 return null;

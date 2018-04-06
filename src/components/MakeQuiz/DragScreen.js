@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import DecoratedBox from "./Box";
+import React, { Component } from 'react';
+import DecoratedBox from './Box';
 
 export class DragScreen extends Component {
   render() {
@@ -7,13 +7,17 @@ export class DragScreen extends Component {
       <div
         className="drag_screen"
         style={{
-          color: "#c7c7c7",
-          backgroundColor: "#fff",
-          width: "50%",
-          flexBasis: "auto"
+          color: '#c7c7c7',
+          backgroundColor: '#fff',
+          letterSpacing: '0.05rem',
+          width: '30%',
+          height: '100%',
+          flexBasis: 'auto'
         }}
       >
-        <p>DragScreen</p>
+        <p style={{ color: 'black', fontWeight: 'bolder' }}>
+          Pick a question type!
+        </p>
         <DecoratedBox text="Multiple Choice" name="Multiple Choice" />
         <DecoratedBox text="True Or False" name="TrueFalse" />
         {/* Dropdown component */}
