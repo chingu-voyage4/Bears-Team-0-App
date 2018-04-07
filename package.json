@@ -1,61 +1,26 @@
 {
-  "name": "bears-0",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": {
-    "/auth/*": {
-      "target": "http://localhost:3001"
-    },
-    "/api/*": {
-      "target": "http://localhost:3001"
-    }
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel-eslint": "^8.1.1",
-    "dotenv": "^5.0.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "font-awesome": "^4.7.0",
-    "lodash": "^4.17.5",
-    "node-sass": "^4.7.2",
-    "node-sass-chokidar": "0.0.3",
-    "prettier-eslint": "^8.8.1",
-    "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dnd": "^2.5.4",
-    "react-dnd-html5-backend": "^2.5.4",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "react-select": "^1.2.1",
-    "react-test-renderer": "^16.2.0",
-    "redux": "^3.7.2"
-  },
+  "name": "quizzly_bear",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build-css": "node-sass-chokidar src/stylesheets -o src/stylesheets",
-    "watch-css": "npm run build-css && node-sass-chokidar src/stylesheets -o src/stylesheets --watch --recursive",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
-    "test-watch": "npm test -- --watch",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/addons": "^3.3.15",
-    "@storybook/react": "^3.3.15",
-    "babel-core": "^6.26.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.7.0",
-    "redux-thunk": "^2.2.0",
-    "shortid": "^2.2.8"
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.7.1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.12",
+    "nodemon": "^1.17.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   }
 }
