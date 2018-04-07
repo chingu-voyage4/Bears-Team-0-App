@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './store/store';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
 import './stylesheets/main.css';
 
 // saveState allows caching to localStorage
@@ -42,4 +41,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();
