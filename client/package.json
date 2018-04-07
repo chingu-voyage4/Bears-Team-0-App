@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/google": {
-      "target": "https://localhost:5000"
-    },
     "/api/*": {
       "target": "https://localhost:5000"
     }

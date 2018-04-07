@@ -6,7 +6,7 @@ module.exports = app => {
    * PATH for redirect to google login using passport
    */
   app.get(
-    "/auth/google",
+    "/api/google",
     passport.authenticate("google", {
       scope: ["profile", "email"]
     })
@@ -16,7 +16,7 @@ module.exports = app => {
    * PATH for redirect from google login to client side
    */
   app.get(
-    "/auth/google/redirect", 
+    "/api/google/redirect", 
     passport.authenticate("google"),
     (req, res) => {
       res.redirect("/dashboard");

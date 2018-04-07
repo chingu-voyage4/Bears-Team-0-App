@@ -31,7 +31,7 @@ class Header extends Component {
         <div className="header">
           <a href="/">Quizzly Bear</a>
           <div className="header-right">
-            <a href="/auth/google">Log In</a>
+            <a href="/api/google">Log In</a>
           </div>
         </div>
       );
