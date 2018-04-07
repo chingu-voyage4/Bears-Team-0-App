@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
 import { BrowserRouter } from 'react-router-dom';
-import './stylesheets/main.css';
+import { store } from './store/store';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import './stylesheets/main.css';
 
 // saveState allows caching to localStorage
 import { saveState, remove } from './store/localStorage';
