@@ -1,0 +1,9 @@
+.about-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: color-list("background");
+  color: color-list("text-light");
+}

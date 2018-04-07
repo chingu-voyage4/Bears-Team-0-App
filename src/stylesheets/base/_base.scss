@@ -1,0 +1,47 @@
+//----------------------------------------------
+//              Basic Styles
+//----------------------------------------------
+
+/**
+*	Box Model Setup
+*/
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+button {
+  color: color-list("text-dark");
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/* TODO: Move to button component style when set up */
+.blue-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #0062f1;
+  border: none;
+  outline: none;
+  color: color-list("text-light");
+  font-size: 1.5rem;
+  font-weight: 700;
+}
