@@ -26,5 +26,15 @@ require("./routes/authRoutes")(app);
 require("./routes/quizRoutes")(app);
 require("./routes/userRoutes")(app);
 
+// Points Heroku to the correct files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
