@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import dotenv from 'dotenv';
 import Layout from './Layout/Layout';
 import Landing from './Landing/Landing';
 import Team from './Pages/Team';
@@ -9,8 +8,6 @@ import Contact from './Pages/Contact';
 import Dashboard from './Dashboard/Dashboard';
 import MakeQuiz from './MakeQuiz/MakeQuiz';
 import TakeQuiz from './TakeQuiz/TakeQuiz';
-
-dotenv.config();
 
 class App extends Component {
   render() {
