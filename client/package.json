@@ -31,7 +31,8 @@
     "react-scripts": "1.1.1",
     "react-select": "^1.2.1",
     "react-test-renderer": "^16.2.0",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/stylesheets -o src/stylesheets",
