@@ -13,7 +13,7 @@ module.exports = app => {
       return res.status(401).send({ error: "Login Required" });
     }
     
-    const popularQuizzes = await Quiz.find({ _user: { $ne: req.user._id }}).sort({ favorites: -1 }).limit(6);
+    const popularQuizzes = await Quiz.find().sort({ favorites: -1 }).limit(6);
     
     return res.send(popularQuizzes);
   })

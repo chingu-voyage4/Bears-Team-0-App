@@ -28,8 +28,8 @@ Quiz.propTypes = {
   title: PropTypes.string.isRequired,
   mainColor: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  favorites: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Quiz;

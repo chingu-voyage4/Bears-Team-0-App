@@ -11,7 +11,8 @@ export class QuizSection extends Component {
   }
 
   async addOneToFavs(quiz) {
-    let updatedQuiz = { ...quiz };
+    const updatedQuiz = { ...quiz };
+    console.log(updatedQuiz.favorites, updatedQuiz.title);
     updatedQuiz.favorites = quiz.favorites + 1;
     await this.props.updateQuiz(quiz._id, updatedQuiz);
     await this.props.getData();
@@ -52,7 +53,7 @@ QuizSection.propTypes = {
   headingText: PropTypes.string.isRequired,
   mainColor: PropTypes.string.isRequired,
   wrap: PropTypes.bool.isRequired,
-  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired
+  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(null, { updateQuiz })(QuizSection);
