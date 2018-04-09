@@ -17,7 +17,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log('action is: ', action);
   switch (action.type) {
     case RECEIVE_QUIZ:
       return {
@@ -39,11 +38,11 @@ export default (state = initialState, action) => {
             : 0
       };
     case FINISH_QUIZ:
-      alert('finishing quiz');
-      return state;
+      return { ...state, questionCursor: 0 };
     case FETCH_SPECIFIC_QUIZ:
       return {
         ...state,
+        answers: [],
         questions: action.payload.questions || []
       };
     default:
