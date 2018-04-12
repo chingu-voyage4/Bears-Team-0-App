@@ -5,7 +5,7 @@ import QuizStart from './QuizStart';
 import {
   fetchAllQuizzes,
   fetchYourQuizzes,
-  fetchPopularQuizzes
+  fetchPopularQuizzes,
 } from '../../actions/quizzes';
 
 class Dashboard extends Component {
