@@ -24,10 +24,9 @@ export default (state = initialState, action) => {
         description: action.payload
       };
     case QUIZ_WAS_SUBMITTED:
-      console.log('state is: ', state);
-      const { title, description, ...otherState } = state;
       return {
-        ...otherState
+        title: '',
+        description: ''
       };
     default:
       return state;
