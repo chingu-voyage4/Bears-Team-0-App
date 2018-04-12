@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   changeTitle,
   changeDescription,
   submitQuizStart
-} from "../../actions/quizzes";
-import { connect } from "react-redux";
+} from '../../actions/quizzes';
+import { connect } from 'react-redux';
 
 // this component collects the title and description for a started quiz
 class QuizStart extends Component {
@@ -51,8 +51,8 @@ export default withRouter(
       changeTitle: e => dispatch(changeTitle(e)),
       changeDescription: e => dispatch(changeDescription(e)),
       submit: history => {
-        history.push("/makeQuiz");
         dispatch(submitQuizStart());
+        history.push('/makeQuiz');
       }
     })
   )(QuizStart)

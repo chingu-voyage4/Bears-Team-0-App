@@ -1,11 +1,6 @@
 import axios from 'axios';
-import mockFetch from '../mockFetch/mockFetch';
 import { quizTypes, takeQuizTypes } from './types';
 const {
-  REQUEST_ALL_QUIZZES,
-  RECEIVE_ALL_QUIZZES,
-  REQUEST_YOUR_QUIZZES,
-  RECEIVE_YOUR_QUIZZES,
   CHANGE_TITLE,
   CHANGE_DESCRIPTION,
   SUBMIT_QUIZ_START,
