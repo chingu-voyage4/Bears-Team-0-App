@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { submitQuiz } from '../../actions/makequiz';
 import { DropTarget } from 'react-dnd';
 import MultipleChoice from './Questions/MultipleChoice';
@@ -25,7 +26,8 @@ class DropScreen extends Component {
       questions,
       hovered,
       connectDropTarget,
-      submitQuiz
+      submitQuiz,
+      history
     } = this.props;
     const styles = {
       title: {
@@ -88,6 +90,7 @@ class DropScreen extends Component {
               onClick={event => {
                 event.preventDefault();
                 submitQuiz({ title, description, questions });
+                history.push('/dashboard');
               }}
             >
               Submit
@@ -105,4 +108,4 @@ export default connect(
     description: state.titleAndDescription.description
   }),
   { submitQuiz }
-)(DropTarget(types.BOX, spec, collect)(DropScreen));
+)(DropTarget(types.BOX, spec, collect)(withRouter(DropScreen)));
