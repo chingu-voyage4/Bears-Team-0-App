@@ -14,13 +14,15 @@ const Option = ({
       <label htmlFor={id}>Right answer?</label>
       <input
         id={id}
-        type="checkbox"
+        type="radio"
         checked={checked}
         onClick={toggleCorrectOption}
       />
-      <button className="ds-x-button" onClick={deleteOption}>x</button>
+      <button className="ds-x-button" onClick={deleteOption}>
+        x
+      </button>
     </div>
   );
-}
+};
 
 export default Option;
