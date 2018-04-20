@@ -5,13 +5,10 @@ const Quiz = mongoose.model("quizzes");
 module.exports = app => {
   /**
    * GET 6 most popular quizzes - Requires Login
-   * TODO: Verify if this should require login
+   * No Log In Required
    */
 
   app.get("/api/quizzes/popular", async (req, res) => {
-    if (!req.user) {
-      return res.status(401).send({ error: "Login Required" });
-    }
     
     const popularQuizzes = await Quiz.find().sort({ favorites: -1 }).limit(6);
     
@@ -20,12 +17,9 @@ module.exports = app => {
 
   /**
    * GET Quiz by Id - Requires Login
-   * TODO: Verify if this should require login
+   * No Log in Required
    */
   app.get("/api/quizzes/:id", async (req, res) => {
-    if (!req.user) {
-      return res.status(401).send({ error: "Login Required" });
-    }
 
     const quiz = await Quiz.findOne({ _id: req.params.id });
 
@@ -60,7 +54,9 @@ module.exports = app => {
       questions: req.body.questions,
       description: req.body.description,
       favorites: 0,
-      _user: req.user.id
+      _user: req.user.id,
+      quizzesTaken: 0,
+      resultAvg: 0,
     }).save();
 
     res.send(quiz);
@@ -84,6 +80,8 @@ module.exports = app => {
         quiz.description = req.body.description || quiz.description;
         quiz.favorites = req.body.favorites || quiz.favorites;
         quiz._user = req.user.id;
+        quiz.quizzesTaken = req.body.quizzesTaken || quiz.quizzesTaken;
+        quiz.resultAvg = req.body.resultAvg || quiz.resultAvg;
 
         quiz.save((err, quiz) => {
           if (err) {
