@@ -1,45 +1,45 @@
-import React, { Component } from "react";
-import Delete from "./Delete";
-import { changeQuestion } from "../../../actions/multipleChoice";
-import { toggleTrueFalse } from "../../../actions/trueFalse";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Delete from './Delete';
+import { changeQuestion } from '../../../actions/multipleChoice';
+import { toggleTrueFalse } from '../../../actions/trueFalse';
 
 class TrueFalse extends Component {
   render() {
-    const { id, isTrue, question } = this.props.questionData,
-      { changeQuestion, toggleTrueFalse } = this.props;
+    const { id, isTrue, question } = this.props.questionData;
+    const { changeQuestion, toggleTrueFalse } = this.props;
     return (
-      <form>
+      <form className="tf-form">
         <input
           type="text"
           value={question}
           onChange={event => changeQuestion(event, id)}
         />
-        <Delete questionId={id} />
-        <label htmlFor={id + "true"}>True</label>
+        <label htmlFor={`${id}true`}>True</label>
         <input
           type="radio"
-          id={id + "true"}
+          id={`${id}true`}
           name={id}
           value="true"
           checked={isTrue}
           onChange={() => toggleTrueFalse(id)}
         />
-        <label htmlFor={id + "false"}>False</label>
+        <label htmlFor={`${id}false`}>False</label>
         <input
           type="radio"
-          id={id + "false"}
+          id={`${id}false`}
           name={id}
           value="false"
           checked={!isTrue}
           onChange={() => toggleTrueFalse(id)}
         />
+        <Delete questionId={id} className="delete-button" />
       </form>
     );
   }
 }
 
-export default connect(state => ({}), {
+export default connect(null, {
   changeQuestion,
-  toggleTrueFalse
+  toggleTrueFalse,
 })(TrueFalse);

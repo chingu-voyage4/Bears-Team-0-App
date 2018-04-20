@@ -5,7 +5,7 @@ import QuizStart from './QuizStart';
 import {
   fetchAllQuizzes,
   fetchYourQuizzes,
-  fetchPopularQuizzes
+  fetchPopularQuizzes,
 } from '../../actions/quizzes';
 
 class Dashboard extends Component {
@@ -30,7 +30,7 @@ class Dashboard extends Component {
             headingText="Popular Quizzes"
             quizzes={this.props.popularQuizzes}
             getData={this.props.fetchPopularQuizzes}
-            wrap={true}
+            wrap
             mainColor="tertiary"
           />
         </section>
@@ -42,11 +42,11 @@ class Dashboard extends Component {
 export default connect(
   state => ({
     popularQuizzes: state.allQuizzes.popularQuizzes,
-    yourQuizzes: state.allQuizzes.yourQuizzes
+    yourQuizzes: state.allQuizzes.yourQuizzes,
   }),
   {
-    fetchAllQuizzes: fetchAllQuizzes,
-    fetchYourQuizzes: fetchYourQuizzes,
-    fetchPopularQuizzes: fetchPopularQuizzes
-  }
+    fetchAllQuizzes,
+    fetchYourQuizzes,
+    fetchPopularQuizzes,
+  },
 )(Dashboard);

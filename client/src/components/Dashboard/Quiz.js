@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // representation of quiz for allquizzes page
-const Quiz = ({ title, mainColor, body, favorites, id, updateQuiz }) => {
+const Quiz = ({
+  title, mainColor, body, favorites, id, updateQuiz,
+}) => {
   return (
     <div className="quiz">
       <Link
         style={{ textDecoration: 'none', color: 'inherit' }}
-        to={'/takequiz/' + id}
+        to={`/takequiz/${id}`}
       >
         <h2>{title}</h2>
       </Link>
@@ -17,7 +19,7 @@ const Quiz = ({ title, mainColor, body, favorites, id, updateQuiz }) => {
       </section>
       <section className={`quiz-footer ${mainColor}`}>
         <span>
-          <i className="fa fa-heart" onClick={updateQuiz} /> {favorites}
+          <i role="presentation" className="fa fa-heart" onKeyPress={updateQuiz} onClick={updateQuiz} /> {favorites}
         </span>
         <a>Share</a>
       </section>

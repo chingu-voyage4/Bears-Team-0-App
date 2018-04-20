@@ -1,5 +1,5 @@
 import React from 'react';
-import laptop from "../../stylesheets/assets/laptop.png";
+import laptop from '../../stylesheets/assets/laptop.png';
 
 const Landing = () => {
   return (
@@ -16,6 +16,6 @@ const Landing = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Landing;

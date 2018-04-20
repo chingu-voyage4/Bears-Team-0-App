@@ -11,10 +11,10 @@ class Header extends Component {
     const headerStyle = {
       background: '#0f1538',
       height: '64px',
-      zIndex: 1
+      zIndex: 1,
     };
 
-    if (!!this.props.user.currentUser) {
+    if (this.props.user.currentUser) {
       // Logged In
       return (
         <div className="header" style={headerStyle}>
