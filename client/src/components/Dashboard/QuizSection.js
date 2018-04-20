@@ -18,9 +18,7 @@ class QuizSection extends Component {
   }
 
   render() {
-    const {
-      headingText, quizzes, mainColor, wrap,
-    } = this.props;
+    const { headingText, quizzes, mainColor, wrap } = this.props;
     return (
       <div className="quiz-section">
         <h1 className={`quiz-section-heading ${mainColor}`}>{headingText}</h1>
@@ -32,6 +30,7 @@ class QuizSection extends Component {
             ? quizzes
                 .map(quiz => (
                   <Quiz
+                    className="quiz"
                     key={quiz._id}
                     id={quiz._id}
                     title={quiz.title}
@@ -54,7 +53,7 @@ QuizSection.propTypes = {
   headingText: PropTypes.string.isRequired,
   mainColor: PropTypes.string.isRequired,
   wrap: PropTypes.bool.isRequired,
-  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default connect(null, { updateQuiz })(QuizSection);
