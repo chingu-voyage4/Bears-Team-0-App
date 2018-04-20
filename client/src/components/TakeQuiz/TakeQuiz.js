@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import FillTrueFalse from '../FillTrueFalse';
 import FillDropdown from '../FillDropdown';
-import { connect } from 'react-redux';
 import * as actions from '../../actions/takeQuiz';
 // component allows client to take a quiz
 
@@ -32,7 +32,7 @@ class TakeQuiz extends Component {
   }
 
   render() {
-    if (!!this.props.takeQuizzes) {
+    if (this.props.takeQuizzes) {
       const {
         title,
         description,
@@ -40,21 +40,20 @@ class TakeQuiz extends Component {
         questionCursor
       } = this.props.takeQuizzes;
 
-      const quizDisplayStyles = {
-        position: 'absolute',
-        top: '64px'
-      };
-
       const currentQuestion = questions[questionCursor];
 
       const finishQuiz = questionCursor === questions.length - 1;
       return (
-        <div className="quiz-display" style={quizDisplayStyles}>
-          <h1>{title}</h1>
-          <h3>{description}</h3>
-          {currentQuestion
-            ? this.renderQuestion(currentQuestion, finishQuiz)
-            : null}
+        <div className="quiz-display">
+          <section className="quiz-header">
+            <h1>{title}</h1>
+            <h3>{description}</h3>
+          </section>
+          <section className="question-display">
+            {currentQuestion
+              ? this.renderQuestion(currentQuestion, finishQuiz)
+              : null}
+          </section>
         </div>
       );
     } else {

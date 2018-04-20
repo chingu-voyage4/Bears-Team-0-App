@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 class Results extends Component {
   render() {
     const { questions, answers } = this.props;
-    const resultsStyle = {
-      position: 'absolute',
-      top: '64px'
-    };
     const quizTaken = answers.length === questions.length;
     let numberCorrect;
     let numberOfQuestions;
@@ -21,7 +17,7 @@ class Results extends Component {
       numberOfQuestions = questions.length;
     }
     return (
-      <div style={resultsStyle}>
+      <div className="results">
         <table>
           {quizTaken ? (
             <thead>
@@ -37,9 +33,7 @@ class Results extends Component {
               ? questions.map((question, index) => {
                   const givenQuestion = question.question;
                   const yourAnswer = answers[index].answer;
-                  const correctAnswer = question.options.filter(
-                    e => e.correct
-                  )[0].val;
+                  const correctAnswer = question.options.filter(e => e.correct)[0].val;
                   return (
                     <tr>
                       <td>{givenQuestion}</td>
@@ -48,7 +42,7 @@ class Results extends Component {
                     </tr>
                   );
                 })
-              : `Quiz Not taken yet!`}
+              : 'Quiz Not taken yet!'}
           </tbody>
         </table>
         <p>
@@ -61,9 +55,9 @@ class Results extends Component {
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
     questions: state.takeQuizzes.questions,
-    answers: state.takeQuizzes.answers
+    answers: state.takeQuizzes.answers,
   };
 }, {})(Results);

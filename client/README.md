@@ -4,5 +4,4 @@
 #### Team Members:
 1. [Van](http://github.com/vannya)
 2. [Louis](http://github.com/louisheimel)
-3. [Larry](http://github.com/)
-4. [Kevin](http://github.com/)
+3. [Kevin](http://github.com/kgalang)

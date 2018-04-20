@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   changeTitle,
   changeDescription,
-  submitQuizStart
+  submitQuizStart,
 } from '../../actions/quizzes';
-import { connect } from 'react-redux';
 
 // this component collects the title and description for a started quiz
 class QuizStart extends Component {
   render() {
-    const { submit, title, description, history } = this.props;
+    const {
+      submit, title, description, history 
+    } = this.props;
     return (
       <form className="quiz-start">
         <h1>Quiz Maker</h1>
@@ -41,19 +43,17 @@ class QuizStart extends Component {
 // Wrap connected QuizStart component inside
 // higher order "withRouter" component.
 // Allows dynamic routing with react router.
-export default withRouter(
-  connect(
-    state => ({
-      title: state.titleAndDescription.title,
-      description: state.titleAndDescription.description
-    }),
-    dispatch => ({
-      changeTitle: e => dispatch(changeTitle(e)),
-      changeDescription: e => dispatch(changeDescription(e)),
-      submit: history => {
-        dispatch(submitQuizStart());
-        history.push('/makeQuiz');
-      }
-    })
-  )(QuizStart)
-);
+export default withRouter(connect(
+  state => ({
+    title: state.titleAndDescription.title,
+    description: state.titleAndDescription.description,
+  }),
+  dispatch => ({
+    changeTitle: e => dispatch(changeTitle(e)),
+    changeDescription: e => dispatch(changeDescription(e)),
+    submit: (history) => {
+      dispatch(submitQuizStart());
+      history.push('/makeQuiz');
+    },
+  }),
+)(QuizStart));

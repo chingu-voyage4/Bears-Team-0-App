@@ -1,0 +1,106 @@
+.make-quiz {
+  display: flex;
+  padding-top: 64px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.option-question {
+  width: 100%;
+  padding: 1em 1em;
+  border-top: 1px solid color-list("borders");
+    
+  .option-button {
+    background: inherit;
+    border: 1px solid color-list("borders");
+    color: #215fe9;
+    font-weight: bold;
+    width: 150px;
+    margin: 0 20px;
+  }
+
+  input {
+    width: 300px;
+    background: inherit;
+    border: 1px solid color-list("borders");
+    line-height: 1.6rem;
+    text-indent: 4px;
+  }
+}
+
+.ds-opt {
+  color: color-list("text-dark");
+  margin: 0.5em 0;
+
+  label {
+    margin: 0 20px;
+  }
+
+  input {
+    &[type=text] {
+    width: 300px;
+    background: inherit;
+    border: 1px solid color-list("borders");
+    line-height: 1.6rem;
+    text-indent: 4px;
+    }
+    &[type=checkbox] {
+      width: 40px;
+      background: inherit;
+    }
+  }
+}
+
+.ds-x-button {
+  background: color-list("secondary");
+  border: 1px solid color-list("borders");
+  color: color-list("text-light");
+  font-weight: bold;
+  width: 50px;
+  margin: 0 70px;
+}
+
+.delete-button {
+  background: color-list("secondary");
+  border: 1px solid color-list("borders");
+  color: color-list("text-light");
+  font-weight: bold;
+  width: 150px;
+  margin: 0 20px;
+}
+
+.submit-button {
+  background: color-list("primary");
+  border: 1px solid color-list("borders");
+  color: color-list("text-light");
+  font-weight: bold;
+  width: 300px;
+  height: 3em;
+  margin: 20px 20px;
+}
+
+.tf-form {
+  width: 100%;
+  padding: 1em 1em;
+  border-top: 1px solid color-list("borders");
+
+  label {
+    color: color-list("text-dark");
+    margin: 0 20px;
+  }
+
+  input {
+    &[type=text] {
+    width: 300px;
+    background: inherit;
+    border: 1px solid color-list("borders");
+    line-height: 1.6rem;
+    text-indent: 4px;
+    }
+    &[type=radio] {
+      width: 20px;
+      background: inherit;
+      margin-right: 30px;
+    }
+  }
+}
