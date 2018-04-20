@@ -40,19 +40,22 @@ class OptionQuestion extends Component {
           Add Option
         </button>
         <Delete questionId={id} className="delete-button" />
-        {options.map(option => (
-          <Option
-            key={option.id}
-            change={e => changeOption(id, option.id, e)}
-            toggleCorrectOption={() => {
-              toggleCorrectOption(id, option.id);
-            }}
-            deleteOption={() => deleteOption(id, option.id)}
-            questionId={id}
-            id={option.id}
-            val={option.val}
-          />
-        ))}
+        {options
+          ? options.map(option => (
+              <Option
+                key={option.id}
+                change={e => changeOption(id, option.id, e)}
+                toggleCorrectOption={() => {
+                  toggleCorrectOption(id, option.id);
+                }}
+                deleteOption={() => deleteOption(id, option.id)}
+                questionId={id}
+                id={option.id}
+                val={option.val}
+                checked={option.correct}
+              />
+            ))
+          : null}
       </div>
     );
   }
