@@ -4,20 +4,15 @@ import { deleteQuestion } from '../../../actions/trueFalse';
 
 class Delete extends Component {
   render() {
-    const { questionId, deleteQuestion } = this.props;
-    const buttonStyles = {
-      width: '10%',
-      color: '#215fe9',
-      fontWeight: 'bolder',
-      border: 0
-    };
+    const { questionId, deleteQuestion, className } = this.props;
+    
     return (
       <button
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           deleteQuestion(questionId);
         }}
-        style={buttonStyles}
+        className={className}
       >
         Delete
       </button>

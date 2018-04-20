@@ -6,23 +6,11 @@ import TrueFalseOption from './TrueFalseOption';
 
 class FillTrueFalse extends Component {
   render() {
-    const { question } = this.props;
-    const styles = {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-    };
-    const h1Styles = {
-      fontFamily: 'Helvetica',
-      fontWeight: 'lighter',
-      margin: '0 auto',
-      textAlign: 'center',
-      width: '100%',
-    };
+    const { question } = this.props.question;
 
     return (
-      <div style={styles}>
-        <h1 style={h1Styles}>{question}</h1>
+      <div className="fill-tf">
+        <h1>{question}</h1>
         <TrueFalseOption text="True" value handleClick={() => sendOption(true)} />
         <TrueFalseOption text="False" value={false} handleClick={() => sendOption(false)} />
       </div>
@@ -30,8 +18,8 @@ class FillTrueFalse extends Component {
   }
 }
 
-FillTrueFalse.propTypes = {
-  question: PropTypes.string.isRequired,
-};
+// FillTrueFalse.propTypes = {
+//   question: PropTypes.string.isRequired,
+// };
 
 export default connect(() => ({}), { sendOption })(FillTrueFalse);

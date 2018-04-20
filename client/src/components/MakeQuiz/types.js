@@ -1,3 +1,1 @@
-export default {
-  BOX: "box"
-};
+export default { BOX: 'box' };

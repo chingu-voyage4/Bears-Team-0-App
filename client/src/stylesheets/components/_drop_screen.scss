@@ -1,3 +1,53 @@
 button {
   outline: none;
 }
+
+.drop-screen {
+  color: color-list("text-light");
+  padding: 20px;
+  background-color: color-list("text-light");
+  letter-spacing: 0.05rem;
+  border-left: 2px solid color-list("text-dark");
+  width: 70%;
+  min-height: 100%;
+  flex-basis: auto;
+
+  &.hovered {
+    background-color: color-list("emphasis");
+  }
+
+  .ds-title {
+    color: color-list("secondary");
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline-block;
+    margin-right: 5%;
+
+    &.hovered {
+      color: color-list("text-light");
+    }
+  }
+
+  .ds-desc {
+    color: color-list("secondary");
+    display: inline-block;
+    text-decoration: underline;
+
+    &.hovered {
+      color: color-list("text-light");
+    }
+  }
+
+  .ds-instruction {
+    color: color-list("secondary");
+    font-weight: bolder;
+
+    &.hovered {
+      color: color-list("text-light");
+    }
+  }
+
+  .ds-questions {
+    margin-top: 0;
+  }
+}

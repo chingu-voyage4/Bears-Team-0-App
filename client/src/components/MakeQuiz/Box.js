@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { connect } from 'react-redux';
+import types from './types';
 import {
   addMultipleChoice,
   addTrueFalse,
-  addDropdown
+  addDropdown,
 } from '../../actions/makequiz';
-import types from './types';
-
-const style = {
-  border: '1px dashed black',
-  color: 'black',
-  backgroundColor: 'white',
-  padding: '0.5rem 1rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
-  cursor: 'move',
-  float: 'left'
-};
 
 const boxSource = {
   beginDrag(props) {
     return {
-      name: props.name
+      name: props.name,
     };
   },
 
@@ -41,10 +30,10 @@ const boxSource = {
           props.addDropdown();
           break;
         default:
-          return;
+          break;
       }
     }
-  }
+  },
 };
 
 function collect(connect, monitor) {
@@ -53,7 +42,7 @@ function collect(connect, monitor) {
     // to let React DnD handle the drag events:
     connectDragSource: connect.dragSource(),
     // You can ask the monitor about the current drag state:
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   };
 }
 export class DecoratedBox extends Component {
@@ -62,11 +51,11 @@ export class DecoratedBox extends Component {
     const { text } = this.props;
     const opacity = isDragging ? 0.4 : 1;
 
-    return connectDragSource(<div style={{ ...style, opacity }}>{text}</div>);
+    return connectDragSource(<div className="decorated-box" style={{ opacity: { opacity } }}>{text}</div>);
   }
 }
-export default connect(state => ({}), {
-  addMultipleChoice: addMultipleChoice,
-  addTrueFalse: addTrueFalse,
-  addDropdown: addDropdown
+export default connect(null, {
+  addMultipleChoice,
+  addTrueFalse,
+  addDropdown,
 })(DragSource(types.BOX, boxSource, collect)(DecoratedBox));
