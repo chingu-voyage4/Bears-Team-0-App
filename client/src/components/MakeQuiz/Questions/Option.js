@@ -16,7 +16,7 @@ const Option = ({
         id={id}
         type="radio"
         checked={checked}
-        onClick={toggleCorrectOption}
+        onChange={toggleCorrectOption}
       />
       <button className="ds-x-button" onClick={deleteOption}>
         x
