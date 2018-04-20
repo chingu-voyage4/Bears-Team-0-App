@@ -537,12 +537,13 @@ ul {
           outline: none; }
         .all-quizzes .all-quizzes-left .quiz-start .quiz-start-body input {
           margin: 0 1em;
-          padding: 0.5em 0;
+          padding: 0.5em;
           border-radius: 6px;
           border: none;
           outline: none; }
         .all-quizzes .all-quizzes-left .quiz-start .quiz-start-body textarea {
           margin: 0 1em;
+          padding: 0.5em;
           height: 150px;
           resize: none;
           border-radius: 6px;
@@ -572,6 +573,8 @@ ul {
       justify-content: space-between;
       padding: 20px;
       color: #ffffff; }
+      .all-quizzes .all-quizzes-right .quiz-section .quiz:nth-of-type(n + 2) {
+        margin-left: 10px; }
       .all-quizzes .all-quizzes-right .quiz-section .quiz-section-heading {
         width: 100%;
         padding: 0.5em 0;
