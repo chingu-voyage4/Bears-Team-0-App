@@ -44,7 +44,7 @@ const toggleOption = (question, action) =>
   question.options.map(
     option =>
       option.id === action.option
-        ? { ...option, correct: !option.correct }
+        ? { ...option, correct: true }
         : { ...option, correct: false }
   );
 
