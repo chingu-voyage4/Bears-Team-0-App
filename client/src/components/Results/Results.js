@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Results extends Component {
+
+  updateQuizResults(numberOfQuestions, numberCorrect) {
+    console.log(numberCorrect);
+  }
+
   render() {
     const { questions, answers } = this.props;
     const quizTaken = answers.length === questions.length;
@@ -15,6 +20,7 @@ class Results extends Component {
           : numCorrect;
       }, 0);
       numberOfQuestions = questions.length;
+      this.updateQuizResults(numberOfQuestions, numberCorrect);
     }
     return (
       <div className="results">
@@ -57,6 +63,7 @@ class Results extends Component {
 
 export default connect((state) => {
   return {
+    quiz: state.takeQuizzes,
     questions: state.takeQuizzes.questions,
     answers: state.takeQuizzes.answers,
   };

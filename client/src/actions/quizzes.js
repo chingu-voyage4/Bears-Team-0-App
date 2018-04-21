@@ -1,25 +1,26 @@
 import axios from 'axios';
 import { quizTypes, takeQuizTypes } from './types';
+
 const {
   CHANGE_TITLE,
   CHANGE_DESCRIPTION,
   SUBMIT_QUIZ_START,
   FETCH_POPULAR_QUIZZES,
   FETCH_YOUR_QUIZZES,
-  FETCH_ALL_QUIZZES
+  FETCH_ALL_QUIZZES,
 } = quizTypes;
 
 const { FETCH_SPECIFIC_QUIZ } = takeQuizTypes;
 
 // Fetch Popular Quizzes
-export const fetchPopularQuizzes = () => async dispatch => {
+export const fetchPopularQuizzes = () => async (dispatch) => {
   const res = await axios.get('/api/quizzes/popular');
 
   dispatch({ type: FETCH_POPULAR_QUIZZES, payload: res.data });
 };
 
 // Fetch the User's Quizzes
-export const fetchYourQuizzes = () => async dispatch => {
+export const fetchYourQuizzes = () => async (dispatch) => {
   const res = await axios.get('/api/quizzes');
 
   dispatch({ type: FETCH_YOUR_QUIZZES, payload: res.data });
@@ -30,7 +31,7 @@ export const fetchYourQuizzes = () => async dispatch => {
  * param - favChange is the number of the change (usually +1 or -1)
  * param - quizId is the _id from the quiz that needs to be updated
  */
-export const updateQuiz = (quizId, quiz) => async dispatch => {
+export const updateQuiz = (quizId, quiz) => async (dispatch) => {
   const res = await axios.put(`/api/quizzes/${quizId}`, quiz);
 
   dispatch({ type: FETCH_SPECIFIC_QUIZ, payload: res.data });
@@ -40,7 +41,7 @@ export const updateQuiz = (quizId, quiz) => async dispatch => {
  * For testing purposes only.
  * We don't need to actually pull all quizzes for any reason.
  */
-export const fetchAllQuizzes = () => async dispatch => {
+export const fetchAllQuizzes = () => async (dispatch) => {
   const res = await axios.get('/api/quizzes/popular');
 
   dispatch({ type: FETCH_ALL_QUIZZES, payload: res.data });
@@ -49,19 +50,19 @@ export const fetchAllQuizzes = () => async dispatch => {
 // action to change the title of a quiz
 export const changeTitle = e => ({
   type: CHANGE_TITLE,
-  payload: e.target.value
+  payload: e.target.value,
 });
 
 // action to change the description of a quiz
 export const changeDescription = e => ({
   type: CHANGE_DESCRIPTION,
-  payload: e.target.value
+  payload: e.target.value,
 });
 
 // action to flip over the UI to the quiz making page
 export const submitQuizStart = () => {
   return {
-    type: SUBMIT_QUIZ_START
+    type: SUBMIT_QUIZ_START,
   };
 };
 
