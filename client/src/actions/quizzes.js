@@ -28,7 +28,7 @@ export const fetchYourQuizzes = () => async (dispatch) => {
 
 /**
  * Increase or Decrease Favorites
- * param - favChange is the number of the change (usually +1 or -1)
+ * param - quiz is the updated quiz object
  * param - quizId is the _id from the quiz that needs to be updated
  */
 export const updateQuiz = (quizId, quiz) => async (dispatch) => {

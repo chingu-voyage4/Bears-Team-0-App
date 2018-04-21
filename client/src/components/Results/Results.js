@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateQuiz } from '../../actions/quizzes';
 
 class Results extends Component {
 
   updateQuizResults(numberOfQuestions, numberCorrect) {
-    console.log(numberCorrect);
+    if (this.props.takeQuizzes.quiz._id) {
+      const { quizzesTaken, resultAvg } = this.props.takeQuizzes.quiz;
+      const updatedQuiz = { ...this.props.takeQuizzes.quiz };
+      updatedQuiz.quizzesTaken = quizzesTaken + 1;
+      updatedQuiz.resultAvg = ((resultAvg * quizzesTaken) +
+        (numberCorrect / numberOfQuestions)) / (quizzesTaken + 1);
+      this.props.updateQuiz(this.props.takeQuizzes.quiz._id, updatedQuiz);
+    }
   }
 
   render() {
-    const { questions, answers } = this.props;
-    const quizTaken = answers.length === questions.length;
+    const { questions, answers, quiz } = this.props.takeQuizzes;
+    const quizTaken = answers.length === questions.length && answers.length !== 0;
     let numberCorrect;
     let numberOfQuestions;
-    if (quizTaken) {
+    if (quizTaken && quiz) {
       numberCorrect = questions.reduce((numCorrect, question, index) => {
         return answers[index].answer ===
           question.options.filter(e => e.correct)[0].val
@@ -41,14 +49,14 @@ class Results extends Component {
                   const yourAnswer = answers[index].answer;
                   const correctAnswer = question.options.filter(e => e.correct)[0].val;
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>{givenQuestion}</td>
                       <td>{yourAnswer}</td>
                       <td>{correctAnswer}</td>
                     </tr>
                   );
                 })
-              : 'Quiz Not taken yet!'}
+              : null}
           </tbody>
         </table>
         <p>
@@ -61,10 +69,8 @@ class Results extends Component {
   }
 }
 
-export default connect((state) => {
-  return {
-    quiz: state.takeQuizzes,
-    questions: state.takeQuizzes.questions,
-    answers: state.takeQuizzes.answers,
-  };
-}, {})(Results);
+function mapStateToProps({ takeQuizzes }) {
+  return { takeQuizzes };
+}
+
+export default connect(mapStateToProps, { updateQuiz })(Results);
