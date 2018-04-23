@@ -27,12 +27,23 @@ export const fetchYourQuizzes = () => async (dispatch) => {
 };
 
 /**
- * Increase or Decrease Favorites
+ * Update Quiz information - Requires Login
  * param - quiz is the updated quiz object
  * param - quizId is the _id from the quiz that needs to be updated
  */
 export const updateQuiz = (quizId, quiz) => async (dispatch) => {
   const res = await axios.put(`/api/quizzes/${quizId}`, quiz);
+
+  dispatch({ type: FETCH_SPECIFIC_QUIZ, payload: res.data });
+};
+
+/**
+ * Update Quiz Results - Does Not Require Login
+ * param - quiz is the updated quiz object
+ * param - quizId is the _id from the quiz that needs to be updated
+ */
+export const updateQuizResults = (quizId, quiz) => async (dispatch) => {
+  const res = await axios.put(`/api/quizzes/results/${quizId}`, quiz);
 
   dispatch({ type: FETCH_SPECIFIC_QUIZ, payload: res.data });
 };

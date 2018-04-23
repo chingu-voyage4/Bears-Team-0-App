@@ -94,6 +94,32 @@ module.exports = app => {
   });
 
   /**
+   * PUT Update Quiz Results by Id - Does Not Require Login
+   */
+
+  app.put("/api/quizzes/results/:id", (req, res) => {
+    Quiz.findById(req.params.id, (err, quiz) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        quiz.title = req.body.title;
+        quiz.questions = req.body.questions;
+        quiz.description = req.body.description;
+        quiz.favorites = req.body.favorites;
+        quiz.quizzesTaken = req.body.quizzesTaken || quiz.quizzesTaken;
+        quiz.resultAvg = req.body.resultAvg || quiz.resultAvg;
+
+        quiz.save((err, quiz) => {
+          if (err) {
+            res.status(500).send(err);
+          }
+          res.status(200).send(quiz);
+        });
+      }
+    });
+  });
+
+  /**
    * DELETE Delete Quiz by Id - Requires Login
    */
 
