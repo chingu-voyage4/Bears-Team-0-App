@@ -453,6 +453,15 @@ ul {
       ul li a:hover, ul li a:focus {
         cursor: pointer; }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; }
+
 .header {
   position: fixed;
   top: 0;
@@ -460,7 +469,8 @@ ul {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  z-index: 2; }
   .header > a {
     margin-left: 30px;
     font-size: 30px;
@@ -493,6 +503,37 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
+
+.analysis {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: 90px 0 120px 0;
+  display: block;
+  text-align: center;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .analysis .analysis-quiz {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 1em 0;
+    border-bottom: 1px solid #d3d3d3; }
+    .analysis .analysis-quiz a {
+      color: #215fe9;
+      text-decoration: none; }
+    .analysis .analysis-quiz h1, .analysis .analysis-quiz h3, .analysis .analysis-quiz p {
+      margin: 0.5em 0; }
+    .analysis .analysis-quiz .analysis-quiz-left {
+      width: 70%;
+      text-align: left; }
+    .analysis .analysis-quiz .analysis-quiz-right {
+      width: 30%;
+      text-align: right; }
 
 .app {
   height: 100vh; }
@@ -597,6 +638,35 @@ ul {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between; }
+
+.dropdownmenu {
+  position: absolute;
+  right: 5px;
+  top: 75px;
+  width: 200px;
+  background-color: #2bc2f2;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  z-index: 4; }
+  .dropdownmenu ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; }
+    .dropdownmenu ul a {
+      width: 100%;
+      color: #ffffff;
+      text-decoration: none; }
+      .dropdownmenu ul a :hover {
+        background-color: #215fe9; }
+    .dropdownmenu ul li {
+      width: 100%;
+      margin: 0;
+      padding: 1em 1em; }
 
 .quiz {
   height: 150px;
@@ -848,9 +918,33 @@ button {
   background-color: #0f143a;
   color: #ffffff; }
 
-.results {
-  position: 'absolute';
-  top: '64px'; }
+.results-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .results-page .links-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    .results-page .links-row .results-links {
+      width: 200px;
+      height: 50px;
+      margin: 0.5em;
+      background-color: white;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #000000;
+      font-weight: 700;
+      border-radius: 2px;
+      border: none;
+      outline: none; }
 
 .about-page {
   height: 100%;
@@ -860,6 +954,8 @@ button {
   align-items: center;
   background-color: #0f143a;
   color: #ffffff; }
+  .about-page p {
+    max-width: 600px; }
 
 .contact-page {
   height: 100%;
@@ -925,6 +1021,17 @@ button {
         display: flex;
         flex-direction: column;
         justify-content: center; }
+
+.privacy {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .privacy p {
+    max-width: 800px; }
 
 .team-page {
   height: 100%;

@@ -74,7 +74,7 @@ export default connect(
   state => ({
     questions: state.makeQuizzes.questions,
     title: state.titleAndDescription.title,
-    description: state.titleAndDescription.description
+    description: state.titleAndDescription.description,
   }),
   { submitQuiz },
 )(DropTarget(types.BOX, spec, collect)(withRouter(DropScreen)));
