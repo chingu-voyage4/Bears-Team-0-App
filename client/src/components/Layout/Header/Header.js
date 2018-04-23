@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions/user';
+import DropDownMenu from './DropDownMenu';
 
 class Header extends Component {
+
+  state = {
+    isDDMenuShowing: false,
+  }
+
   componentDidMount() {
     this.props.fetchCurrentUser();
   }
 
-  render() {
-    const headerStyle = {
-      background: '#0f1538',
-      height: '64px',
-      zIndex: 1,
-    };
+  renderDDMenu(){
+    this.setState({
+      isDDMenuShowing: !this.state.isDDMenuShowing,
+    });
+  }
 
+  render() {
     if (this.props.user.currentUser) {
       // Logged In
       return (
-        <div className="header" style={headerStyle}>
-          <a href="/">Quizzly Bear</a>
-          <div className="header-right">
-            <a href="/api/logout">Log Out</a>
-            <img src={this.props.user.userImage} alt="Profile" />
+        <div className="header-wrapper">
+          <div className="overlay" hidden={!this.state.isDDMenuShowing} onClick={() => this.renderDDMenu()} />
+          <DropDownMenu isDDMenuShowing={this.state.isDDMenuShowing}/>
+          <div className="header">
+            <a href="/dashboard">Quizzly Bear</a>
+            <div className="header-right">
+              <a href="/api/logout">Log Out</a>
+              <img onClick={() => this.renderDDMenu()} src={this.props.user.userImage} alt="Profile" />
+            </div>
           </div>
         </div>
       );

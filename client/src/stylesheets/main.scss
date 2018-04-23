@@ -27,8 +27,10 @@
 
 //5. Components
 @import 
+  'components/analysis',
   'components/app',
   'components/all_quizzes',
+  'components/dropdown',
   'components/quiz',
   'components/drag_screen',
   'components/drop_screen',
@@ -42,6 +44,7 @@
   'pages/about',
   'pages/contact',
   'pages/landing',
+  'pages/privacy',
   'pages/team';
 
 //7. Themes
