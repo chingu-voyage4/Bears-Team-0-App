@@ -12,7 +12,7 @@ const Footer = () => {
           </li>
         ))}
         <li key="gh">
-            <a href="https://github.com/chingu-voyage4/Bears-Team-0-App">github repo</a>
+          <a href="https://github.com/chingu-voyage4/Bears-Team-0-App">github repo</a>
         </li>
       </ul>
     </div>

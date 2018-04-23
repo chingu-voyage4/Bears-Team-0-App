@@ -453,6 +453,15 @@ ul {
       ul li a:hover, ul li a:focus {
         cursor: pointer; }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; }
+
 .header {
   position: fixed;
   top: 0;
@@ -460,7 +469,8 @@ ul {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  z-index: 2; }
   .header > a {
     margin-left: 30px;
     font-size: 30px;
@@ -495,6 +505,7 @@ ul {
   justify-content: space-between; }
 
 .analysis {
+  height: 100%;
   width: 100%;
   margin: auto;
   padding: 90px 0 120px 0;
@@ -621,6 +632,35 @@ ul {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between; }
+
+.dropdownmenu {
+  position: absolute;
+  right: 5px;
+  top: 75px;
+  width: 200px;
+  background-color: #2bc2f2;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  z-index: 4; }
+  .dropdownmenu ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; }
+    .dropdownmenu ul a {
+      width: 100%;
+      color: #ffffff;
+      text-decoration: none; }
+      .dropdownmenu ul a :hover {
+        background-color: #215fe9; }
+    .dropdownmenu ul li {
+      width: 100%;
+      margin: 0;
+      padding: 1em 1em; }
 
 .quiz {
   height: 150px;
