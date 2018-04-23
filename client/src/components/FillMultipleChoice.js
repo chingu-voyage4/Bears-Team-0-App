@@ -15,7 +15,6 @@ class FillMultipleChoice extends Component {
     if (almostComplete) {
       history.push('/results');
     }
-    console.log(optionText, optionId);
   };
   render() {
     const { options, question } = this.props;
