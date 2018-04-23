@@ -42,6 +42,7 @@ export default (state = initialState, action) => {
     case FETCH_SPECIFIC_QUIZ:
       return {
         ...state,
+        quiz: action.payload,
         answers: [],
         questions: action.payload.questions || [],
       };
