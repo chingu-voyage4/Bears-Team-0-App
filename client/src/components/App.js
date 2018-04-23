@@ -9,6 +9,7 @@ import Dashboard from './Dashboard/Dashboard';
 import MakeQuiz from './MakeQuiz/MakeQuiz';
 import TakeQuiz from './TakeQuiz/TakeQuiz';
 import Results from './Results/Results';
+import Analysis from './Analysis/Analysis';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/makequiz" component={MakeQuiz} />
           <Route exact path="/results" component={Results} />
+          <Route exact path="/analysis" component={Analysis} />
           <Route path="/takequiz/:id" component={TakeQuiz} />
         </Layout>
       </div>
