@@ -907,6 +907,8 @@ button {
   align-items: center;
   background-color: #0f143a;
   color: #ffffff; }
+  .about-page p {
+    max-width: 600px; }
 
 .contact-page {
   height: 100%;
@@ -972,6 +974,17 @@ button {
         display: flex;
         flex-direction: column;
         justify-content: center; }
+
+.privacy {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f143a;
+  color: #ffffff; }
+  .privacy p {
+    max-width: 800px; }
 
 .team-page {
   height: 100%;

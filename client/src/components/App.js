@@ -10,6 +10,7 @@ import MakeQuiz from './MakeQuiz/MakeQuiz';
 import TakeQuiz from './TakeQuiz/TakeQuiz';
 import Results from './Results/Results';
 import Analysis from './Analysis/Analysis';
+import Privacy from './Pages/Privacy';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/team" component={Team} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/makequiz" component={MakeQuiz} />
