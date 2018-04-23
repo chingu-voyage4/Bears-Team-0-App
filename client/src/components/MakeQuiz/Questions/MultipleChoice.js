@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import OptionQuestion from "./OptionQuestion";
+import React from 'react';
+import OptionQuestion from './OptionQuestion';
 
-class MultipleChoice extends Component {
-  render() {
-    return <OptionQuestion questionData={this.props.questionData} />;
-  }
-}
+const MultipleChoice = ({ questionData }) => {
+  return (
+    <OptionQuestion questionData={questionData} />
+  );
+};
 
 export default MultipleChoice;

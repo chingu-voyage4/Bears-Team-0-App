@@ -4,7 +4,7 @@ const {
   RECEIVE_QUIZ,
   SEND_OPTION,
   FETCH_SPECIFIC_QUIZ,
-  FINISH_QUIZ
+  FINISH_QUIZ,
 } = takeQuizTypes;
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
     // question id
     // answer
   ],
-  questionCursor: 0
+  questionCursor: 0,
 };
 
 export default (state = initialState, action) => {
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
     case RECEIVE_QUIZ:
       return {
         ...state,
-        questions: [...action.payload.questionData]
+        questions: [...action.payload.questionData],
       };
     case SEND_OPTION:
       return {
@@ -29,21 +29,22 @@ export default (state = initialState, action) => {
         answers: [
           ...state.answers,
           {
-            answer: action.payload
-          }
+            answer: action.payload,
+          },
         ],
         questionCursor:
           state.questionCursor < state.questions.length
             ? state.questionCursor + 1
-            : 0
+            : 0,
       };
     case FINISH_QUIZ:
       return { ...state, questionCursor: 0 };
     case FETCH_SPECIFIC_QUIZ:
       return {
         ...state,
+        quiz: action.payload,
         answers: [],
-        questions: action.payload.questions || []
+        questions: action.payload.questions || [],
       };
     default:
       return state;

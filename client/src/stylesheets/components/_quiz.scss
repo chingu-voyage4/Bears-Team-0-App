@@ -47,3 +47,82 @@
     }
   }
 }
+
+.fill-dd {
+  display: flex;
+  justify-content: center;
+
+  .dd-select-style {
+    width: '500px';
+    margin: '0 auto';
+  }
+}
+
+.fill-mc {
+  width: "100%";
+  display: "flex";
+  justify-content: "center";
+  
+  .mc-option {
+    width: "400px";
+
+    .mc-header {
+      width: "100%";
+      text-align: "center";
+      margin: "20px auto 20px auto";
+      font-weight: "lighter";
+      font-family: "Helvetica";
+    }
+  }
+
+  .multiple-choice-option {
+    background-color: #55c0ed;
+    color: #fff;
+    font-size: 15px;
+    height: 60px;
+    width: 160px;
+    margin: 20px;
+    padding: 0 20px;
+    font-weight: bolder;
+    border: 0;
+    border-radius: 2px;
+  }
+}  
+
+.fill-tf {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  h1 {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .tf-option {
+    background-color: #55c0ed;
+    color: #fff;
+    font-size: 15px;
+    height: 60px;
+    width: 160px;
+    margin: 20px;
+    padding: 0 20px;
+    font-weight: bolder;
+    border: 0;
+    border-radius: 2px;
+  }
+}
+
+.option-main {
+  background-color: #55c0ed;
+  color: #fff;
+  font-size: 15px;
+  height: 60px;
+  width: 160px;
+  margin: 20px;
+  padding: 0 20px;
+  font-weight: bolder;
+  border: 0;
+  border-radius: 2px
+}

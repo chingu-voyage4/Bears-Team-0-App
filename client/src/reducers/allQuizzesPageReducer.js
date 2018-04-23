@@ -1,26 +1,26 @@
 const initialState = {
   yourQuizzes: [],
-  popularQuizzes: []
+  popularQuizzes: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "SUBMIT_QUIZ_START":
+    case 'SUBMIT_QUIZ_START':
       return state;
-    case "RECEIVE_YOUR_QUIZZES":
+    case 'RECEIVE_YOUR_QUIZZES':
       return {
         ...state,
-        yourQuizzes: action.payload
+        yourQuizzes: action.payload,
       };
-    case "FETCH_POPULAR_QUIZZES":
+    case 'FETCH_POPULAR_QUIZZES':
       return {
         ...state,
-        popularQuizzes: action.payload
+        popularQuizzes: action.payload,
       };
-    case "FETCH_YOUR_QUIZZES":
+    case 'FETCH_YOUR_QUIZZES':
       return {
         ...state,
-        yourQuizzes: action.payload
+        yourQuizzes: action.payload,
       };
     default:
       return state;

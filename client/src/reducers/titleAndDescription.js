@@ -1,5 +1,4 @@
 import { loadState } from '../store/localStorage';
-
 import { makeQuizTypes } from '../actions/types';
 
 const { QUIZ_WAS_SUBMITTED } = makeQuizTypes;
@@ -8,7 +7,7 @@ const cachedTitleAndDescription = loadState('titleAndDescription');
 
 const initialState = cachedTitleAndDescription || {
   title: '',
-  description: ''
+  description: '',
 };
 
 export default (state = initialState, action) => {
@@ -16,17 +15,17 @@ export default (state = initialState, action) => {
     case 'CHANGE_TITLE':
       return {
         ...state,
-        title: action.payload
+        title: action.payload,
       };
     case 'CHANGE_DESCRIPTION':
       return {
         ...state,
-        description: action.payload
+        description: action.payload,
       };
     case QUIZ_WAS_SUBMITTED:
       return {
         title: '',
-        description: ''
+        description: '',
       };
     default:
       return state;

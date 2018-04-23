@@ -5,21 +5,22 @@ import { updateQuiz } from '../../actions/quizzes';
 import Quiz from './Quiz';
 
 // represents a collection of quizzes
-export class QuizSection extends Component {
+class QuizSection extends Component {
   componentWillMount() {
     this.props.getData();
   }
 
   async addOneToFavs(quiz) {
     const updatedQuiz = { ...quiz };
-    console.log(updatedQuiz.favorites, updatedQuiz.title);
     updatedQuiz.favorites = quiz.favorites + 1;
     await this.props.updateQuiz(quiz._id, updatedQuiz);
     await this.props.getData();
   }
 
   render() {
-    const { headingText, quizzes, mainColor, wrap } = this.props;
+    const {
+      headingText, quizzes, mainColor, wrap,
+    } = this.props;
     return (
       <div className="quiz-section">
         <h1 className={`quiz-section-heading ${mainColor}`}>{headingText}</h1>

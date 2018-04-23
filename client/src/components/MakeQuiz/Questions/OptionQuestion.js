@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Delete from './Delete';
 import Option from './Option';
 import {
@@ -6,52 +7,32 @@ import {
   changeOption,
   toggleCorrectOption,
   changeQuestion,
-  deleteOption
+  deleteOption,
 } from '../../../actions/multipleChoice';
-import { connect } from 'react-redux';
 
 class OptionQuestion extends Component {
   render() {
     const {
-        questionData,
-        addOption,
-        changeOption,
-        toggleCorrectOption,
-        changeQuestion,
-        deleteOption
-      } = this.props,
-      { options, id, question } = questionData;
-
-    const styles = {
-      optionQuestion: {
-        width: '100%'
-      },
-      button: {
-        background: 'inherit',
-        border: 0,
-        color: '#215fe9',
-        fontWeight: 'bold',
-        width: '20%'
-      },
-      input: {
-        background: 'inherit',
-        border: 0,
-        width: '60%'
-      }
-    };
+      questionData,
+      addOption,
+      changeOption,
+      toggleCorrectOption,
+      changeQuestion,
+      deleteOption
+    } = this.props;
+    const { options, id, question } = questionData;
 
     return (
-      <div className="optionQuestion" style={styles.optionQuestion}>
+      <div className="option-question">
         <input
           placeholder="Question"
-          style={styles.input}
           value={question}
           onChange={e => changeQuestion(e, id)}
         />
-        <button style={styles.button} onClick={() => addOption(id)}>
+        <button className="option-button" onClick={() => addOption(id)}>
           Add Option
         </button>
-        <Delete questionId={id} style={styles.button} />
+        <Delete questionId={id} className="delete-button" />
         {options.map(option => (
           <Option
             key={option.id}
@@ -68,10 +49,10 @@ class OptionQuestion extends Component {
   }
 }
 
-export default connect(state => ({}), {
+export default connect(null, {
   addOption,
   changeOption,
   toggleCorrectOption,
   changeQuestion,
-  deleteOption
+  deleteOption,
 })(OptionQuestion);
