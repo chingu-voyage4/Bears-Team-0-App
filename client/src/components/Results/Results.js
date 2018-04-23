@@ -28,6 +28,7 @@ class Results extends Component {
     for (var i = 0; i < questions.length; i++) {
       score = equal(getQuestion(i), getAnswer(i)) ? score + 1 : score;
     }
+    this.updateQuiz(questions.length, score);
     return score;
   };
 
