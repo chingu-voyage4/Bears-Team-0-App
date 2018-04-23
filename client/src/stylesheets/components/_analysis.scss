@@ -19,6 +19,11 @@
     padding: 1em 0;
     border-bottom: 1px solid color-list("borders");
 
+    a {
+      color: color-list("secondary");
+      text-decoration: none;
+    }
+
     h1, h3, p {
       margin: 0.5em 0;
     }

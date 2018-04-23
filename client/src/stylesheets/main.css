@@ -523,6 +523,9 @@ ul {
     margin: auto;
     padding: 1em 0;
     border-bottom: 1px solid #d3d3d3; }
+    .analysis .analysis-quiz a {
+      color: #215fe9;
+      text-decoration: none; }
     .analysis .analysis-quiz h1, .analysis .analysis-quiz h3, .analysis .analysis-quiz p {
       margin: 0.5em 0; }
     .analysis .analysis-quiz .analysis-quiz-left {
