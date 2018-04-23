@@ -8,9 +8,7 @@ import MultipleChoiceOption from './MultipleChoiceOption';
 
 class FillTrueFalse extends Component {
   handleClick = (option, optionId) => {
-    alert('clicked!');
     const { sendOption, finishQuiz, almostComplete, history } = this.props;
-    console.log('this.props are: ', this.props);
     this.setState(
       {
         options: [true, false].map(
@@ -33,7 +31,6 @@ class FillTrueFalse extends Component {
   };
   render() {
     const { question } = this.props;
-    console.log('props are: ', this.props);
 
     return (
       <div className="fill-tf">

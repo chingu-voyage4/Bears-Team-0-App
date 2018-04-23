@@ -2,59 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Results extends Component {
+  calculateScore = (questions, answers) => {
+    let score = 0;
+    for (var i = 0; i < questions.length; i++) {
+      if (questions[i].format === 'true false') {
+        score = questions[i].isTrue === answers[i].answer ? score + 1 : score;
+      } else {
+        const question = questions[i];
+        const correctOption = question.options.filter(
+          option => option.correct
+        )[0];
+        const correctValue = correctOption.val;
+        const givenAnswer = answers[i].answer;
+        score = correctValue === givenAnswer ? score + 1 : score;
+      }
+    }
+    return score;
+  };
   render() {
     const { questions, answers } = this.props;
-    const quizTaken = answers.length === questions.length;
-    let numberCorrect;
-    let numberOfQuestions;
-    if (quizTaken) {
-      alert(questions);
-      numberCorrect = questions.reduce((numCorrect, question, index) => {
-        return (
-          answers[index].answer === alert(JSON.stringify(questions.options))
-        );
-        questions.options.filter(e => e.correct)[0].val
-          ? numCorrect + 1
-          : numCorrect;
-      }, 0);
-      numberOfQuestions = questions.length;
-    }
     return (
-      <div className="results">
-        <table>
-          {quizTaken ? (
-            <thead>
-              <tr>
-                <th>Question</th>
-                <th>Your Answer</th>
-                <th>Survey says:</th>
-              </tr>
-            </thead>
-          ) : null}
-          <tbody>
-            {quizTaken
-              ? questions.map((question, index) => {
-                  const givenQuestion = question.question;
-                  const yourAnswer = answers[index].answer;
-                  const correctAnswer = question.options.filter(
-                    e => e.correct
-                  )[0].val;
-                  return (
-                    <tr>
-                      <td>{givenQuestion}</td>
-                      <td>{yourAnswer}</td>
-                      <td>{correctAnswer}</td>
-                    </tr>
-                  );
-                })
-              : 'Quiz Not taken yet!'}
-          </tbody>
-        </table>
-        <p>
-          {quizTaken
-            ? `Number correct: ${numberCorrect} Out of ${numberOfQuestions}`
-            : null}
-        </p>
+      <div style={{ marginTop: '60px' }}>
+        <h1>Number correct: {this.calculateScore(questions, answers)}</h1>
+        <h2>total questions: {questions.length}</h2>
       </div>
     );
   }

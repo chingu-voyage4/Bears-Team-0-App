@@ -19,7 +19,6 @@ class FillMultipleChoice extends Component {
   };
   render() {
     const { options, question } = this.props;
-    console.log(this.props);
     return (
       <div className="fill-mc">
         <div className="mc-option">
