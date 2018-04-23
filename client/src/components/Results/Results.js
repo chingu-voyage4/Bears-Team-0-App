@@ -8,9 +8,12 @@ class Results extends Component {
     let numberCorrect;
     let numberOfQuestions;
     if (quizTaken) {
+      alert(questions);
       numberCorrect = questions.reduce((numCorrect, question, index) => {
-        return answers[index].answer ===
-          question.options.filter(e => e.correct)[0].val
+        return (
+          answers[index].answer === alert(JSON.stringify(questions.options))
+        );
+        questions.options.filter(e => e.correct)[0].val
           ? numCorrect + 1
           : numCorrect;
       }, 0);
@@ -33,7 +36,9 @@ class Results extends Component {
               ? questions.map((question, index) => {
                   const givenQuestion = question.question;
                   const yourAnswer = answers[index].answer;
-                  const correctAnswer = question.options.filter(e => e.correct)[0].val;
+                  const correctAnswer = question.options.filter(
+                    e => e.correct
+                  )[0].val;
                   return (
                     <tr>
                       <td>{givenQuestion}</td>
@@ -55,9 +60,9 @@ class Results extends Component {
   }
 }
 
-export default connect((state) => {
+export default connect(state => {
   return {
     questions: state.takeQuizzes.questions,
-    answers: state.takeQuizzes.answers,
+    answers: state.takeQuizzes.answers
   };
 }, {})(Results);

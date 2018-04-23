@@ -104,7 +104,9 @@ export default (state = initialState, action) => {
                   ...question,
                   options: [
                     ...question.options,
-                    { val: '', id: shortid.generate(), correct: false }
+                    question.options.length === 0
+                      ? { val: '', id: shortid.generate(), correct: true }
+                      : { val: '', id: shortid.generate(), correct: false }
                   ]
                 }
               : // else return the quiz already in place

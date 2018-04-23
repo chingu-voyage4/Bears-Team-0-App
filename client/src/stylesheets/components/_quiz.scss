@@ -2,9 +2,9 @@
   height: 150px;
   width: 230px;
   margin-bottom: 2em;
-  background-color: color-list("text-light");
-  color: color-list("text-dark");
-  font-family: "Roboto Slab", serif;
+  background-color: color-list('text-light');
+  color: color-list('text-dark');
+  font-family: 'Roboto Slab', serif;
   font-size: 12px;
 
   h2 {
@@ -15,33 +15,33 @@
 
   .quiz-body {
     height: 70px;
-    
+
     p {
       margin: 0;
       padding: 0 0.75em;
     }
   }
 
-  .quiz-footer{
+  .quiz-footer {
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 0.75em;
-    background-color: color-list("accent");
-    color: color-list("text-light");
+    background-color: color-list('accent');
+    color: color-list('text-light');
 
     &.secondary {
-      background-color: color-list("secondary");
+      background-color: color-list('secondary');
     }
 
     &.tertiary {
-      background-color: color-list("tertiary");
+      background-color: color-list('tertiary');
     }
 
     a {
-      color: color-list("text-light");
+      color: color-list('text-light');
       text-decoration: none;
       text-transform: uppercase;
     }
@@ -59,36 +59,39 @@
 }
 
 .fill-mc {
-  width: "100%";
-  display: "flex";
-  justify-content: "center";
-  
+  width: '100%';
+  display: 'flex';
+  justify-content: 'center';
+
   .mc-option {
-    width: "400px";
+    width: '400px';
 
     .mc-header {
-      width: "100%";
-      text-align: "center";
-      margin: "20px auto 20px auto";
-      font-weight: "lighter";
-      font-family: "Helvetica";
+      width: '100%';
+      text-align: 'center';
+      margin: '20px auto 20px auto';
+      font-weight: 'lighter';
+      font-family: 'Helvetica';
     }
   }
+}
 
-  .multiple-choice-option {
-    background-color: #55c0ed;
-    color: #fff;
-    font-size: 15px;
-    height: 60px;
-    width: 160px;
-    margin: 20px;
-    padding: 0 20px;
-    font-weight: bolder;
-    border: 0;
-    border-radius: 2px;
-  }
-}  
+.multiple-choice-option {
+  background-color: #55c0ed;
+  color: #fff;
+  font-size: 15px;
+  height: 60px;
+  width: 160px;
+  margin: 20px;
+  padding: 0 20px;
+  font-weight: bolder;
+  border: 0;
+  border-radius: 2px;
+}
 
+.selected {
+  background-color: red;
+}
 .fill-tf {
   display: flex;
   flex-wrap: wrap;
@@ -124,5 +127,5 @@
   padding: 0 20px;
   font-weight: bolder;
   border: 0;
-  border-radius: 2px
+  border-radius: 2px;
 }
