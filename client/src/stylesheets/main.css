@@ -578,12 +578,13 @@ ul {
           outline: none; }
         .all-quizzes .all-quizzes-left .quiz-start .quiz-start-body input {
           margin: 0 1em;
-          padding: 0.5em 0;
+          padding: 0.5em;
           border-radius: 6px;
           border: none;
           outline: none; }
         .all-quizzes .all-quizzes-left .quiz-start .quiz-start-body textarea {
           margin: 0 1em;
+          padding: 0.5em;
           height: 150px;
           resize: none;
           border-radius: 6px;
@@ -613,6 +614,8 @@ ul {
       justify-content: space-between;
       padding: 20px;
       color: #ffffff; }
+      .all-quizzes .all-quizzes-right .quiz-section .quiz:nth-of-type(n + 2) {
+        margin-left: 10px; }
       .all-quizzes .all-quizzes-right .quiz-section .quiz-section-heading {
         width: 100%;
         padding: 0.5em 0;
@@ -671,7 +674,7 @@ ul {
   margin-bottom: 2em;
   background-color: #ffffff;
   color: #000000;
-  font-family: "Roboto Slab", serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 12px; }
   .quiz h2 {
     height: 40px;
@@ -708,28 +711,32 @@ ul {
     margin: '0 auto'; }
 
 .fill-mc {
-  width: "100%";
-  display: "flex";
-  justify-content: "center"; }
+  width: '100%';
+  display: 'flex';
+  justify-content: 'center'; }
   .fill-mc .mc-option {
-    width: "400px"; }
+    width: '400px'; }
     .fill-mc .mc-option .mc-header {
-      width: "100%";
-      text-align: "center";
-      margin: "20px auto 20px auto";
-      font-weight: "lighter";
-      font-family: "Helvetica"; }
-  .fill-mc .multiple-choice-option {
-    background-color: #55c0ed;
-    color: #fff;
-    font-size: 15px;
-    height: 60px;
-    width: 160px;
-    margin: 20px;
-    padding: 0 20px;
-    font-weight: bolder;
-    border: 0;
-    border-radius: 2px; }
+      width: '100%';
+      text-align: 'center';
+      margin: '20px auto 20px auto';
+      font-weight: 'lighter';
+      font-family: 'Helvetica'; }
+
+.multiple-choice-option {
+  background-color: #55c0ed;
+  color: #fff;
+  font-size: 15px;
+  height: 60px;
+  width: 160px;
+  margin: 20px;
+  padding: 0 20px;
+  font-weight: bolder;
+  border: 0;
+  border-radius: 2px; }
+
+.selected {
+  background-color: red; }
 
 .fill-tf {
   display: flex;
@@ -901,9 +908,6 @@ button {
     width: 20px;
     background: inherit;
     margin-right: 30px; }
-
-.multipleChoice {
-  background: red; }
 
 .quiz-display {
   height: 100%;

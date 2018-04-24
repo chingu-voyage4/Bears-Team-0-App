@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FillTrueFalse from '../FillTrueFalse';
 import FillDropdown from '../FillDropdown';
+import FillMultipleChoice from '../FillMultipleChoice';
 import * as actions from '../../actions/takeQuiz';
 // component allows client to take a quiz
 
@@ -13,9 +14,23 @@ class TakeQuiz extends Component {
   renderQuestion(question, finishQuiz) {
     switch (question.format) {
       case 'true false':
-        return <FillTrueFalse key={question.id} question={question} />;
+        return (
+          <FillTrueFalse
+            key={question.id}
+            question={question}
+            options={[true, false]}
+            almostComplete={finishQuiz}
+          />
+        );
       case 'multiple choice':
-        return <p key={question.id}>Multiple Choice</p>;
+        return (
+          <FillMultipleChoice
+            key={question.id}
+            question={question.question}
+            options={question.options}
+            almostComplete={finishQuiz}
+          />
+        );
       case 'dropdown':
         return (
           <FillDropdown

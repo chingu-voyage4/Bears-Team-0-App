@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: color-list("background");
+  background-color: color-list('background');
 
   .all-quizzes-left {
     height: 100%;
@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       padding: 20px;
-      color: color-list("text-light");
+      color: color-list('text-light');
       margin-right: 5%;
       position: relative;
 
@@ -27,14 +27,14 @@
         padding: 0.5em 0;
         font-size: 1.1em;
         text-transform: uppercase;
-        border-bottom: 3px solid color-list("accent");
+        border-bottom: 3px solid color-list('accent');
       }
 
       .quiz-start-body {
         height: 450px;
         display: flex;
         flex-direction: column;
-        background-color: color-list("accent");
+        background-color: color-list('accent');
 
         label {
           font-size: 0.9em;
@@ -46,7 +46,7 @@
 
         input {
           margin: 0 1em;
-          padding: 0.5em 0;
+          padding: 0.5em;
           border-radius: 6px;
           border: none;
           outline: none;
@@ -54,6 +54,7 @@
 
         textarea {
           margin: 0 1em;
+          padding: 0.5em;
           height: 150px;
           resize: none;
           border-radius: 6px;
@@ -68,15 +69,15 @@
           border-radius: 8px;
           border: none;
           outline: none;
-          background-color: color-list("text-light");
-          color: color-list("accent");
+          background-color: color-list('text-light');
+          color: color-list('accent');
           font-size: 1.2em;
           text-transform: uppercase;
           font-weight: 700;
 
           @include hocus {
-            background-color: color-list("tertiary");
-            color: color-list("text-light");
+            background-color: color-list('tertiary');
+            color: color-list('text-light');
           }
         }
       }
@@ -93,23 +94,26 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 20px;
-      color: color-list("text-light");
+      color: color-list('text-light');
+
+      .quiz:nth-of-type(n + 2) {
+        margin-left: 10px;
+      }
 
       .quiz-section-heading {
         width: 100%;
         padding: 0.5em 0;
         font-size: 1.1em;
         text-transform: uppercase;
-        border-bottom: 3px solid color-list("accent");
+        border-bottom: 3px solid color-list('accent');
 
         &.secondary {
-          border-bottom: 3px solid color-list("secondary");
-        }
-    
-        &.tertiary {
-          border-bottom: 3px solid color-list("tertiary");
+          border-bottom: 3px solid color-list('secondary');
         }
 
+        &.tertiary {
+          border-bottom: 3px solid color-list('tertiary');
+        }
       }
 
       .quiz-section-body {
@@ -130,5 +134,3 @@
     }
   }
 }
-
-
