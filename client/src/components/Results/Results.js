@@ -4,6 +4,11 @@ import { Link, Redirect } from 'react-router-dom';
 import { updateQuizResults } from '../../actions/quizzes';
 
 class Results extends Component {
+
+  shouldComponentUpdate(){
+    return false;
+  }
+
   calculateScore = (questions, answers) => {
     let score = 0;
     if (questions.length === 0 || answers.length === 0) {
@@ -50,9 +55,6 @@ class Results extends Component {
   render() {
     const { user } = this.props;
     const { questions, answers, quiz } = this.props.takeQuizzes;
-    console.log(questions, answers);
-    const quizTaken =
-      answers.length === questions.length && answers.length !== 0;
     let numberOfQuestions = questions.length;
     if (quiz) {
       return (

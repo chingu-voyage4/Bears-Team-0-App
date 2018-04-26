@@ -5,9 +5,6 @@ import MultipleChoiceOption from './MultipleChoiceOption';
 import { sendOption } from '../actions/takeQuiz';
 
 class FillMultipleChoice extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   optionClickHandler = (optionText, optionId) => {
     const { sendOption, history, almostComplete } = this.props;
