@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import {
   makeQuizTypes,
   multipleChoiceTypes,
@@ -5,7 +6,6 @@ import {
   dropdownTypes
 } from '../actions/types';
 import { loadState } from '../store/localStorage';
-import shortid from 'shortid';
 
 const {
   ADD_MULTIPLE_CHOICE,
@@ -44,8 +44,8 @@ const toggleOption = (question, action) =>
   question.options.map(
     option =>
       option.id === action.option
-        ? { ...option, correct: !option.correct }
-        : option
+        ? { ...option, correct: true }
+        : { ...option, correct: false }
   );
 
 export default (state = initialState, action) => {
@@ -104,7 +104,9 @@ export default (state = initialState, action) => {
                   ...question,
                   options: [
                     ...question.options,
-                    { val: '', id: shortid.generate(), correct: false }
+                    question.options.length === 0
+                      ? { val: '', id: shortid.generate(), correct: true }
+                      : { val: '', id: shortid.generate(), correct: false }
                   ]
                 }
               : // else return the quiz already in place

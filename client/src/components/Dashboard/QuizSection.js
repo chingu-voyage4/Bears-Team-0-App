@@ -5,14 +5,13 @@ import { updateQuiz } from '../../actions/quizzes';
 import Quiz from './Quiz';
 
 // represents a collection of quizzes
-export class QuizSection extends Component {
+class QuizSection extends Component {
   componentWillMount() {
     this.props.getData();
   }
 
   async addOneToFavs(quiz) {
     const updatedQuiz = { ...quiz };
-    console.log(updatedQuiz.favorites, updatedQuiz.title);
     updatedQuiz.favorites = quiz.favorites + 1;
     await this.props.updateQuiz(quiz._id, updatedQuiz);
     await this.props.getData();
@@ -31,6 +30,7 @@ export class QuizSection extends Component {
             ? quizzes
                 .map(quiz => (
                   <Quiz
+                    className="quiz"
                     key={quiz._id}
                     id={quiz._id}
                     title={quiz.title}
@@ -53,7 +53,7 @@ QuizSection.propTypes = {
   headingText: PropTypes.string.isRequired,
   mainColor: PropTypes.string.isRequired,
   wrap: PropTypes.bool.isRequired,
-  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  quizzes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default connect(null, { updateQuiz })(QuizSection);

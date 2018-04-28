@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-class Option extends Component {
-  render() {
-    const {
-      id,
-      val,
-      change,
-      checked,
-      toggleCorrectOption,
-      deleteOption
-    } = this.props;
-    return (
-      <div key={id}>
-        <input value={val} onChange={change} />
-        <label htmlFor={id}>Right answer?</label>
-        <input
-          id={id}
-          type="checkbox"
-          checked={checked}
-          onClick={toggleCorrectOption}
-        />
-        <button onClick={deleteOption}>x</button>
-      </div>
-    );
-  }
-}
+import React from 'react';
+
+const Option = ({
+  id,
+  val,
+  change,
+  checked,
+  toggleCorrectOption,
+  deleteOption
+}) => {
+  return (
+    <div key={id} className="ds-opt">
+      <input type="text" value={val} onChange={change} />
+      <label htmlFor={id}>Right answer?</label>
+      <input
+        id={id}
+        type="radio"
+        checked={checked}
+        onChange={toggleCorrectOption}
+      />
+      <button className="ds-x-button" onClick={deleteOption}>
+        x
+      </button>
+    </div>
+  );
+};
 
 export default Option;
