@@ -1,10 +1,13 @@
 .header-wrapper {
-  height: 64px;
+  height: 71px;
 }
 .header {
   background: #0f143a;
+  position: relative;
 }
 .footer {
+  height: 64px;
+  position: relative;
   li {
     margin: 0 2.5%;
   }
@@ -20,7 +23,7 @@
 
   .all-quizzes-left {
     height: 100%;
-    padding: 4em 0 0 4em;
+    padding: 0 0 0 4em;
     display: flex;
     flex-direction: column;
 
@@ -97,7 +100,7 @@
 
   .all-quizzes-right {
     height: 100%;
-    padding: 4em 4em 0 0;
+    padding: 0 4em 0 0;
 
     .quiz-section {
       max-width: 750px;
@@ -152,8 +155,7 @@
     display: block;
     overflow: scroll;
     .all-quizzes-left {
-      padding: 4em 0 0 0;
-
+      padding: 0;
       .quiz-start {
         margin: 0 auto;
       }
