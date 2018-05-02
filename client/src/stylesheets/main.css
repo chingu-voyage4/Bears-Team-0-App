@@ -411,7 +411,11 @@ button {
 
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; }
 
 button:hover {
   cursor: pointer; }
@@ -538,6 +542,15 @@ ul {
 .app {
   height: 100vh; }
 
+.header-wrapper {
+  height: 64px; }
+
+.header {
+  background: #0f143a; }
+
+.footer li {
+  margin: 0 2.5%; }
+
 .all-quizzes {
   height: 100%;
   width: 100%;
@@ -638,6 +651,33 @@ ul {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between; }
+
+@media (max-width: 1180px) {
+  .all-quizzes {
+    flex-direction: column;
+    display: block;
+    overflow: scroll; }
+    .all-quizzes .all-quizzes-left {
+      padding: 4em 0 0 0; }
+      .all-quizzes .all-quizzes-left .quiz-start {
+        margin: 0 auto; }
+    .all-quizzes .all-quizzes-right {
+      padding: 0; }
+      .all-quizzes .all-quizzes-right .quiz-section {
+        margin: 0 auto 50px auto; }
+        .all-quizzes .all-quizzes-right .quiz-section .quiz-section-body {
+          display: block; }
+        .all-quizzes .all-quizzes-right .quiz-section .quiz {
+          width: 100%; }
+        .all-quizzes .all-quizzes-right .quiz-section .quiz:nth-of-type(n + 2) {
+          margin-left: 0px; } }
+
+@media (max-width: 500px) {
+  .header > a {
+    font-size: 20px;
+    margin-left: 15px; }
+  .header .header-right a {
+    margin-right: 10px; } }
 
 .dropdownmenu {
   position: absolute;
